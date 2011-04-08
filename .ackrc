@@ -1,0 +1,8 @@
+# Always sort
+--sort-files
+
+# No grouping
+--noheading
+--break
+
+--ignore-dir=data

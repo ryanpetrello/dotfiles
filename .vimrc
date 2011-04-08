@@ -4,6 +4,7 @@
   
 "Forget compatibility with Vi. Who cares.  
 set nocompatible
+set hlsearch
   
 "Enable filetypes
 filetype on
@@ -142,7 +143,21 @@ imap jj <esc>
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+" Toggle NERDTREE with F2"
 map <F2> :NERDTreeToggle<CR>
+
+" Ack searching and highlight support 
+nmap <Leader>a <Esc>:Ack 
+let g:ackhighlight = 1
+
+" Pyflakes config
+let g:pyflakes_use_quickfix = 0
+
+" Pytest leader mappings
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+map <F3> :Pytest session<CR>
 
 "Some functions"
 function! CurDir()

@@ -4,6 +4,7 @@
 !/.gitconfig
 !/.gitignore
 !/.gitexcludes
+!/.ackrc
 !/.getafe*
 !/.vim/*
 .viminfo
