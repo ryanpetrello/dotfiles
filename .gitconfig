@@ -1,0 +1,8 @@
+[user]
+	name = Ryan Petrello
+	email = lists@ryanpetrello.com
+[core]
+	excludesfile = /Users/ryan/.gitexcludes
+[alias]
+    ci = commit
+    st = status
