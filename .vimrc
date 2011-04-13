@@ -31,8 +31,9 @@ set ruler
   
 "Set the color scheme. Change this to your preference.  
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
-colorscheme getafe
+colorscheme solarized
 set t_Co=256
+set background=dark
   
 "Set font type and size. Depends on the resolution. Larger screens, prefer h20  
 set guifont=Menlo:h12
@@ -48,8 +49,8 @@ set title
 " Custom Commands
 """"""""""""""""""""""""""""""""""""""""""
 command Ga call Ga()
-command Gc exe 'git commit' 
-command Gp exe 'git push'
+command Gc exe 'Git commit' 
+command Gp exe 'Git push'
 
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -75,7 +76,7 @@ set softtabstop=4
 set expandtab
 
 " For xml, xhtml and html let's use 2 spaces of indentation
-autocmd FileType html,xhtml,xml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,xhtml,xml,mak setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 

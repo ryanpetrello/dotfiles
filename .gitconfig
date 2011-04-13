@@ -6,3 +6,7 @@
 [alias]
     ci = commit
     st = status
+[color]
+	diff = always
+	status = always
+	branch = always
