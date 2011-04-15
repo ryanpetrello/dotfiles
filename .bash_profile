@@ -18,7 +18,5 @@ PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 alias ..="cd .."
 
-set background=dark
-
 # I wish py.test did this by default...
 alias py.test="py.test --tb=short"
