@@ -9,7 +9,7 @@ export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'
 
 # color
 alias ls='ls -G'
-alias vim='mvim -f -c "au VimLeave * !open -a iTerm"'
+alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 
 export GREP_COLOR=32
 alias grep='grep --color'
