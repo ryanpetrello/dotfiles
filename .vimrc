@@ -75,8 +75,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" For xml, xhtml and html let's use 2 spaces of indentation
-autocmd FileType html,xhtml,xml,mak setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+" For xml, xhtml, html, mak let's use 2 spaces of indentation
+autocmd BufNewFile,BufRead *.mako,*.mak setlocal ft=html
+autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
@@ -86,9 +87,11 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 " Indents, wrapping, line numbers, completion, etc...
 """"""""""""""""""""""""""""""""""""""""""
 
-"Show lines numbers  
-set number
-set relativenumber
+if has("gui_running")
+    "Show lines numbers  
+    set number
+    set relativenumber
+endif
   
 "Indent stuff  
 set smartindent
@@ -150,6 +153,9 @@ map <F2> :NERDTreeToggle<CR>
 " Ack searching and highlight support 
 nmap <Leader>a <Esc>:Ack 
 let g:ackhighlight = 1
+
+" Use chapa.vim default mappings
+let g:chapa_default_mappings = 1
 
 " Pyflakes config
 let g:pyflakes_use_quickfix = 0
