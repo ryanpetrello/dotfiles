@@ -91,8 +91,11 @@ if has("gui_running")
     "Show lines numbers  
     set number
     set relativenumber
+
+    "Hide the toolbar
+    set guioptions=egmrt
 endif
-  
+
 "Indent stuff  
 set smartindent
 set autoindent  
@@ -153,6 +156,9 @@ map <F2> :NERDTreeToggle<CR>
 " Ack searching and highlight support 
 nmap <Leader>a <Esc>:Ack 
 let g:ackhighlight = 1
+
+" Hard wrap for the current paragraph
+nmap <Leader>w ^mw<C-V>gq`w
 
 " Use chapa.vim default mappings
 let g:chapa_default_mappings = 1
