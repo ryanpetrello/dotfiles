@@ -89,7 +89,6 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 
 if has("gui_running")
     "Show lines numbers  
-    set number
     set relativenumber
 
     "Hide the toolbar
