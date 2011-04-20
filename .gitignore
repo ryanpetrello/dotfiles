@@ -7,4 +7,5 @@
 !/.ackrc
 !/.getafe*
 !/.vim/*
+!/.subversion
 .viminfo
