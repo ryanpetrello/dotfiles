@@ -36,7 +36,7 @@ set t_Co=256
 set background=dark
   
 "Set font type and size. Depends on the resolution. Larger screens, prefer h20  
-set guifont=Menlo:h12
+set guifont=Inconsolata:h14
 
 "Show current command in the screen corner
 set showcmd
@@ -44,6 +44,10 @@ set history=1000
 
 "Set a page title
 set title
+
+" Highlight the current line
+set cul                                           
+hi CursorLine term=none cterm=none ctermbg=3      
 
 """"""""""""""""""""""""""""""""""""""""""
 " Custom Commands
@@ -182,3 +186,7 @@ function! Ga()
     let cwd = expand("%:p")
     exe 'Git add ' . cwd
 endfunction
+
+" Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
