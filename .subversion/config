@@ -1,5 +1,2 @@
-[auth]
 [helpers]
 diff-cmd = colordiff
-[tunnels]
-[miscellany]
