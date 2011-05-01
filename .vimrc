@@ -49,6 +49,11 @@ set title
 set cul                                           
 hi CursorLine term=none cterm=none ctermbg=3      
 
+" No more bell!
+set noerrorbells
+set visualbell
+
+
 """"""""""""""""""""""""""""""""""""""""""
 " Custom Commands
 """"""""""""""""""""""""""""""""""""""""""
