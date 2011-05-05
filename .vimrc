@@ -16,6 +16,8 @@ syntax on
 let mapleader = ","
 let g:mapleader = ","
 
+" Yanking in vim should also copy into my OSX clipboard
+set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""
 " Pathogen
