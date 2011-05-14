@@ -88,6 +88,7 @@ set expandtab
 
 " For xml, xhtml, html, mak let's use 2 spaces of indentation
 autocmd BufNewFile,BufRead *.mako,*.mak setlocal ft=html
+autocmd BufNewFile,BufRead *.less setlocal ft=css
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
@@ -172,6 +173,9 @@ nmap <Leader>w ^mw<C-V>gq`w
 
 " Use chapa.vim default mappings
 let g:chapa_default_mappings = 1
+
+" Map <Leader>h to a Mac color picker (hex)
+nmap <Leader>h <Esc>:ColorHEX<CR>
 
 " Pyflakes config
 let g:pyflakes_use_quickfix = 0
