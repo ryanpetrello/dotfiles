@@ -33,7 +33,7 @@ set ruler
   
 "Set the color scheme. Change this to your preference.  
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
-colorscheme solarized
+colorscheme wombat
 set t_Co=256
 set background=dark
   
@@ -121,6 +121,7 @@ set linespace=3
 "Better line wrapping  
 set wrap  
 set textwidth=79  
+set colorcolumn=+1
 set formatoptions=qrn1  
 
 """"""""""""""""""""""""""""""""""""""""""
