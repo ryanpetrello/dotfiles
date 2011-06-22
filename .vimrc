@@ -184,12 +184,6 @@ function! CurDir()
     return curdir
 endfunction
 
-" Git commit add single file please 
-function! Ga()
-    let cwd = expand("%:p")
-    exe 'Git add ' . cwd
-endfunction
-
 " Create Blank Newlines and stay in Normal mode
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
