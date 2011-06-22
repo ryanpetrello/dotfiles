@@ -55,15 +55,6 @@ hi CursorLine term=none cterm=none ctermbg=3
 set noerrorbells
 set visualbell
 
-
-""""""""""""""""""""""""""""""""""""""""""
-" Custom Commands
-""""""""""""""""""""""""""""""""""""""""""
-command Ga call Ga()
-command Gc exe 'Git commit' 
-command Gp exe 'Git push'
-
-
 """"""""""""""""""""""""""""""""""""""""""
 " Forcing myself not to use arrows 
 """"""""""""""""""""""""""""""""""""""""""
