@@ -189,4 +189,4 @@ nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
 " Reload
-command Reload :so $MYVIMRC
+command! Reload :so $MYVIMRC
