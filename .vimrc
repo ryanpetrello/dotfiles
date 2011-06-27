@@ -190,3 +190,5 @@ nnoremap <silent> zk O<Esc>
 
 " Reload
 command! Reload :so $MYVIMRC
+" Map ,R to reload
+nmap <Leader>r <Esc>:Reload<CR>
