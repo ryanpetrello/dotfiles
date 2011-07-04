@@ -139,22 +139,8 @@ set splitbelow
 set wildmenu
 set wildmode=list:longest  
   
-"http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE  
-set completeopt=longest,menuone  
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"  
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'  
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :  
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'  
-  
-"Map escape key to jj -- much faster  
-imap jj <esc>
-
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" Toggle NERDTREE with F2"
-map <F2> :NERDTreeToggle<CR>
 
 " Ack searching and highlight support 
 nmap <Leader>a <Esc>:Ack 
@@ -190,5 +176,6 @@ nnoremap <silent> zk O<Esc>
 
 " Reload
 command! Reload :so $MYVIMRC
+
 " Map ,R to reload
 nmap <Leader>r <Esc>:Reload<CR>
