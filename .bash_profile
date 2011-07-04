@@ -20,3 +20,5 @@ alias ..="cd .."
 
 # I wish py.test did this by default...
 alias py.test="py.test --tb=short"
+
+alias drc='cd ~/Development/draughtcraft && source ../dcenv/bin/activate'

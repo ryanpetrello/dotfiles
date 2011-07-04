@@ -6,3 +6,6 @@
 --break
 
 --ignore-dir=data
+
+# Support for .less files
+--type-add=css=.less
