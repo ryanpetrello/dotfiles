@@ -14,7 +14,15 @@ alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 export GREP_COLOR=32
 alias grep='grep --color'
 
-PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# colored git branch/status for my prompt
+parse_git_branch (){
+  gitver=$(git branch --no-color 2>/dev/null| sed -n '/^\*/s/^\* //p')
+  if [ -n "$gitver" ]
+  then
+    echo -e "("$gitver")"
+  fi
+}
+PS1="\[\033[35m\]\$(parse_git_branch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 alias ..="cd .."
 
