@@ -6,7 +6,14 @@
 [alias]
     ci = commit
     st = status
+    info = remote show origin
 [color]
 	diff = always
 	status = always
 	branch = always
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[diff]
+    ignoreSubmodules = untracked
