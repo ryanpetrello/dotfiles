@@ -77,6 +77,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" markdown filetype file
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
+
 " For xml, xhtml, html, mak let's use 2 spaces of indentation
 autocmd BufNewFile,BufRead *.mako,*.mak setlocal ft=html
 autocmd BufNewFile,BufRead *.less setlocal ft=css
