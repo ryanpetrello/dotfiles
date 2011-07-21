@@ -1,7 +1,7 @@
 PATH=/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:$PATH
 
-if [ -f ~/.shootq ]; then
-   source ~/.shootq
+if [ -f ~/.alias ]; then
+   source ~/.alias
 fi
 
 export NODE_PATH=/brew/lib/node
