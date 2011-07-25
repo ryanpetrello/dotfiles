@@ -169,7 +169,7 @@ map <F3> :Pytest session<CR>
 
 " Command to view markdown file you're editing
 " (requires http://markedapp.com/)
-nnoremap <leader>M :silent !open -a Marked.app %:p<cr>
+nnoremap <silent><Leader>M :!open -a Marked.app "%:p"<cr>
 
 "Some functions"
 function! CurDir()
