@@ -167,6 +167,10 @@ nmap <silent><Leader>m <Esc>:Pytest method<CR>
 nmap <silent><Leader>c <Esc>:Pytest class<CR>
 map <F3> :Pytest session<CR>
 
+" Command to view markdown file you're editing
+" (requires http://markedapp.com/)
+nnoremap <leader>M :silent !open -a Marked.app %:p<cr>
+
 "Some functions"
 function! CurDir()
     let curdir = substitute(getcwd(), '/Users/ryan', "~", "g")
