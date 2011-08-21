@@ -55,6 +55,9 @@ hi CursorLine term=none cterm=none ctermbg=3
 set noerrorbells
 set visualbell
 
+" Disable code folding
+set nofoldenable
+
 """"""""""""""""""""""""""""""""""""""""""
 " Forcing myself not to use arrows 
 """"""""""""""""""""""""""""""""""""""""""
