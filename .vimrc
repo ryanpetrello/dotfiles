@@ -184,6 +184,9 @@ endfunction
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
+" Bind Esc to clear the last search
+nnoremap <silent> <Esc> :noh<CR>
+
 " Reload
 command! Reload :so $MYVIMRC
 
