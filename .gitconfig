@@ -8,9 +8,9 @@
     st = status
     info = remote show origin
 [color]
-	diff = always
-	status = always
-	branch = always
+	diff = auto
+	status = auto
+	branch = auto
 [color "status"]
     added = green
     changed = yellow
