@@ -7,13 +7,18 @@
     ci = commit
     st = status
     info = remote show origin
+    oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+    review = !bash -c 'git difftool `git oldest-ancestor`.. --tool=Kaleidoscope -y'
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+    interactive = auto
 [color "status"]
     added = green
     changed = yellow
     untracked = cyan
 [diff]
     ignoreSubmodules = untracked
+[difftool "Kaleidoscope"]
+    cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"

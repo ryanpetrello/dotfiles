@@ -3,6 +3,7 @@ PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:
 if [ -f ~/.alias ]; then
    source ~/.alias
 fi
+source ~/.git-completion.sh
 
 export NODE_PATH=/brew/lib/node
 export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'

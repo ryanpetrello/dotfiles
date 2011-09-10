@@ -5,6 +5,7 @@
 !/.gitconfig
 !/.gitignore
 !/.gitexcludes
+!/.git-completion.sh
 !/.ackrc
 !/.getafe*
 !/.vim/*
