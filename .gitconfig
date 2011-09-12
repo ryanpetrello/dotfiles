@@ -10,6 +10,7 @@
     graph = log --graph --decorate
     oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
     review = !bash -c 'git difftool `git oldest-ancestor`.. --tool=Kaleidoscope -y'
+    topic = !bash -c 'git checkout -b "$0" && git push -u origin "$0" && git pull'
 [color]
 	diff = auto
 	status = auto
