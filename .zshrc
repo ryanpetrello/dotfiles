@@ -1,9 +1,13 @@
 PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:$PATH
 
+set -o vi
+
 if [ -f ~/.alias ]; then
    source ~/.alias
 fi
-source ~/.git-completion.sh
+
+# include zsh-git-prompt
+source .zsh-git-prompt/zshrc.sh
 
 export NODE_PATH=/brew/lib/node
 export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'
@@ -15,17 +19,17 @@ alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 export GREP_COLOR=32
 alias grep='grep --color'
 
-# colored git branch/status for my prompt
-parse_git_branch (){
-  gitver=$(git branch --no-color 2>/dev/null| sed -n '/^\*/s/^\* //p')
-  if [ -n "$gitver" ]
-  then
-    echo -e "("$gitver")"
-  fi
-}
-PS1="\[\033[35m\]\$(parse_git_branch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+PS1=$'\033[35m$(git_super_status)\033[36m%n\033[m@\033[32m%m:\033[33;1m%~\033[m%% ${${KEYMAP/vicmd/N}/(main|viins)/I}'
 
 alias ..="cd .."
 
 # I wish py.test did this by default...
 alias py.test="py.test --tb=short"
+
+function zle-line-init zle-keymap-select {
+    PS1=$'\033[35m$(git_super_status)\033[36m%n\033[m@\033[32m%m:\033[33;1m%~\033[m${${KEYMAP/vicmd/%%}/(main|viins)/+} '
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select

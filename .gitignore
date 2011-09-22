@@ -9,4 +9,5 @@
 !/.ackrc
 !/.getafe*
 !/.vim/*
+!/.zsh*
 .viminfo
