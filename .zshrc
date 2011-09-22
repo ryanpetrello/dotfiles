@@ -19,7 +19,7 @@ alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 export GREP_COLOR=32
 alias grep='grep --color'
 
-PS1=$'\033[35m$(git_super_status)\033[36m%n\033[m@\033[32m%m:\033[33;1m%~\033[m%% ${${KEYMAP/vicmd/N}/(main|viins)/I}'
+    PS1=$'\033[35m$(git_super_status)\033[36m%n\033[m@\033[32m%m:\033[33;1m%~\033[m${${KEYMAP/vicmd/%%}/(main|viins)/+} '
 
 alias ..="cd .."
 
