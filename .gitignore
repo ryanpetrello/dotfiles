@@ -6,7 +6,7 @@
 !/.gitexcludes
 !/.git-completion.sh
 !/.ackrc
-!/.getafe*
+!/.itermcolors
 !/.vim/*
 !/.zsh*
 .viminfo
