@@ -32,17 +32,35 @@ alias grep='grep --color'
 
 fg_lblue=%{$'\e[0;34m'%}
 fg_lgreen=%{$'\e[1;32m'%}
+fg_yellow=%{$'\e[1;33m'%}
 fg_white=%{$'\e[1;37m'%}
-
-# Custom status line
-PS1="$(active_virtualenv)${fg_lblue}%~ ${fg_white}$ "
 
 # I wish py.test did this by default...
 alias py.test="py.test --tb=short"
 
+# version control info
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:*' stagedstr '%F{green}●'
+zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' enable git svn
+precmd () { 
+    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+        zstyle ':vcs_info:*' formats '(%F{red}%b%F{white}:%c%u%F{foreground}) '
+    } else {
+        zstyle ':vcs_info:*' formats '(%F{red}%b%F{white}:%c%u%F{white}●%F{foreground}) '
+    }
+    vcs_info
+}
+local git='$vcs_info_msg_0_'
+
+# Custom status line
+PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
+
 # Show a + on the status line when vim mode is -- INSERT --
 function zle-line-init zle-keymap-select {
-    PS1="$(active_virtualenv)${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/+}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
+    PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/+}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 zle -N zle-line-init
