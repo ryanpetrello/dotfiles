@@ -53,9 +53,9 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 precmd () { 
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats $'[%{\e[1;37m%}%b%F{foreground}:%c%u%F{foreground}] '
+        zstyle ':vcs_info:*' formats $'[%{\e[1;33m%}%b%F{foreground}:%c%u%F{foreground}] '
     } else {
-        zstyle ':vcs_info:*' formats $'(%{\e[1;37m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
+        zstyle ':vcs_info:*' formats $'(%{\e[1;33m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
     }
     vcs_info
 }
