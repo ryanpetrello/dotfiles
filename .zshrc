@@ -11,6 +11,7 @@ fi
 
 # other shared aliases
 alias ..="cd .."
+alias ll="ls -la"
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
@@ -29,7 +30,8 @@ function active_virtualenv() {
 export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'
 
 # colors
-alias ls='ls -G'
+export CLICOLOR=1
+export LSCOLORS=xxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
 alias vim='mvim -f -c "au VimLeave * !open -a iTerm"'
@@ -45,15 +47,15 @@ alias py.test="py.test --tb=short"
 # version control info
 autoload -Uz vcs_info
 setopt prompt_subst
-zstyle ':vcs_info:*' stagedstr '%F{green}●'
+zstyle ':vcs_info:*' stagedstr $'%F{green}●'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 precmd () { 
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats '(%F{red}%b%F{foreground}:%c%u%F{foreground}) '
+        zstyle ':vcs_info:*' formats $'[%{\e[1;37m%}%b%F{foreground}:%c%u%F{foreground}] '
     } else {
-        zstyle ':vcs_info:*' formats '(%F{red}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
+        zstyle ':vcs_info:*' formats $'(%{\e[1;37m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
     }
     vcs_info
 }
