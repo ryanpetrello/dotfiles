@@ -12,7 +12,7 @@ function active_virtualenv() {
         return
     fi
 
-    echo "(`basename \"$VIRTUAL_ENV\"`) "
+    echo "(`basename \"$VIRTUAL_ENV\"`)"
 }
 
 export NODE_PATH=/brew/lib/node
@@ -36,7 +36,7 @@ alias ..="cd .."
 alias py.test="py.test --tb=short"
 
 function zle-line-init zle-keymap-select {
-    PS1="$(active_virtualenv)${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/$}/(main|viins)/+}${fg_white} "
+    PS1="$(active_virtualenv)${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/+}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 
