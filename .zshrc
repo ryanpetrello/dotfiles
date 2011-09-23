@@ -12,6 +12,9 @@ fi
 # other shared aliases
 alias ..="cd .."
 
+# ack-specific settings
+export ACK_COLOR_MATCH='red'
+
 # function to determine the currently active virtualenv
 function active_virtualenv() {
     if [ -z "$VIRTUAL_ENV" ]; then
@@ -47,9 +50,9 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 precmd () { 
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats '(%F{red}%b%F{white}:%c%u%F{foreground}) '
+        zstyle ':vcs_info:*' formats '(%F{red}%b%F{foreground}:%c%u%F{foreground}) '
     } else {
-        zstyle ':vcs_info:*' formats '(%F{red}%b%F{white}:%c%u%F{white}●%F{foreground}) '
+        zstyle ':vcs_info:*' formats '(%F{red}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
     }
     vcs_info
 }
@@ -66,5 +69,20 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# zsh-specific tinkering
+# -----------------------------------------------
+# Set up zsh-specifics
+# -----------------------------------------------
+
+# compinit initializes various advanced completions for zsh
 autoload -U compinit && compinit
+
+# case insensitive tab completion
+unsetopt correctall
+
+# General completion technique
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle -e ':completion:*:approximate:*' \
+        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
