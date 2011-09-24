@@ -34,7 +34,7 @@ export CLICOLOR=1
 export LSCOLORS=xxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
-alias vim='mvim -f -c "au VimLeave * !open -a iTerm"'
+alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 
 fg_lblue=%{$'\e[0;34m'%}
 fg_lgreen=%{$'\e[1;32m'%}
