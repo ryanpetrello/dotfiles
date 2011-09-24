@@ -71,6 +71,9 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
+
+" No Help, please
+nmap <F1> <Esc>
   
 """"""""""""""""""""""""""""""""""""""""""
 " Python-specific
@@ -127,6 +130,8 @@ set formatoptions=qrn1
 """"""""""""""""""""""""""""""""""""""""""
 " Other Functionality
 """"""""""""""""""""""""""""""""""""""""""
+" Map autocomplete to tab
+imap <Tab> <C-P>
 
 " Keep more context when scrolling off the end of a buffer
 set scrolloff=3
@@ -189,6 +194,10 @@ nnoremap <silent> <Esc> :noh<CR>
 
 " Reload
 command! Reload :so $MYVIMRC
+
+" Pasting while in visual mode replaces the selection without overwriting the
+" default register
+vmap p p :call setreg('"', getreg('0')) <CR>
 
 " Map ,R to reload
 nmap <Leader>r <Esc>:Reload<CR>

@@ -10,8 +10,12 @@ if [ -f ~/.alias ]; then
 fi
 
 # other shared aliases
-alias ..="cd .."
 alias ll="ls -la"
+alias cdd="cd -"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
@@ -89,3 +93,4 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle -e ':completion:*:approximate:*' \
         max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+zstyle ':completion:*:*:kill:*' command 'ps -e'
