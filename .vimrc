@@ -130,8 +130,6 @@ set formatoptions=qrn1
 """"""""""""""""""""""""""""""""""""""""""
 " Other Functionality
 """"""""""""""""""""""""""""""""""""""""""
-" Map autocomplete to tab
-imap <Tab> <C-P>
 
 " Keep more context when scrolling off the end of a buffer
 set scrolloff=3
@@ -206,3 +204,4 @@ nmap <Leader>r <Esc>:Reload<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=2
+let g:syntastic_disabled_filetypes = ['html']
