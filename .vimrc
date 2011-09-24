@@ -111,6 +111,9 @@ set autoindent
 "Always show the status line  
 set laststatus=2 
 set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
   
 "Prefer a slightly higher line height  
 set linespace=3  
@@ -161,9 +164,6 @@ let g:chapa_default_mappings = 1
 " Map <Leader>h to a Mac color picker (hex)
 nmap <Leader>h <Esc>:ColorHEX<CR>
 
-" Pyflakes config
-let g:pyflakes_use_quickfix = 0
-
 " Pytest leader mappings
 nmap <silent><Leader>f <Esc>:Pytest file<CR>
 nmap <silent><Leader>m <Esc>:Pytest method<CR>
@@ -192,3 +192,8 @@ command! Reload :so $MYVIMRC
 
 " Map ,R to reload
 nmap <Leader>r <Esc>:Reload<CR>
+
+" syntastic settings
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=2
