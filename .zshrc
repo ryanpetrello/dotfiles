@@ -35,7 +35,7 @@ export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'
 
 # colors
 export CLICOLOR=1
-export LSCOLORS=xxDxCxDxexexexaxaxaxax
+export LSCOLORS=DxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
 alias vim='mvim -c "au VimLeave * !open -a iTerm"'
