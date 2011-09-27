@@ -202,9 +202,10 @@ let g:syntastic_quiet_warnings=0
 let g:syntastic_disabled_filetypes = ['html']
 
 " autocompletion settings
-:imap <S-Space> <c-n>
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <D-j> ((pumvisible())?("\<C-n>"):("<D-j>"))
+inoremap <expr> <D-k> ((pumvisible())?("\<C-p>"):("<D-k>"))
+inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
+let g:acp_behaviorPythonOmniLength = 5
 
 " Map ,R to reload
 command! Reload :so $MYVIMRC
