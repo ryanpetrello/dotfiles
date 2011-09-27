@@ -190,15 +190,9 @@ nnoremap <silent> zk O<Esc>
 " Bind Esc to clear the last search
 nnoremap <silent> <Esc> :noh<CR>
 
-" Reload
-command! Reload :so $MYVIMRC
-
 " Pasting while in visual mode replaces the selection without overwriting the
 " default register
 vmap p p :call setreg('"', getreg('0')) <CR>
-
-" Map ,R to reload
-nmap <Leader>r <Esc>:Reload<CR>
 
 " syntastic settings
 let g:syntastic_enable_signs=1
@@ -206,3 +200,12 @@ let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_quiet_warnings=0
 let g:syntastic_disabled_filetypes = ['html']
+
+" autocompletion settings
+:imap <S-Space> <c-n>
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+
+" Map ,R to reload
+command! Reload :so $MYVIMRC
+nmap <Leader>r <Esc>:Reload<CR>
