@@ -113,7 +113,7 @@ set autoindent
   
 "Always show the status line  
 set laststatus=2 
-set statusline=CWD:\ %{CurDir()}\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %h%m%r%y%=%#statuslineerr#%t%*\ %c,%l/%L\ %P\ %#statuslineerr#%{SyntasticStatuslineFlag()}%*
+set statusline=CWD:%{CurDir()}\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %h%m%r%y%=%#statuslineerr#%t%*\ %c,%l/%L\ %P\ %#statuslineerr#%{SyntasticStatuslineFlag()}%*
   
 "Prefer a slightly higher line height  
 set linespace=3  
