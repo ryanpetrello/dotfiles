@@ -68,9 +68,9 @@ local git='$vcs_info_msg_0_'
 # Custom status line
 PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
 
-# Show a + on the status line when vim mode is -- INSERT --
+# Show a green $ on the status line when vim mode is -- INSERT --
 function zle-line-init zle-keymap-select {
-    PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/+}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
+    PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 zle -N zle-line-init
