@@ -88,9 +88,3 @@ unsetopt correctall
 
 # General completion technique
 zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:functions' ignored-patterns '_*'
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-zstyle -e ':completion:*:approximate:*' \
-        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-zstyle ':completion:*:*:kill:*' command 'ps -e'
