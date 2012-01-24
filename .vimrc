@@ -33,7 +33,6 @@ set ruler
   
 "Set the color scheme. Change this to your preference.  
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
-set t_Co=256
 set background=dark
 colorscheme wombat
   
@@ -199,7 +198,7 @@ let g:acp_behaviorPythonOmniLength = 5
 
 " Map ,R to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
 
 " Auto-alignments for : and = while visually selected
 vmap <Leader>a :Align : =<CR>
