@@ -1,4 +1,4 @@
-" .vimrc File  
+" .vimrc File
 " Ryan Petrello
 "  
   
@@ -6,7 +6,7 @@
 set nocompatible
 set hlsearch
   
-"Enable filetypes
+"<,Enable filetypes
 filetype on
 filetype plugin on
 filetype indent on
@@ -33,13 +33,10 @@ set ruler
   
 "Set the color scheme. Change this to your preference.  
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
-colorscheme wombat
 set t_Co=256
 set background=dark
+colorscheme wombat
   
-"Set font type and size. Depends on the resolution. Larger screens, prefer h20  
-set guifont=Inconsolata:h14
-
 "Show current command in the screen corner
 set showcmd
 set history=1000
@@ -73,7 +70,7 @@ nnoremap j gj
 nnoremap k gk
 
 " No Help, please
-nmap <F1> <Esc>
+"nmap <F1> <Esc>
   
 """"""""""""""""""""""""""""""""""""""""""
 " Python-specific
@@ -99,13 +96,8 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 " Indents, wrapping, line numbers, completion, etc...
 """"""""""""""""""""""""""""""""""""""""""
 
-if has("gui_running")
-    "Show lines numbers  
-    set relativenumber
-
-    "Hide the toolbar
-    set guioptions=egmrt
-endif
+"Show lines numbers  
+set relativenumber
 
 "Indent stuff  
 set smartindent
@@ -140,6 +132,7 @@ set smartcase
   
 "Hide mouse when typing  
 set mousehide  
+set mouse=a
   
 "Split windows below the current window.  
 set splitbelow               
@@ -185,7 +178,7 @@ nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
 " Bind Esc to clear the last search
-nnoremap <silent> <Esc> :noh<CR>
+" nnoremap <silent> <Esc> :noh<CR>
 
 " Pasting while in visual mode replaces the selection without overwriting the
 " default register
@@ -210,6 +203,15 @@ nmap <Leader>r <Esc>:Reload<CR>
 
 " Auto-alignments for : and = while visually selected
 vmap <Leader>a :Align : =<CR>
+
+" Ctrl-p fuzzy search and preferences
+nmap <Leader>p <Esc>:CtrlP<CR>
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':     ['<down>'],
+    \ 'PrtSelectMove("k")':     ['<up>'],
+    \ }
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83

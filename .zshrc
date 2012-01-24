@@ -30,15 +30,15 @@ function active_virtualenv() {
     echo "(`basename \"$VIRTUAL_ENV\"`)"
 }
 
-# mvim as default + launch settings
-export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm"'
+# vim as default + launch settings
+export EDITOR='vim'
+export TERM='xterm-256color'
 
 # colors
 export CLICOLOR=1
 export LSCOLORS=DxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
-alias vim='mvim -c "au VimLeave * !open -a iTerm"'
 
 fg_lblue=%{$'\e[0;34m'%}
 fg_lgreen=%{$'\e[1;32m'%}
