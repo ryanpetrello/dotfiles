@@ -42,7 +42,7 @@ set showcmd
 set history=1000
 
 "Set a page title
-set title
+set notitle
 
 " Highlight the current line
 set cul                                           
