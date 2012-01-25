@@ -131,7 +131,6 @@ set smartcase
   
 "Hide mouse when typing  
 set mousehide  
-set mouse=a
   
 "Split windows below the current window.  
 set splitbelow               
@@ -176,9 +175,6 @@ endfunction
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
-" Bind Esc to clear the last search
-" nnoremap <silent> <Esc> :noh<CR>
-
 " Pasting while in visual mode replaces the selection without overwriting the
 " default register
 vmap p p :call setreg('"', getreg('0')) <CR>
@@ -191,8 +187,8 @@ let g:syntastic_quiet_warnings=0
 let g:syntastic_disabled_filetypes = ['html']
 
 " autocompletion settings
-inoremap <expr> <D-j> ((pumvisible())?("\<C-n>"):("<D-j>"))
-inoremap <expr> <D-k> ((pumvisible())?("\<C-p>"):("<D-k>"))
+inoremap <expr> <down> ((pumvisible())?("\<C-n>"):("<down>"))
+inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
