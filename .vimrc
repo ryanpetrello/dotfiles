@@ -200,6 +200,9 @@ let g:acp_behaviorPythonOmniLength = 5
 command! Reload :so $MYVIMRC
 nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
 
+" Map ,, to shell out
+nmap <Leader>, <Esc>:silent !zsh<CR><CR>:redraw!<CR>
+
 " Auto-alignments for : and = while visually selected
 vmap <Leader>a :Align : =<CR>
 
@@ -207,9 +210,12 @@ vmap <Leader>a :Align : =<CR>
 nmap <Leader>p <Esc>:CtrlP<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
 let g:ctrlp_working_path_mode = 2
+let g:ctrlp_open_multi = '1h'
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':     ['<down>'],
     \ 'PrtSelectMove("k")':     ['<up>'],
+    \ 'AcceptSelection("e")':   [],
+    \ 'AcceptSelection("h")':   ['<cr>']
     \ }
 
 " Auto-open a split pane with an applicable diff for git commits
