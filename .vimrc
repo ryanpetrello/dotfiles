@@ -131,6 +131,7 @@ set smartcase
   
 "Hide mouse when typing  
 set mousehide  
+set mouse=a
   
 "Split windows below the current window.  
 set splitbelow               
@@ -186,13 +187,13 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_quiet_warnings=0
 let g:syntastic_disabled_filetypes = ['html']
 
-" autocompletion settings
+" syntastic autocompletion settings
 inoremap <expr> <down> ((pumvisible())?("\<C-n>"):("<down>"))
 inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
-" Map ,R to reload
+" Map ,r to reload
 command! Reload :so $MYVIMRC
 nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
 
