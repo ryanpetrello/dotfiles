@@ -30,6 +30,16 @@ function active_virtualenv() {
     echo "(`basename \"$VIRTUAL_ENV\"`)"
 }
 
+#
+# used to print <vim> if the shell was spawned from vim (and there's an 
+# active vim session waiting in the background)
+#
+function vim_flag() {
+    if [ `ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'` = "vim" ]; then
+        echo "${fg_lblue}<vim>${fg_white}"
+    fi
+}
+
 # vim as default + launch settings
 export EDITOR='vim'
 export TERM='xterm-256color'
@@ -66,11 +76,11 @@ precmd () {
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
+PS1="$(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
 
 # Show a green $ on the status line when vim mode is -- INSERT --
 function zle-line-init zle-keymap-select {
-    PS1="$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
+    PS1="$(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 zle -N zle-line-init
