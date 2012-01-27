@@ -19,6 +19,9 @@ let g:mapleader = ","
 " Yanking in vim should also copy into my OSX clipboard
 set clipboard=unnamed
 
+" Allow backspacing in insert mode
+:set backspace=indent,eol,start
+
 """"""""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""
