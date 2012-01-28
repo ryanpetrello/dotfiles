@@ -36,7 +36,7 @@ function active_virtualenv() {
 #
 function vim_flag() {
     if [ `ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'` = "vim" ]; then
-        echo "${fg_lblue}<vim>${fg_white}"
+        echo "${fg_lblue}(vim)${fg_white}"
     fi
 }
 

@@ -9,4 +9,5 @@
 !/.screencap.sh
 !/.vim/*
 !/.zsh*
+!/com.googlecode.iterm2.plist
 .viminfo
