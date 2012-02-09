@@ -1,8 +1,8 @@
 [user]
-	name = Ryan Petrello
-	email = lists@ryanpetrello.com
+    name = Ryan Petrello
+    email = lists@ryanpetrello.com
 [core]
-	excludesfile = /Users/ryan/.gitexcludes
+    excludesfile = /Users/ryan/.gitexcludes
 [alias]
     ci = commit
     st = status
@@ -12,9 +12,9 @@
     topic = !bash -c 'git checkout -b "$0" && git push -u origin "$0" && git pull'
     diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' - 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
     interactive = auto
 [color "status"]
     added = green
