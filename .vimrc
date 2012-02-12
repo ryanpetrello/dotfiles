@@ -2,10 +2,15 @@
 " Ryan Petrello
 "  
   
+""""""""""""""""""""""""""""""""""""""""""
+" Pathogen
+""""""""""""""""""""""""""""""""""""""""""
+call pathogen#infect()
+  
 "Forget compatibility with Vi. Who cares.  
 set nocompatible
 set hlsearch
-  
+
 "<,Enable filetypes
 filetype on
 filetype plugin on
@@ -21,12 +26,6 @@ set clipboard=unnamed
 
 " Allow backspacing in insert mode
 :set backspace=indent,eol,start
-
-""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-""""""""""""""""""""""""""""""""""""""""""
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
 
 """"""""""""""""""""""""""""""""""""""""""
 " Visual Stuff
