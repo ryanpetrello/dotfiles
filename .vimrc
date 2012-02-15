@@ -11,7 +11,7 @@ call pathogen#infect()
 set nocompatible
 set hlsearch
 
-"<,Enable filetypes
+" Enable filetypes
 filetype on
 filetype plugin on
 filetype indent on
