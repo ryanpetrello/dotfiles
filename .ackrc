@@ -4,8 +4,7 @@
 # No grouping
 --noheading
 --break
-
---ignore-dir=data
-
+#
 # Support for .less files
 --type-add=css=.less
+--type-add=html=.rst
