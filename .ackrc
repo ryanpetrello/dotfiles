@@ -4,7 +4,10 @@
 # No grouping
 --noheading
 --break
-#
+
 # Support for .less files
 --type-add=css=.less
 --type-add=html=.rst
+
+# Ignore tox caches
+--ignore-dir=.tox
