@@ -11,7 +11,7 @@
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
 	<key>AutoHideTmuxClientSession</key>
-	<false/>
+	<true/>
 	<key>CheckTestRelease</key>
 	<true/>
 	<key>ClosingHotkeySwitchesSpaces</key>
@@ -467,6 +467,13 @@
 	<real>0.99374997615814209</real>
 	<key>GlobalKeyMap</key>
 	<dict>
+		<key>0x6b-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
 		<key>0x74-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -474,40 +481,26 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x7b-0x120000</key>
+		<key>0x77-0x100000</key>
 		<dict>
 			<key>Action</key>
-			<integer>31</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x7d-0x120000</key>
-		<dict>
-			<key>Action</key>
-			<integer>30</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xd-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>25</integer>
-			<key>Text</key>
-			<string>Maximize Active Pane</string>
+			<string>0x1 0x78</string>
 		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
 			<key>Action</key>
-			<integer>28</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
+			<string>0x1 0x22</string>
 		</dict>
 		<key>0xf703-0x300000</key>
 		<dict>
 			<key>Action</key>
-			<integer>29</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
+			<string>0x1 0x25</string>
 		</dict>
 		<key>0xf729-0x100000</key>
 		<dict>
@@ -595,9 +588,11 @@
 	<key>NSRepeatCountBinding</key>
 	<string></string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 162 924 485 0 0 1280 778 </string>
+	<string>568 260 924 485 0 0 1600 978 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>152 35 985 401 0 0 1280 778 </string>
+	<string>0 7 1597 971 0 0 1600 978 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2131,7 +2126,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-02-27T15:33:43Z</date>
+	<date>2012-03-21T14:28:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2156,6 +2151,8 @@
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1330383232</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>

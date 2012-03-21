@@ -16,6 +16,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias t="tmux"
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
@@ -42,7 +43,7 @@ function vim_flag() {
 
 # vim as default + launch settings
 export EDITOR='vim'
-export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # colors
 export CLICOLOR=1
