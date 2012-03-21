@@ -452,11 +452,11 @@
 	<key>Default Bookmark Guid</key>
 	<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
 	<key>DimBackgroundWindows</key>
-	<false/>
-	<key>DimInactiveSplitPanes</key>
 	<true/>
-	<key>DimOnlyText</key>
+	<key>DimInactiveSplitPanes</key>
 	<false/>
+	<key>DimOnlyText</key>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>EnableRendezvous</key>
@@ -470,9 +470,9 @@
 		<key>0x6b-0x100000</key>
 		<dict>
 			<key>Action</key>
-			<integer>13</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
+			<string>0xc</string>
 		</dict>
 		<key>0x74-0x100000</key>
 		<dict>
@@ -487,6 +487,20 @@
 			<integer>11</integer>
 			<key>Text</key>
 			<string>0x1 0x78</string>
+		</dict>
+		<key>0x7b-0x120000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x1 0x70</string>
+		</dict>
+		<key>0x7d-0x120000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x1 0x6f</string>
 		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
@@ -552,7 +566,7 @@
 	<key>HideActivityIndicator</key>
 	<true/>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HighlightTabLabels</key>
@@ -572,7 +586,7 @@
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>JobName</key>
-	<true/>
+	<false/>
 	<key>LeftCommand</key>
 	<integer>7</integer>
 	<key>LeftOption</key>
@@ -588,11 +602,11 @@
 	<key>NSRepeatCountBinding</key>
 	<string></string>
 	<key>NSWindow Frame Preferences</key>
-	<string>568 260 924 485 0 0 1600 978 </string>
+	<string>572 160 924 485 0 0 1600 978 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 7 1597 971 0 0 1600 978 </string>
+	<string>0 7 1600 971 0 0 1600 978 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -759,7 +773,7 @@
 			<key>Automatically Log</key>
 			<false/>
 			<key>BM Growl</key>
-			<true/>
+			<false/>
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
