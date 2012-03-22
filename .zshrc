@@ -112,4 +112,5 @@ else
       fi
       sleep 0.5
     done &
+    clear
 fi
