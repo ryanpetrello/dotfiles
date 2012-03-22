@@ -99,3 +99,17 @@ unsetopt correctall
 
 # General completion technique
 zstyle ':completion:*' completer _complete _match _approximate
+
+# Auto-attach to tmux
+if [ -z "$TMUX" ]; then
+    # not in a tmux session
+    tmux attach
+else
+    # Listen for tmux clipboard changes
+    while true; do
+      if test -n "`tmux showb 2> /dev/null`"; then
+        tmux saveb -|pbcopy && tmux deleteb
+      fi
+      sleep 0.5
+    done &
+fi

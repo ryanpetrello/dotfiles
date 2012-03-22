@@ -448,7 +448,7 @@
 		</dict>
 	</dict>
 	<key>Default Arrangement Name</key>
-	<string>Home</string>
+	<string>Default</string>
 	<key>Default Bookmark Guid</key>
 	<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
 	<key>DimBackgroundWindows</key>
@@ -493,7 +493,7 @@
 			<key>Action</key>
 			<integer>11</integer>
 			<key>Text</key>
-			<string>0x1 0x70</string>
+			<string>0x1 0x6c</string>
 		</dict>
 		<key>0x7d-0x120000</key>
 		<dict>
@@ -501,6 +501,13 @@
 			<integer>11</integer>
 			<key>Text</key>
 			<string>0x1 0x6f</string>
+		</dict>
+		<key>0xf700-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x1 0x5b</string>
 		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
@@ -601,12 +608,33 @@
 	<string></string>
 	<key>NSRepeatCountBinding</key>
 	<string></string>
+	<key>NSTableView Columns KeyBingingTable</key>
+	<array>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATCG
+		</data>
+		<string>198</string>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATGG
+		</data>
+		<string>302</string>
+	</array>
+	<key>NSTableView Hidden Columns KeyBingingTable</key>
+	<array/>
+	<key>NSTableView Sort Ordering KeyBingingTable</key>
+	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>572 160 924 485 0 0 1600 978 </string>
+	<string>254 209 924 485 0 0 1600 978 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 7 1600 971 0 0 1600 978 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>0 377 970 401 0 0 1280 778 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>136 11 970 401 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2077,7 +2105,7 @@
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
-	<true/>
+	<false/>
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
@@ -2140,7 +2168,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-03-21T14:28:36Z</date>
+	<date>2012-03-22T15:29:28Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2181,21 +2209,13 @@
 	<string>Lucida Grande</string>
 	<key>Window Arrangements</key>
 	<dict>
-		<key>Home</key>
+		<key>Default</key>
 		<array>
 			<dict>
 				<key>Height</key>
-				<real>799</real>
+				<real>971</real>
 				<key>Hide After Opening</key>
 				<false/>
-				<key>Old Height</key>
-				<real>0.0</real>
-				<key>Old Width</key>
-				<real>0.0</real>
-				<key>Old X Origin</key>
-				<real>0.0</real>
-				<key>Old Y Origin</key>
-				<real>0.0</real>
 				<key>Screen</key>
 				<integer>0</integer>
 				<key>Selected Tab Index</key>
@@ -2242,11 +2262,11 @@
 											<key>Ansi 1 Color</key>
 											<dict>
 												<key>Blue Component</key>
-												<real>0.34375095367431641</real>
+												<real>0.40625113248825073</real>
 												<key>Green Component</key>
-												<real>0.3736969530582428</real>
+												<real>0.44164186716079712</real>
 												<key>Red Component</key>
-												<real>0.8461538553237915</real>
+												<real>1</real>
 											</dict>
 											<key>Ansi 10 Color</key>
 											<dict>
@@ -2368,16 +2388,16 @@
 											<key>Ansi 9 Color</key>
 											<dict>
 												<key>Blue Component</key>
-												<real>0.24438966810703278</real>
+												<real>0.58431375026702881</real>
 												<key>Green Component</key>
-												<real>0.20900896191596985</real>
+												<real>0.3490196168422699</real>
 												<key>Red Component</key>
 												<real>1</real>
 											</dict>
 											<key>Automatically Log</key>
 											<false/>
 											<key>BM Growl</key>
-											<true/>
+											<false/>
 											<key>Background Color</key>
 											<dict>
 												<key>Blue Component</key>
@@ -2464,7 +2484,7 @@
 											<key>Hide After Opening</key>
 											<false/>
 											<key>Horizontal Spacing</key>
-											<real>1</real>
+											<real>0.80000001192092896</real>
 											<key>Idle Code</key>
 											<integer>0</integer>
 											<key>Initial Text</key>
@@ -2943,16 +2963,16 @@
 											<key>Vertical Spacing</key>
 											<real>1</real>
 											<key>Visual Bell</key>
-											<true/>
+											<false/>
 											<key>Window Type</key>
 											<integer>0</integer>
 											<key>Working Directory</key>
 											<string>/Users/ryan</string>
 										</dict>
 										<key>Columns</key>
-										<integer>181</integer>
+										<integer>265</integer>
 										<key>Rows</key>
-										<integer>53</integer>
+										<integer>63</integer>
 										<key>Working Directory</key>
 										<string>/Users/ryan</string>
 									</dict>
@@ -2961,9 +2981,9 @@
 									<key>frame</key>
 									<dict>
 										<key>height</key>
-										<real>799</real>
+										<real>949</real>
 										<key>width</key>
-										<real>1277</real>
+										<real>1600</real>
 										<key>x</key>
 										<real>0.0</real>
 										<key>y</key>
@@ -2976,9 +2996,9 @@
 							<key>frame</key>
 							<dict>
 								<key>height</key>
-								<real>799</real>
+								<real>949</real>
 								<key>width</key>
-								<real>1277</real>
+								<real>1600</real>
 								<key>x</key>
 								<real>0.0</real>
 								<key>y</key>
@@ -2990,15 +3010,15 @@
 					</dict>
 				</array>
 				<key>TerminalGuid</key>
-				<string>pty-94FA7BEA-BB75-48A0-A798-1FAA1AA4B50E</string>
+				<string>pty-09198F41-C8B5-4643-B456-F1FBA355DF65</string>
 				<key>Width</key>
-				<real>1277</real>
+				<real>1600</real>
 				<key>Window Type</key>
-				<integer>4</integer>
+				<integer>0</integer>
 				<key>X Origin</key>
-				<real>1</real>
-				<key>Y Origin</key>
 				<real>0.0</real>
+				<key>Y Origin</key>
+				<real>7</real>
 			</dict>
 		</array>
 	</dict>
