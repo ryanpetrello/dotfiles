@@ -103,7 +103,7 @@ zstyle ':completion:*' completer _complete _match _approximate
 # Auto-attach to tmux
 if [ -z "$TMUX" ]; then
     # not in a tmux session
-    tmux attach
+    tmux attach || tmux new
 else
     # Listen for tmux clipboard changes
     while true; do
