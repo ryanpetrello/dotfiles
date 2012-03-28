@@ -626,13 +626,13 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>254 209 924 485 0 0 1600 978 </string>
+	<string>254 200 924 485 0 0 1600 978 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 7 1600 971 0 0 1600 978 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 377 970 401 0 0 1280 778 </string>
+	<string>0 7 1600 971 0 0 1600 978 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>136 11 970 401 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
@@ -2105,7 +2105,7 @@
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
-	<false/>
+	<true/>
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
@@ -2168,7 +2168,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-03-22T15:29:28Z</date>
+	<date>2012-03-26T13:54:32Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2213,9 +2213,17 @@
 		<array>
 			<dict>
 				<key>Height</key>
-				<real>971</real>
+				<real>1000</real>
 				<key>Hide After Opening</key>
 				<false/>
+				<key>Old Height</key>
+				<real>0.0</real>
+				<key>Old Width</key>
+				<real>0.0</real>
+				<key>Old X Origin</key>
+				<real>0.0</real>
+				<key>Old Y Origin</key>
+				<real>0.0</real>
 				<key>Screen</key>
 				<integer>0</integer>
 				<key>Selected Tab Index</key>
@@ -2972,7 +2980,7 @@
 										<key>Columns</key>
 										<integer>265</integer>
 										<key>Rows</key>
-										<integer>63</integer>
+										<integer>66</integer>
 										<key>Working Directory</key>
 										<string>/Users/ryan</string>
 									</dict>
@@ -2981,7 +2989,7 @@
 									<key>frame</key>
 									<dict>
 										<key>height</key>
-										<real>949</real>
+										<real>1000</real>
 										<key>width</key>
 										<real>1600</real>
 										<key>x</key>
@@ -2996,7 +3004,7 @@
 							<key>frame</key>
 							<dict>
 								<key>height</key>
-								<real>949</real>
+								<real>1000</real>
 								<key>width</key>
 								<real>1600</real>
 								<key>x</key>
@@ -3010,15 +3018,15 @@
 					</dict>
 				</array>
 				<key>TerminalGuid</key>
-				<string>pty-09198F41-C8B5-4643-B456-F1FBA355DF65</string>
+				<string>pty-AD076182-B4AF-499A-B86E-BE5ECE81EBBC</string>
 				<key>Width</key>
 				<real>1600</real>
 				<key>Window Type</key>
-				<integer>0</integer>
+				<integer>4</integer>
 				<key>X Origin</key>
 				<real>0.0</real>
 				<key>Y Origin</key>
-				<real>7</real>
+				<real>0.0</real>
 			</dict>
 		</array>
 	</dict>
@@ -3033,6 +3041,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20120203</string>
+	<string>1.0.0.20120326</string>
 </dict>
 </plist>
