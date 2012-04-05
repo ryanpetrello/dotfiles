@@ -10,6 +10,7 @@
     graph = log --graph --decorate
     merged = !bash -c 'git merge-base HEAD origin/"$0" && git rev-parse origin/"$0"'
     topic = !bash -c 'git checkout -b "$0" && git push -u origin "$0" && git pull'
+	review = "!review() { branch=$1; [ -z $branch ] && branch=master; git push origin HEAD:refs/for/$branch; }; review"
 [color]
     diff = auto
     status = auto
