@@ -29,6 +29,8 @@
     status = auto
     branch = auto
     interactive = auto
+[color "diff"]
+    whitespace = red reverse
 [color "status"]
     added = green
     changed = yellow

@@ -21,6 +21,10 @@ alias t="tmux"
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
 
+# virtualenvwrapper settings
+export WORKON_HOME=~/venvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 # function to determine the currently active virtualenv
 function active_virtualenv() {
     if [ -z "$VIRTUAL_ENV" ]; then
