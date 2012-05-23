@@ -105,8 +105,11 @@ set smartindent
 set autoindent  
   
 "Always show the status line  
-set laststatus=2 
+set laststatus=2
 let g:Powerline_symbols = 'fancy'
+call Pl#Theme#RemoveSegment('fileformat')
+call Pl#Theme#RemoveSegment('fileencoding')
+call Pl#Theme#RemoveSegment('filetype')
   
 "Prefer a slightly higher line height  
 set linespace=3  
@@ -167,12 +170,6 @@ map <F3> :Pytest session<CR>
 " Command to view markdown file you're editing
 " (requires http://markedapp.com/)
 nnoremap <silent><Leader>M :!open -a Marked.app "%:p"<cr>
-
-"Some functions"
-function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/ryan', "~", "g")
-    return curdir
-endfunction
 
 " Create Blank Newlines and stay in Normal mode
 nnoremap <silent> zj o<Esc>
