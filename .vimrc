@@ -32,6 +32,9 @@ set clipboard=unnamed
 """"""""""""""""""""""""""""""""""""""""""
 "Display current cursor position in lower right corner.  
 set ruler
+
+"Hide intro message
+set shortmess=filnxtToOI
   
 "Set the color scheme. Change this to your preference.  
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
