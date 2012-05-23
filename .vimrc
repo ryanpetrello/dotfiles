@@ -106,7 +106,7 @@ set autoindent
   
 "Always show the status line  
 set laststatus=2 
-set statusline=CWD:%{CurDir()}\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %h%m%r%y%=%#statuslineerr#%t%*\ %c,%l/%L\ %P\ %#statuslineerr#%{SyntasticStatuslineFlag()}%*
+let g:Powerline_symbols = 'fancy'
   
 "Prefer a slightly higher line height  
 set linespace=3  
@@ -197,7 +197,7 @@ let g:acp_behaviorPythonOmniLength = 5
 
 " Map ,r to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>:call Pl#Load()<CR>
 
 " Map ,, to shell out
 nmap <Leader>, <Esc>:silent !zsh<CR><CR>:redraw!<CR>
