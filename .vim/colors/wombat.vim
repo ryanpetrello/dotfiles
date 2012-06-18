@@ -53,6 +53,6 @@ hi Special		guifg=#e7f6da gui=none
 
 " Spelling and syntax errors
 hi SpellBad     guifg=#000000 guibg=#ff9999 gui=none guisp=#FFFF00
-hi SpellCap     guifg=#000000 guibg=#ff9999 gui=none guisp=#FFFF00
+hi SpellCap     guifg=#000000 guibg=#ff9999 gui=none guisp=#EE7750
 hi SpellRare    guifg=#000000 guibg=#ff9999 gui=none guisp=#FFFF00
 hi SpellLocal   guifg=#000000 guibg=#ff9999 gui=none guisp=#FFFF00
