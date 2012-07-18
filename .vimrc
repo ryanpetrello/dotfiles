@@ -97,6 +97,11 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,ex
 let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 
 """"""""""""""""""""""""""""""""""""""""""
+" Perl-specific
+""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType perl setlocal tabstop=4 shiftwidth=4 noexpandtab
+
+""""""""""""""""""""""""""""""""""""""""""
 " Indents, wrapping, line numbers, completion, etc...
 """"""""""""""""""""""""""""""""""""""""""
 
