@@ -187,6 +187,30 @@ nnoremap <silent> zk O<Esc>
 " default register
 vmap p p :call setreg('"', getreg('0')) <CR>
 
+" Goto last location in non-empty files
+autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
+                   \|     exe "normal! g`\""
+                   \|  endif
+
+" Square up visual selections
+set virtualedit=block
+
+" $Show the column marker in visual insert mode
+
+vnoremap <silent>  I  I<C-R>=TemporaryColumnMarkerOn()<CR>
+vnoremap <silent>  A  A<C-R>=TemporaryColumnMarkerOn()<CR>
+
+function! TemporaryColumnMarkerOn ()
+    set cursorcolumn
+    inoremap <silent>  <ESC>  <ESC>:call TemporaryColumnMarkerOff()<CR>
+    return ""
+endfunction
+
+function! TemporaryColumnMarkerOff ()
+    set nocursorcolumn
+    iunmap <ESC>
+endfunction
+
 " syntastic settings
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
