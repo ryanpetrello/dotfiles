@@ -111,6 +111,7 @@ set relativenumber
 "Indent stuff  
 set smartindent
 set autoindent  
+inoremap # X<BS>#
   
 "Always show the status line  
 set laststatus=2
