@@ -225,9 +225,18 @@ inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
+" highlight trailing whitespace
+fun! <SID>StripTrailingWhitespaces()
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    au ColorScheme * highlight ExtraWhitespace guibg=red
+    au BufEnter * match ExtraWhitespace /\s\+$/
+    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    au InsertLeave * match ExtraWhiteSpace /\s\+$/
+endfun
+
 " Map ,r to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>:call Pl#Load()<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>:call Pl#Load()<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
 
 " Map ,, to shell out
 nmap <Leader>, <Esc>:silent !zsh<CR><CR>:redraw!<CR>
