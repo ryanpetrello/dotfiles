@@ -74,7 +74,7 @@ nnoremap j gj
 nnoremap k gk
 
 " No Help, please
-"nmap <F1> <Esc>
+nmap <F1> <Esc>
   
 """"""""""""""""""""""""""""""""""""""""""
 " Python-specific
@@ -225,6 +225,8 @@ inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
+nmap <silent><Leader>x <Esc>:Khuno show<CR>
+
 " highlight trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
     highlight ExtraWhitespace ctermbg=red guibg=red
@@ -237,12 +239,6 @@ endfun
 " Map ,r to reload
 command! Reload :so $MYVIMRC
 nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>:call Pl#Load()<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
-
-" Map ,, to shell out
-nmap <Leader>, <Esc>:silent !zsh<CR><CR>:redraw!<CR>
-
-" Auto-alignments for : and = while visually selected
-vmap <Leader>a :Align : =<CR>
 
 " Ctrl-p fuzzy search and preferences
 nmap <Leader>p <Esc>:CtrlP<CR>
