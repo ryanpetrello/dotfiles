@@ -4,6 +4,7 @@
 !/.gitconfig
 !/.gitignore
 !/.gitexcludes
+!/.gitmodules
 !/.ackrc
 !/.itermcolors
 !/.screencap.sh

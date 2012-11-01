@@ -1,0 +1,33 @@
+[submodule ".vim/bundle/AutoComplPop"]
+	path = .vim/bundle/AutoComplPop
+    url = https://github.com/vim-scripts/AutoComplPop.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/chapa.vim"]
+	path = .vim/bundle/chapa.vim
+	url = https://github.com/alfredodeza/chapa.vim.git
+[submodule ".vim/bundle/colorsupport.vim"]
+	path = .vim/bundle/colorsupport.vim
+	url = https://github.com/vim-scripts/colorsupport.vim.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ryanpetrello/ctrlp.vim.git
+[submodule ".vim/bundle/khuno.vim"]
+	path = .vim/bundle/khuno.vim
+	url = https://github.com/alfredodeza/khuno.vim.git
+[submodule ".vim/bundle/pytest.vim"]
+	path = .vim/bundle/pytest.vim
+	url = https://github.com/alfredodeza/pytest.vim.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/vim-colorx"]
+	path = .vim/bundle/vim-colorx
+	url = https://github.com/seaofclouds/vim-colorx.git
+[submodule ".vim/bundle/vim-conque"]
+	path = .vim/bundle/vim-conque
+	url = https://github.com/rson/vim-conque.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/ryanpetrello/vim-powerline.git
