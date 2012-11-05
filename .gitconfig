@@ -7,6 +7,7 @@
     ci = commit
     st = status
     info = remote show origin
+    pullall = !bash -c 'git pull && git submodule foreach git pull -q origin master'
     graph = log --graph --decorate
     merged = !bash -c 'git merge-base HEAD origin/"$0" && git rev-parse origin/"$0"'
     topic = !bash -c 'git checkout -b "$0" && git push -u origin "$0" && git pull'
