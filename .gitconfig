@@ -38,3 +38,4 @@
     untracked = cyan
 [diff]
     ignoreSubmodules = untracked
+    renames = copies
