@@ -245,6 +245,7 @@ nmap <Leader>p <Esc>:CtrlP<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_open_multi = '1h'
+let g:ctrlp_custom_ignore = 'env\|.tox'
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':     ['<down>'],
     \ 'PrtSelectMove("k")':     ['<up>'],
@@ -254,3 +255,7 @@ let g:ctrlp_prompt_mappings = {
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83
+
+" Jedi settings
+let g:jedi#rename_command = "<leader>NONSENSE"
+let g:jedi#show_function_definition = "0"
