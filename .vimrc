@@ -115,10 +115,6 @@ inoremap # X<BS>#
   
 "Always show the status line  
 set laststatus=2
-let g:Powerline_symbols = 'fancy'
-call Pl#Theme#RemoveSegment('fileformat')
-call Pl#Theme#RemoveSegment('fileencoding')
-call Pl#Theme#RemoveSegment('filetype')
   
 "Prefer a slightly higher line height  
 set linespace=3  
@@ -238,7 +234,7 @@ endfun
 
 " Map ,r to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>:call Pl#Load()<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
 
 " Ctrl-p fuzzy search and preferences
 nmap <Leader>p <Esc>:CtrlP<CR>
@@ -255,7 +251,3 @@ let g:ctrlp_prompt_mappings = {
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83
-
-" Jedi settings
-let g:jedi#rename_command = "<leader>NONSENSE"
-let g:jedi#show_function_definition = "0"
