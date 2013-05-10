@@ -25,6 +25,11 @@ export ACK_COLOR_MATCH='red'
 export WORKON_HOME=~/venvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# use iPython if possible
+function python () {
+    test -z "$1" && ipython || command python "$@"
+}
+
 # function to determine the currently active virtualenv
 function active_virtualenv() {
     if [ -z "$VIRTUAL_ENV" ]; then
