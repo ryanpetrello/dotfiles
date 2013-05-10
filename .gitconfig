@@ -9,8 +9,17 @@
     info = remote show origin
     pullall = !bash -c 'git pull && git submodule foreach git pull -q origin master'
     graph = log --graph --decorate
-    merged = !bash -c 'git merge-base HEAD origin/"$0" && git rev-parse origin/"$0"'
-    topic = !bash -c 'git checkout -b "$0" && git push -u origin "$0" && git pull'
+    ; git create-branch <new-remote-branch> origin/<branch-from>
+    create-branch = "!create_branch() {\
+            help=\"\ngit create-branch <new-remote-branch> origin/<branch-from>\n\";\
+            new_branch=$1;\
+            [ -z $new_branch ] && echo \"$help\" && exit 1;\
+            branch_from=$(grep '^origin' <<< $2);\
+            [ -z $branch_from ] && echo \"$help\" && exit 1;\
+            git fetch &&\
+            git push origin $branch_from:refs/heads/$new_branch;\
+    };\
+    create_branch"
     ; interface to pushing refs for review to Gerrit
     ; defaults to the tracked remote branch
     ; if the current branch is not tracking anything
