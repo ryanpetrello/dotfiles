@@ -11,7 +11,3 @@
 
 # Ignore tox caches and installed .eggs
 --ignore-dir=.tox
-
-# Ignore .egg directories
--G *\.egg*
---invert-file-match

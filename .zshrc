@@ -1,4 +1,4 @@
-PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:$PATH
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
 
 # zsh vim mode
@@ -29,6 +29,14 @@ source /usr/local/bin/virtualenvwrapper.sh
 function python () {
     test -z "$1" && ipython || command python "$@"
 }
+
+# history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+bindkey '^R' history-incremental-search-backward
 
 # function to determine the currently active virtualenv
 function active_virtualenv() {
@@ -68,9 +76,14 @@ fg_white=%{$'\e[1;37m'%}
 # I wish py.test did this by default...
 alias py.test="py.test --tb=short"
 
+setopt auto_menu
+setopt complete_in_word
+setopt always_to_end
+
 # version control info
 autoload -Uz vcs_info
 setopt prompt_subst
+setopt  globcomplete
 zstyle ':vcs_info:*' stagedstr $'%F{green}●'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
@@ -108,6 +121,14 @@ unsetopt correctall
 
 # General completion technique
 zstyle ':completion:*' completer _complete _match _approximate
+
+# Partial color matching on TAB
+autoload -U colors && colors
+highlights='${PREFIX:+=(#bi)($PREFIX:t)(?)*==$color[blue]=00}':${(s.:.)LS_COLORS}}
+zstyle -e ':completion:*' list-colors 'reply=( "'$highlights'" )'
+zstyle -e ':completion:*:-command-:*:commands' list-colors 'reply=(
+"'$highlights'" )'
+unset highlights
 
 # Auto-attach to tmux
 if [ -z "$TMUX" ]; then
