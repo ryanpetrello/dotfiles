@@ -147,16 +147,3 @@ else
     done &
     clear
 fi
-
-setopt AUTO_PUSHD
-DIRSTACKSIZE=9
-DIRSTACKFILE=~/.zdirs
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
-fi
-chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
-
-alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
