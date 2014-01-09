@@ -23,7 +23,10 @@ export ACK_COLOR_MATCH='red'
 
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
-source /usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+if [[ -f $VIRTUALENVWRAPPER ]]; then
+    source $VIRTUALENVWRAPPER
+fi
 
 # use iPython if possible
 function python () {
