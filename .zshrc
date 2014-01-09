@@ -99,11 +99,11 @@ precmd () {
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="$(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
+PS1="`hostname | sed 's/\..*//'` $(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
 
 # Show a green $ on the status line when vim mode is -- INSERT --
 function zle-line-init zle-keymap-select {
-    PS1="$(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
+    PS1="`hostname | sed 's/\..*//'` $(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 zle -N zle-line-init
@@ -155,3 +155,5 @@ fi
 chpwd() {
   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
+
+alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
