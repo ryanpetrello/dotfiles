@@ -117,6 +117,7 @@ zle -N zle-keymap-select
 # -----------------------------------------------
 
 # compinit initializes various advanced completions for zsh
+fpath=($HOME/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 # case insensitive tab completion
@@ -147,3 +148,5 @@ else
     done &
     clear
 fi
+
+source ~/.zsh/completions/pytest.plugin.zsh
