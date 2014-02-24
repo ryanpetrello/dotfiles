@@ -9,31 +9,7 @@
     info = remote show origin
     pullall = !bash -c 'git pull && git submodule foreach git pull -q origin master'
     graph = log --graph --decorate
-    ; git create-branch <new-remote-branch> origin/<branch-from>
-    create-branch = "!create_branch() {\
-            help=\"\ngit create-branch <new-remote-branch> origin/<branch-from>\n\";\
-            new_branch=$1;\
-            [ -z $new_branch ] && echo \"$help\" && exit 1;\
-            branch_from=$(grep '^origin' <<< $2);\
-            [ -z $branch_from ] && echo \"$help\" && exit 1;\
-            git fetch &&\
-            git push origin $branch_from:refs/heads/$new_branch;\
-    };\
-    create_branch"
-    ; interface to pushing refs for review to Gerrit
-    ; defaults to the tracked remote branch
-    ; if the current branch is not tracking anything
-    ; then defaults to master
-    review = "!review() {\
-            merge=$1;\
-            [ -z $merge ] && {\
-                    branch=$(git for-each-ref --format='%(refname:short)' $(git symbolic-ref HEAD));\
-                    merge=$(git config --get branch.$branch.merge | cut -d/ -f3);\
-            };\
-            [ -z $merge ] && merge=master;\
-            git push origin HEAD:refs/for/$merge;\
-    };\
-    review"
+    churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 [color]
     diff = auto
     status = auto
