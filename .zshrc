@@ -51,16 +51,6 @@ function active_virtualenv() {
     echo "(`basename \"$VIRTUAL_ENV\"`)"
 }
 
-#
-# used to print <vim> if the shell was spawned from vim (and there's an 
-# active vim session waiting in the background)
-#
-function vim_flag() {
-    if [ `ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'` = "vim" ]; then
-        echo "${fg_lblue}(vim)${fg_white}"
-    fi
-}
-
 # vim as default + launch settings
 export EDITOR='vim'
 export TERM='screen-256color'
@@ -98,15 +88,29 @@ precmd () {
         zstyle ':vcs_info:*' formats $'(%{\e[1;33m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
     }
     vcs_info
+    # tmux title magic
+    title "zsh - $PWD"
+    duration=$(( $(date +%s) - cmd_start_time ))
+
+    # Notify if the previous command took more than 5 seconds.
+    if [ $duration -gt 5 ] ; then
+      case "$lastcmd" in
+        vi*) ;; # vi, don't notify
+        "") ;; # no previous command, don't notify
+        *)
+          [ ! -z "$TMUX" ] && tmux display-message "($duration secs): $lastcmd"
+      esac
+    fi
+    lastcmd=""
 }
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="[`hostname | sed 's/\..*//'`] $(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
+PS1="[`hostname | sed 's/\..*//'`] $(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}$ "
 
 # Show a green $ on the status line when vim mode is -- INSERT --
 function zle-line-init zle-keymap-select {
-    PS1="[`hostname | sed 's/\..*//'`] $(vim_flag)$(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
+    PS1="[`hostname | sed 's/\..*//'`] $(active_virtualenv)${git}${fg_lblue}%~ ${fg_lgreen}${${KEYMAP/vicmd/}/(main|viins)/$}${fg_white}${${KEYMAP/vicmd/$}/(main|viins)/}${fg_white} "
     zle reset-prompt
 }
 zle -N zle-line-init
@@ -150,24 +154,6 @@ else
 fi
 
 source ~/.zsh/completions/pytest.plugin.zsh
-
-# tmux title magic
-# title/precmd/postcmd
-function precmd() {
-  title "zsh - $PWD"
-  duration=$(( $(date +%s) - cmd_start_time ))
-
-  # Notify if the previous command took more than 5 seconds.
-  if [ $duration -gt 5 ] ; then
-    case "$lastcmd" in
-      vi*) ;; # vi, don't notify
-      "") ;; # no previous command, don't notify
-      *)
-        [ ! -z "$TMUX" ] && tmux display-message "($duration secs): $lastcmd"
-    esac
-  fi
-  lastcmd=""
-}
 
 function preexec() {
   # The full command line comes in as "$1"
