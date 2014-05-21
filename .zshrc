@@ -17,6 +17,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias t="tmux"
+alias ssh="~/ssh"
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
