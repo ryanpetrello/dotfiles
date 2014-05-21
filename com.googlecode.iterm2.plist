@@ -716,12 +716,26 @@
 			<key>Text</key>
 			<string>0x2 0x6f</string>
 		</dict>
+		<key>0xd-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>25</integer>
+			<key>Text</key>
+			<string>Open Autocomplete...</string>
+		</dict>
 		<key>0xf700-0x300000</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
 			<key>Text</key>
 			<string>0x2 0x5b</string>
+		</dict>
+		<key>0xf701-0x240000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x2 0x4b</string>
 		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
@@ -786,6 +800,8 @@
 	<false/>
 	<key>HideActivityIndicator</key>
 	<true/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
@@ -842,9 +858,13 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 151 924 485 0 0 1280 778 </string>
+	<string>511 254 924 485 0 0 1600 978 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 16 1276 762 0 0 1280 778 </string>
+	<string>0 88 1600 890 0 0 1600 978 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>0 552 970 426 0 0 1600 978 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>173 27 970 426 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1569,7 +1589,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.095816381275653839</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -2386,7 +2406,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-08-31T17:55:11Z</date>
+	<date>2014-05-21T14:20:13Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2422,7 +2442,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Lucida Grande UI</string>
 	<key>Window Arrangements</key>
 	<dict>
 		<key>Default</key>
@@ -3251,12 +3271,12 @@
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
-	<string>/-+\~_.</string>
+	<string>/-+\~_.:</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20130624</string>
+	<string>1.0.0.20140518</string>
 </dict>
 </plist>
