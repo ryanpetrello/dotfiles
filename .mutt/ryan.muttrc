@@ -1,0 +1,7 @@
+set from = "ryan@ryanpetrello.com"
+set sendmail = "/usr/local/bin/msmtp -a ryanpetrello"
+set sendmail_wait = 0
+set mbox = "+ryanpetrello.com/archive"
+set postponed = "+ryanpetrello.com/drafts"
+set signature = ~/.mutt/sig-ryan
+unset record

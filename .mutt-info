@@ -1,0 +1,13 @@
+Install/Configure Mutt + Extras on OSX
+======================================
+
+$ git clone https://github.com/ryanpetrello/dotfiles.git
+$ mv .mutt/mutt.rb /usr/local/Library/Formula/mutt.rb  # includes a patched mutt-sidebar
+$ brew install mutt --with-sidebar-patch  # downloaded: 1.5.23_1.mavericks
+$ brew install offlineimap
+$ brew install curl-ca-bundle
+$ brew install notmuch
+$ brew install msmtp
+$ brew install urlview
+$ mv .mutt/org.ryan.mail.ryan.plist ~/Library/LaunchAgents/
+$ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist

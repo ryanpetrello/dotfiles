@@ -9,8 +9,14 @@
 !/.gitmodules
 !/.ackrc
 !/.itermcolors
+!/.mutt*
+!/.offlineimaprc
+!/.notmuch-config
 !/.tmux.conf
 !/.vim/*
 !/.zsh*
+!/.bashrc
+!/ssh
 !/com.googlecode.iterm2.plist
 .viminfo
+.zsh_history

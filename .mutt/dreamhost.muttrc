@@ -1,0 +1,7 @@
+set from = "ryan.petrello@dreamhost.com"
+set sendmail = "/usr/local/bin/msmtp -a dreamhost"
+set sendmail_wait = 0
+set mbox = "+dreamhost.com/archive"
+set postponed = "+dreamhost.com/drafts"
+set signature = ~/.mutt/sig-dreamhost
+unset record

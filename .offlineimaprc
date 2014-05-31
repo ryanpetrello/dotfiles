@@ -1,0 +1,133 @@
+[general]
+ui = ttyui
+accounts = Ryan,Lists,DH
+pythonfile=~/.mutt/offlineimap.py
+fsync = False
+
+[Account Ryan]
+localrepository = Ryan-Local
+remoterepository = Ryan-Remote
+status_backend = sqlite
+postsynchook = /usr/local/bin/notmuch new
+
+[Account Lists]
+localrepository = Lists-Local
+remoterepository = Lists-Remote
+status_backend = sqlite
+postsynchook = /usr/local/bin/notmuch new
+
+[Account DH]
+localrepository = DH-Local
+remoterepository = DH-Remote
+status_backend = sqlite
+postsynchook = /usr/local/bin/notmuch new
+
+[Repository Ryan-Local]
+type = Maildir
+localfolders = ~/.mail/ryanpetrello.com
+nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
+                            'sent'          : '[Gmail]/Sent Mail',
+                            'starred'       : '[Gmail]/Starred',
+                            'trash'         : '[Gmail]/Trash',
+                            'archive'       : '[Gmail]/All Mail',
+                           }.get(folder, folder)
+
+folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Mailbox]'
+                                            ]) and 'Airmail' not in folder
+
+[Repository Ryan-Remote]
+maxconnections = 1
+type = Gmail
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+remoteuser = ryan@ryanpetrello.com
+remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com', server='imap.gmail.com')
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
+                            '[Gmail]/Sent Mail'                 : 'sent',
+                            '[Gmail]/Starred'                   : 'starred',
+                            '[Gmail]/Trash'                     : 'trash',
+                            '[Gmail]/All Mail'                  : 'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: (folder not in ['Drafts',
+                                              '[Gmail]/Trash',
+                                              '[Gmail]/Important',
+                                              '[Gmail]/Spam',
+                                              '[Mailbox]'
+                                            ]) and not '[Airmail]' in folder
+
+[Repository Lists-Local]
+type = Maildir
+localfolders = ~/.mail/lists-ryanpetrello.com
+nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
+                            'sent'          : '[Gmail]/Sent Mail',
+                            'starred'       : '[Gmail]/Starred',
+                            'trash'         : '[Gmail]/Trash',
+                            'archive'       : '[Gmail]/All Mail',
+                           }.get(folder, folder)
+
+folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Mailbox]'
+                                            ]) and 'Airmail' not in folder
+
+[Repository Lists-Remote]
+maxconnections = 1
+type = Gmail
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+remoteuser = lists@ryanpetrello.com
+remotepasseval = get_keychain_pass(account='lists@ryanpetrello.com', server='imap.gmail.com')
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
+                            '[Gmail]/Sent Mail'                 : 'sent',
+                            '[Gmail]/Starred'                   : 'starred',
+                            '[Gmail]/Trash'                     : 'trash',
+                            '[Gmail]/All Mail'                  : 'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: (folder not in ['Drafts',
+                                              'Sent',
+                                              '[Gmail]/Trash',
+                                              '[Gmail]/Important',
+                                              '[Gmail]/Spam',
+                                              '[Mailbox]'
+                                            ]) and not '[Airmail]' in folder
+
+[Repository DH-Local]
+type = Maildir
+localfolders = ~/.mail/dreamhost.com
+nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
+                            'sent'          : '[Gmail]/Sent Mail',
+                            'starred'       : '[Gmail]/Starred',
+                            'trash'         : '[Gmail]/Trash',
+                            'archive'       : '[Gmail]/All Mail',
+                           }.get(folder, folder)
+
+folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Mailbox]'
+                                            ]) and 'Airmail' not in folder
+
+[Repository DH-Remote]
+maxconnections = 1
+type = Gmail
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+remoteuser = ryan.petrello@dreamhost.com
+remotepasseval = get_keychain_pass(account='ryan.petrello@dreamhost.com', server='imap.gmail.com')
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
+                            '[Gmail]/Sent Mail'                 : 'sent',
+                            '[Gmail]/Starred'                   : 'starred',
+                            '[Gmail]/Trash'                     : 'trash',
+                            '[Gmail]/All Mail'                  : 'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: (folder not in ['Drafts',
+                                              'Sent',
+                                              '[Gmail]/Trash',
+                                              '[Gmail]/Important',
+                                              '[Gmail]/Spam',
+                                              '[Mailbox]'
+                                            ]) and not '[Airmail]' in folder
