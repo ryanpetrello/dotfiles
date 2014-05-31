@@ -76,6 +76,9 @@ folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
 folder-hook lists-ryanpetrello.com/* source ~/.mutt/ryan-lists.muttrc
 folder-hook dreamhost.com/*   source ~/.mutt/dreamhost.muttrc
 
+# Update the `reading from disk` progress bar increment (for faster reads)
+folder-hook . 'set read_inc=1000'
+
 # Index View Options ----------------------------------------------------------
 set date_format = "%m/%d/%y"                       # sane date format
 set index_format = "[%Z]  %-3M %D  %-30.30F  %s"     # sane index format
