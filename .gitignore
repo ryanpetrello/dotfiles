@@ -13,6 +13,7 @@
 !/.offlineimaprc
 !/.notmuch-config
 !/.tmux.conf
+!/tmux-mail-count
 !/.vim/*
 !/.zsh*
 !/.bashrc
