@@ -145,7 +145,7 @@ unset highlights
 # Auto-attach to tmux
 if [ -z "$TMUX" ]; then
     # not in a tmux session
-    tmux attach || tmux new
+    tmux attach -t term || tmux new -s term
 else
     # Listen for tmux clipboard changes
     while true; do
