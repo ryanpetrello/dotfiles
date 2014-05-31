@@ -40,7 +40,7 @@ unignore from: to: cc: date: subject: # show only these
 # Account Settings ------------------------------------------------------------
 
 # Default inbox.
-set spoolfile = "+ryanpetrello.com/INBOX"
+set spoolfile = "+lists-ryanpetrello.com/INBOX"
 
 # Alternate email addresses.
 alternates ryan.petrello@dreamhost.com lists@ryanpetrello.com
