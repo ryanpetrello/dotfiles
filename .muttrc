@@ -58,9 +58,16 @@ mailboxes +---ryan-------------------- \
           +lists-ryanpetrello.com/drafts \
           +---dreamhost------------------- \
           +dreamhost.com/INBOX \
+          +dreamhost.com/pecan \
+          +dreamhost.com/openstack-dev \
+          +dreamhost.com/ndn-commit \
           +dreamhost.com/starred \
           +dreamhost.com/sent \
           +dreamhost.com/drafts \
+          +---draughtcraft---------------- \
+          +draughtcraft.com/INBOX \
+          +draughtcraft.com/starred \
+          +draughtcraft.com/sent \
           +---search---------------------- \
           +temporary/search \
 
