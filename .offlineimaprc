@@ -3,6 +3,8 @@ ui = ttyui
 accounts = Ryan,Lists,DH,DC,DC-Error
 pythonfile=~/.mutt/offlineimap.py
 fsync = False
+maxsyncaccounts = 3
+keepalive = 60
 
 [Account Ryan]
 localrepository = Ryan-Local
@@ -51,7 +53,7 @@ folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                             ]) and 'Airmail' not in folder
 
 [Repository Ryan-Remote]
-maxconnections = 1
+maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@ryanpetrello.com
@@ -87,7 +89,7 @@ folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                             ]) and 'Airmail' not in folder
 
 [Repository Lists-Remote]
-maxconnections = 1
+maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = lists@ryanpetrello.com
@@ -127,7 +129,7 @@ folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                             ]) and 'Airmail' not in folder
 
 [Repository DH-Remote]
-maxconnections = 1
+maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan.petrello@dreamhost.com
@@ -167,7 +169,7 @@ folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                             ]) and 'Airmail' not in folder
 
 [Repository DC-Remote]
-maxconnections = 1
+maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@draughtcraft.com
@@ -204,7 +206,7 @@ folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                             ]) and 'Airmail' not in folder
 
 [Repository DC-Error-Remote]
-maxconnections = 1
+maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = errors@draughtcraft.com

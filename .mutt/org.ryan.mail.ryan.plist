@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>Label</key>
+                <string>org.ryan.mail.ryan</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>/usr/local/bin/offlineimap</string>
+        </array>
+        <key>RunAtLoad</key>
+                <true></true>
+        <key>StartInterval</key>
+                <integer>60</integer>
+        <key>TimeOut</key>
+                <integer>60</integer>
+        <key>StandardErrorPath</key>
+                <string>/Users/ryan/.mutt/offlineimap_error.log</string>
+        <key>StandardOutPath</key>
+                <string>/Users/ryan/.mutt/offlineimap.log</string>
+</dict>
+</plist>
