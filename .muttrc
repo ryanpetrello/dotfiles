@@ -150,7 +150,7 @@ bind attach <return> view-mailcap
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Editor ----------------------------------------------------------------------
-set editor = "vim -c 'set spell spelllang=en'" # compose in vim w/ spellcheck
+set editor = "vim +8 -c 'set spell spelllang=en'" # compose in vim w/ spellcheck
 
 # Compose View Options --------------------------------------------------------
 set realname = "Ryan Petrello"       # who am i?
