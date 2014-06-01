@@ -1,6 +1,6 @@
 [general]
 ui = ttyui
-accounts = Ryan,Lists,DH,DC
+accounts = Ryan,Lists,DH,DC,DC-Error
 pythonfile=~/.mutt/offlineimap.py
 fsync = False
 
@@ -25,6 +25,12 @@ postsynchook = /usr/local/bin/notmuch new
 [Account DC]
 localrepository = DC-Local
 remoterepository = DC-Remote
+status_backend = sqlite
+postsynchook = /usr/local/bin/notmuch new
+
+[Account DC-Error]
+localrepository = DC-Error-Local
+remoterepository = DC-Error-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
 
@@ -166,6 +172,43 @@ type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@draughtcraft.com
 remotepasseval = get_keychain_pass(account='ryan@draughtcraft.com', server='imap.gmail.com')
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
+                            '[Gmail]/Sent Mail'                 : 'sent',
+                            '[Gmail]/Starred'                   : 'starred',
+                            '[Gmail]/Trash'                     : 'trash',
+                            '[Gmail]/All Mail'                  : 'archive',
+                           }.get(folder, folder)
+folderfilter = lambda folder: (folder not in ['Drafts',
+                                              'Sent',
+                                              '[Gmail]/Trash',
+                                              '[Gmail]/Important',
+                                              '[Gmail]/Spam',
+                                              '[Mailbox]'
+                                            ]) and not '[Airmail]' in folder
+
+[Repository DC-Error-Local]
+type = Maildir
+localfolders = ~/.mail/draughtcraft-errors.com
+nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
+                            'sent'          : '[Gmail]/Sent Mail',
+                            'starred'       : '[Gmail]/Starred',
+                            'trash'         : '[Gmail]/Trash',
+                            'archive'       : '[Gmail]/All Mail',
+                           }.get(folder, folder)
+
+folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Mailbox]'
+                                            ]) and 'Airmail' not in folder
+
+[Repository DC-Error-Remote]
+maxconnections = 1
+type = Gmail
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+remoteuser = errors@draughtcraft.com
+remotepasseval = get_keychain_pass(account='errors@draughtcraft.com', server='imap.gmail.com')
 realdelete = no
 nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
                             '[Gmail]/Sent Mail'                 : 'sent',

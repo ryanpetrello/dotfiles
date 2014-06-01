@@ -19,7 +19,7 @@ set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
 unset mark_old           # read/new is good enough for me
-set beep_new             # bell on new mails
+unset beep_new           # no bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
@@ -68,6 +68,8 @@ mailboxes +---ryan-------------------- \
           +draughtcraft.com/INBOX \
           +draughtcraft.com/starred \
           +draughtcraft.com/sent \
+          +---draughtcraft-errors--------- \
+          +draughtcraft-errors.com/INBOX \
           +---search---------------------- \
           +temporary/search \
 
@@ -104,7 +106,12 @@ bind index <backtab>    collapse-all        # expand/collapse all threads
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
 # Sync email
-macro index o "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
+macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
+
+# Open emails with o
+macro index o "<display-message>" "open emails with o"
+
+macro index a "<limit>all\n" "show all messages (undo limit)"
 
 # Saner copy/move dialogs
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
@@ -141,7 +148,7 @@ bind attach <return> view-mailcap
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Editor ----------------------------------------------------------------------
-set editor = "vim"        # compose in vim
+set editor = "vim -c 'set spell spelllang=en'" # compose in vim w/ spellcheck
 
 # Compose View Options --------------------------------------------------------
 set realname = "Ryan Petrello"       # who am i?
