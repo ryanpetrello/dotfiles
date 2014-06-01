@@ -162,7 +162,7 @@ bind compose p postpone-message
 bind index p recall-message
 
 # Contact management autocompletion -------------------------------------------
-set query_command = "~/.mutt/contacts.py '%s'"
+set query_command = "~/.mutt/search-previous-contacts '%s'"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 

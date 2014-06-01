@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "EMAIL	NAME"
+notmuch show --entire-thread=false from:"$1" | pcregrep -o1 -i "From: (.*$1[^>]*>)" | grep -v -E "(github|twitter|linkedin|openstack|plus.google|launchpad|pinterest|paperlesspost|zendesk|gerrit|beanstalkapp|tenderapp)" | sort | uniq -c | sort -r | tr -s ' ' | cut -d' ' -f3- | tr -d '"' | sed -E 's/([^<]+) <([^>]+)>/\2	\1/' | head -10
