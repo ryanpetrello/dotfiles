@@ -78,8 +78,10 @@ folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
 folder-hook lists-ryanpetrello.com/* source ~/.mutt/ryan-lists.muttrc
 folder-hook dreamhost.com/*   source ~/.mutt/dreamhost.muttrc
 
-# Automatically hide read messages when switching folders
-folder-hook . 'push "l~U<enter>"'
+# Automatically hide read messages when switching certain folders
+folder-hook ryanpetrello.com/INBOX 'push "l~U<enter>"'
+folder-hook lists-ryanpetrello.com/INBOX 'push "l~U<enter>"'
+folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
 folder-hook . 'set read_inc=1000'
