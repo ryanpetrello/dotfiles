@@ -44,6 +44,7 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 bindkey '^R' history-incremental-search-backward
+h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
 # function to determine the currently active virtualenv
 function active_virtualenv() {
