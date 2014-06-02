@@ -83,6 +83,7 @@ folder-hook dreamhost.com/*   source ~/.mutt/dreamhost.muttrc
 folder-hook ryanpetrello.com/INBOX 'push "l~U<enter>"'
 folder-hook lists-ryanpetrello.com/INBOX 'push "l~U<enter>"'
 folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
+folder-hook dreamhost.com/openstack-dev 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
 folder-hook . 'set read_inc=1000'
@@ -103,6 +104,8 @@ bind index R            group-reply         # reply-all
 bind index <tab>        sync-mailbox        # synchronize with mail store
 bind index <space>      collapse-thread     # expand/collapse a thread
 bind index <backtab>    collapse-all        # expand/collapse all threads
+bind index [            previous-unread
+bind index ]            next-unread
 
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
@@ -145,6 +148,8 @@ bind pager j  next-line
 bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply
+bind pager [  previous-unread
+bind pager ]  next-unread
 
 # View attachments properly.
 bind attach <return> view-mailcap
