@@ -22,6 +22,7 @@ unset mark_old           # read/new is good enough for me
 unset beep_new           # no bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
+unset recall             # don't ask to recall messages on compose
 
 # Sidebar Patch ---------------------------------------------------------------
 set sidebar_delim   = '│'
@@ -87,14 +88,13 @@ folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
 folder-hook . 'set read_inc=1000'
 
 # Index View Options ----------------------------------------------------------
-set date_format = "%m/%d/%y"                       # sane date format
+set date_format = "%m/%d/%y %I:%M:%S %p"             # sane date format
 set index_format = "[%Z]  %-3M %D  %-30.30F  %s"     # sane index format
 set sort = threads                              # like gmail
 set sort_aux = reverse-last-date-received       # like gmail
 set uncollapse_jump                             # don't collapse on an unread message
 set sort_re                                     # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-folder-hook . "exec collapse-all"               # collapse all threads by default
 
 # Index Key Bindings ----------------------------------------------------------
 bind index gg           first-entry         # more vimmy
@@ -150,7 +150,7 @@ bind attach <return> view-mailcap
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Editor ----------------------------------------------------------------------
-set editor = "vim +8 -c 'set spell spelllang=en'" # compose in vim w/ spellcheck
+set editor = "vim +8 -c 'set spell spelllang=en' -c 'startinsert'" # compose in vim w/ spellcheck
 
 # Compose View Options --------------------------------------------------------
 set realname = "Ryan Petrello"       # who am i?
