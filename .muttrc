@@ -47,7 +47,7 @@ set spoolfile = "+lists-ryanpetrello.com/INBOX"
 alternates ryan.petrello@dreamhost.com lists@ryanpetrello.com
 
 # Mailboxes to show in the sidebar.
-mailboxes +---ryan-------------------- \
+mailboxes +---ryan--------------------- \
           +ryanpetrello.com/INBOX \
           +ryanpetrello.com/starred \
           +ryanpetrello.com/sent \
