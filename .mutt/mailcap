@@ -1,19 +1,12 @@
-# MS Word documents
-application/msword; ~/.mutt/view_attachment.sh %s "-" '/Applications/Pages.app'
-
-# Images
-image/jpg; ~/.mutt/view_attachment.sh %s jpg
-image/jpeg; ~/.mutt/view_attachment.sh %s jpg
-image/pjpeg; ~/.mutt/view_attachment.sh %s jpg
-image/png; ~/.mutt/view_attachment.sh %s png
-image/gif; ~/.mutt/view_attachment.sh %s gif
-
-# PDFs
-application/pdf; ~/.mutt/view_attachment.sh %s pdf
-
-# HTML
-text/html; ~/.mutt/view_attachment.sh %s html
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-
 # Unidentified files
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
+
+# HTML mail
+text/html; /usr/bin/qlmanage -p 2>/dev/null %s ; nametemplate=%s.html
+text/html; elinks -dump %s ; nametemplate=%s.html ; copiousoutput
+
+# QuickLook in OSX
+image/*                  ; /usr/bin/qlmanage -p 2>/dev/null %s
+audio/*                  ; /usr/bin/qlmanage -p 2>/dev/null %s
+video/*                  ; /usr/bin/qlmanage -p 2>/dev/null %s
+application/*            ; /usr/bin/qlmanage -p 2>/dev/null %s
