@@ -1,3 +1,37 @@
-#!/bin/bash
-mosh "$@"
-[ $? -eq 127 ] && ssh "$@"
+#!/usr/bin/env python
+
+import sys
+
+import subprocess
+
+MOSH_NOT_SUPPORTED = set(map(lambda x: '-%s' % x, ('ACDefgLMNnRVWwXY')))
+MOSH_SUPPORTED = set(map(lambda x: '-%s' % x, ('bcDeFIiLlmOopRSWw')))
+
+if __name__ == '__main__':
+    unsupported = None
+    argv = sys.argv[1:]
+
+    unsupported = next(iter(set(argv) & MOSH_NOT_SUPPORTED), None)
+    if unsupported:
+        print "\033[91mmosh does not support ssh's %s option\033[0m" % \
+              unsupported
+
+    host = None
+    argv_iter = iter(argv)
+    for a in argv_iter:
+        if a not in MOSH_SUPPORTED:
+            host = a
+            break
+        else:
+            argv_iter.next()
+
+    argv.remove(host)
+    argv = ' '.join(argv).strip()
+    cmd = ["mosh", host]
+    if argv:
+        cmd.insert(1, "--ssh='ssh %s'" % argv)
+
+    if unsupported or subprocess.call(cmd) in (5, 127, 255):
+        print "\033[91mmosh unsupported, falling back to ssh\033[0m"
+        cmd = filter(None, ["ssh", argv, host])
+        subprocess.check_call(cmd)

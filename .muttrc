@@ -104,8 +104,6 @@ bind index R            group-reply         # reply-all
 bind index <tab>        sync-mailbox        # synchronize with mail store
 bind index <space>      collapse-thread     # expand/collapse a thread
 bind index <backtab>    collapse-all        # expand/collapse all threads
-bind index [            previous-unread
-bind index ]            next-unread
 
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
@@ -124,6 +122,9 @@ macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
 macro index,pager u  <clear-flag>N    "Mark as unread"
 macro index,pager U  <set-flag>N      "Mark as read"
+
+bind index,pager [            previous-entry
+bind index,pager ]            next-entry
 
 # Pager View Options ----------------------------------------------------------
 set pager_index_lines = 10 # number of index lines to show
@@ -148,8 +149,8 @@ bind pager j  next-line
 bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply
-bind pager [  previous-unread
-bind pager ]  next-unread
+bind pager [  previous-entry
+bind pager ]  next-entry
 
 # View attachments properly.
 bind attach <return> view-mailcap

@@ -17,7 +17,7 @@
 !/.vim/*
 !/.zsh*
 !/.bashrc
-!/ssh
+!/ssh.py
 !/com.googlecode.iterm2.plist
 .viminfo
 .zsh_history
