@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print "\033[91mmosh does not support ssh's %s option\033[0m" % \
               unsupported
 
-    host = None
+    host = ''
     argv_iter = iter(argv)
     for a in argv_iter:
         if a not in MOSH_SUPPORTED:
@@ -25,7 +25,9 @@ if __name__ == '__main__':
         else:
             argv_iter.next()
 
-    argv.remove(host)
+    if host in argv:
+        argv.remove(host)
+
     argv = ' '.join(argv).strip()
     cmd = ["mosh", host]
     if argv:
