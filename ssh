@@ -34,4 +34,7 @@ if __name__ == '__main__':
     if unsupported or subprocess.call(cmd) in (5, 127, 255):
         print "\033[91mmosh unsupported, falling back to ssh\033[0m"
         cmd = filter(None, ["ssh", argv, host])
-        subprocess.check_call(cmd)
+        try:
+            subprocess.check_call(cmd)
+        except subprocess.CalledProcessError as e:
+            sys.exit(e.returncode)
