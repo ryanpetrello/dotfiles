@@ -12,3 +12,8 @@ $ brew install urlview
 $ brew install elinks
 $ mv .mutt/org.ryan.mail.ryan.plist ~/Library/LaunchAgents/
 $ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist
+
+$ cd ~/.mutt/osx-mail-handler/ && python setup.py py2app
+$ mv dist/mutt-system-handler /Applications
+
+Open Mail.app and in the `General` settings tab, set the default mail reader to `url-open-handler`.
