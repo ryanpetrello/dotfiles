@@ -20,7 +20,11 @@ alias t="tmux"
 alias ssh="~/ssh"
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
-alias mutt 'cd ~/Desktop && mutt'
+alias mutt='cd ~/Desktop && mutt'
+
+# CLI for 1Password.  Requires the `1pass` Python package
+function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
+alias 1p='1pass'
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
