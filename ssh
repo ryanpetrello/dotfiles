@@ -38,6 +38,7 @@ if __name__ == '__main__':
         cmd.insert(1, "--ssh='ssh %s'" % argv)
 
     try:
+        print '\033[91m'
         if unsupported or subprocess.call(cmd) in (5, 127, 255):
             raise MoshUnsupported()
     except (MoshUnsupported, OSError) as e:
@@ -47,3 +48,5 @@ if __name__ == '__main__':
             subprocess.check_call(cmd)
         except subprocess.CalledProcessError as e:
             sys.exit(e.returncode)
+    finally:
+        print '\033[0m'
