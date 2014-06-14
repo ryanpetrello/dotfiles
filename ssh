@@ -7,6 +7,10 @@ import subprocess
 MOSH_NOT_SUPPORTED = set(map(lambda x: '-%s' % x, ('ACDefgLMNnRVWwXY')))
 MOSH_SUPPORTED = set(map(lambda x: '-%s' % x, ('bcDeFIiLlmOopRSWw')))
 
+class MoshUnsupported(Exception):
+    message = "mosh unsupported, falling back to ssh"
+
+
 if __name__ == '__main__':
     unsupported = None
     argv = sys.argv[1:]
@@ -33,8 +37,11 @@ if __name__ == '__main__':
     if argv:
         cmd.insert(1, "--ssh='ssh %s'" % argv)
 
-    if unsupported or subprocess.call(cmd) in (5, 127, 255):
-        print "\033[91mmosh unsupported, falling back to ssh\033[0m"
+    try:
+        if unsupported or subprocess.call(cmd) in (5, 127, 255):
+            raise MoshUnsupported()
+    except (MoshUnsupported, OSError) as e:
+        print '\033[91m%s\033[0m' % e
         cmd = filter(None, ["ssh", argv, host])
         try:
             subprocess.check_call(cmd)
