@@ -7,6 +7,7 @@
 !/.gitignore
 !/.gitexcludes
 !/.gitmodules
+!/.gittemplates
 !/.ackrc
 !/.itermcolors
 !/.mutt*

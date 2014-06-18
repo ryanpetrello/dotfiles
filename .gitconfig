@@ -1,3 +1,5 @@
+[init]
+    templatedir = ~/.gittemplates
 [user]
     name = Ryan Petrello
     email = lists@ryanpetrello.com
