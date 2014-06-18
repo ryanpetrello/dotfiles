@@ -26,6 +26,16 @@ alias mutt='cd ~/Desktop && mutt'
 function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
+function gh-diff() {
+    git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        mktmpenv
+        git clone https://github.com/$1/$2.git
+        cd $2
+    fi
+    curl https://github.com/$1/$2/pull/$3.diff | cdiff -s
+}
+
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
 
