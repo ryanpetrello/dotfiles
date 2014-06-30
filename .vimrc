@@ -94,6 +94,16 @@ autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 so
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
+" Highlight the word under the cursor so variable names are visible
+let s:python_keywords=split(system('python -c "import keyword; print \",\".join(dir(__builtins__) + keyword.kwlist)"'), ',')
+function! s:Highlight_Python_Variables()
+    let g:word = expand("<cword>")
+    if index(s:python_keywords, g:word) < 0
+        exe printf('match IncSearch /\<%s\>/', g:word)
+    endif 
+endfunction
+autocmd CursorMoved * if &ft ==# 'python' | silent! call s:Highlight_Python_Variables() | endif
+
 let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 
 """"""""""""""""""""""""""""""""""""""""""
