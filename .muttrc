@@ -12,7 +12,7 @@ set tmpdir           = ~/.mutt/temp             # where to keep temp files
 # Basic Options ---------------------------------------------------------------
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
-set timeout = 3          # idle time before scanning
+set timeout = 10         # idle time before scanning
 set mail_check = 5       # minimum time between scans
 unset move               # gmail does that
 set delete               # don't ask, just do
