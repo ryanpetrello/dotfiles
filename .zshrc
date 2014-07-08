@@ -4,6 +4,10 @@ export NODE_PATH=/brew/lib/node
 # zsh vim mode
 set -o vi
 
+# vim text object support
+source ~/.zsh/opp.zsh/opp.zsh
+source ~/.zsh/opp.zsh/opp/*.zsh
+
 # import private aliases
 if [ -f ~/.alias ]; then
    source ~/.alias
