@@ -30,11 +30,6 @@ alias mutt='cd ~/Desktop && mutt'
 function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
-# emulated watch command
-function watch {
-    while :; do clear; date; echo; $@; sleep 1; done
-}
-
 function gh-diff() {
     git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
     if [ $? -ne 0 ]; then
