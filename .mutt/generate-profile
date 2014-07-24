@@ -1,0 +1,133 @@
+#!/Users/ryan/venvs/rapportive/bin/python
+
+'''
+Take in an email message via stdin, parse out the sender's email address, and
+then generate a nice HTML profile for the person, featuring a picture of them,
+their job title and current companies, and any social links we can find.
+
+Requires:
+
+    * https://github.com/jordan-wright/rapportive
+    * mako templating library
+
+The resulting HTML will be piped to QuickLook via qlmanage. Easy to hook up
+to mutt, as follows:
+
+    macro pager,index p "<pipe-message>~/.mutt/generate-profile<enter>"
+
+This will generate and show a profile for the selected message either in the 
+pager or the index when you press "p". 
+'''
+
+
+from rapportive import rapportive
+from mako.template import Template
+
+import subprocess
+import urllib
+import hashlib
+import sys
+import email
+import os
+
+# define template
+tmpl = '''
+<%
+
+icons = ['twitter', 'facebook', 'linkedin', 'blogger', 
+         'dropbox', 'deviantart', 'digg', 'email', 'feed', 
+         'flickr', 'foursquare', 'github', 'google_plus',
+         'google', 'instagram', 'openid', 'path', 'pinterest',
+         'reddit', 'skype', 'slashdot', 'tumblr', 'vimeo',
+         'virb', 'wordpress', 'yelp', 'gravatar', 'about-me']
+
+%>
+
+<html>
+  <head>
+    <style type="text/css">
+      body { 
+        font-family: Helvetica;
+        margin: 2em;
+      }
+      ul {
+        list-style-type: none
+      }
+      #avatar-container {
+        float: left;
+        margin: 0 2em 2em 0;
+        width: 80px;
+        height: 500px; 
+      }
+      ul#social {
+        border-top: 1px solid #ccc;
+        margin-left: 110px;
+        padding-left: 0;
+        padding-top: 10px;
+        list-style: none;
+        width: 500px;
+      }
+      ul#social > li {
+        background-repeat: no-repeat;
+        background-position: 0px 0px;
+        height: 32px;
+        padding: 7px 0 0 38px;
+      }
+      % for icon in icons:
+      li.${icon} {
+        background-image: url('http://share.cleverdevil.io/icons/colored/32/circle/${icon}.png');
+      }
+      % endfor
+    </style>
+  </head>
+  <body>
+    <div id="avatar-container">
+      <img id="avatar" src="${avatar_url}" />
+    </div>
+    <h1 id="name">${name}</h1>
+    <ul id="jobs">
+      % for title, company in jobs:
+      <li><p class="title">${title}, ${company}</p></li>
+      % endfor
+    </ul>
+    <ul id="social">
+      % for service, link in memberships:
+      <li class="${service.lower().replace('.', '-').replace('+', '_plus')}">
+        <a href="${link}">${link}</a>
+      </li>
+      % endfor
+    </ul>
+  </body>
+</html>
+'''
+
+# read in email address
+message = email.message_from_string(sys.stdin.read())
+from_email = email.utils.parseaddr(message['From'])[1]
+
+# lookup profile in rapportive
+profile = rapportive.request(from_email)
+if not profile or isinstance(profile, unicode):
+    sys.exit(0)
+
+# generate avatar via gravatar
+size = 80
+email_hash = hashlib.md5(from_email.lower()).hexdigest()
+gravatar_url = "http://www.gravatar.com/avatar/" + email_hash + "?"
+gravatar_url += urllib.urlencode({'s': str(size)})
+
+# generate the html
+ns = dict(
+    name=profile.name,
+    memberships=profile.memberships,
+    jobs=profile.jobinfo,
+    avatar_url=gravatar_url
+)
+output = Template(tmpl).render(**ns)
+
+# write to a tempfile and quicklook
+open('/tmp/profile.html', 'wb').write(output)
+subprocess.call(
+    ['qlmanage', '-p', '/tmp/profile.html'],
+    stdout=subprocess.PIPE, stderr=subprocess.PIPE
+)

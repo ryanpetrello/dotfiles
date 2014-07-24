@@ -187,3 +187,6 @@ bind editor ^T    complete
 
 # Search ----------------------------------------------------------------------
 macro index / "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
+
+# Profile generation
+macro pager,index p "<pipe-message>~/.mutt/generate-profile<enter>"
