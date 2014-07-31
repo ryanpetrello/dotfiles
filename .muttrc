@@ -27,7 +27,7 @@ unset recall             # don't ask to recall messages on compose
 # Sidebar Patch ---------------------------------------------------------------
 set sidebar_delim   = '│'
 set sidebar_visible = yes
-set sidebar_width   = 32
+set sidebar_width   = 28
 color sidebar_new yellow default
 
 # Status Bar ------------------------------------------------------------------
@@ -89,8 +89,8 @@ folder-hook dreamhost.com/openstack-dev 'push "l~U<enter>"'
 folder-hook . 'set read_inc=1000'
 
 # Index View Options ----------------------------------------------------------
-set date_format = "%m/%d/%y %I:%M:%S %p"             # sane date format
-set index_format = "[%Z]  %-3M %D  %-30.30F  %s"     # sane index format
+set date_format = "%m/%d/%y %I:%M %p"              # sane date format
+set index_format = "[%Z]  %M %D  %-12.12F  %s"     # sane index format
 set sort = threads                              # like gmail
 set sort_aux = reverse-last-date-received       # like gmail
 set uncollapse_jump                             # don't collapse on an unread message
