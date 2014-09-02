@@ -40,6 +40,15 @@ function gh-diff() {
     curl https://github.com/$1/$2/pull/$3.diff | cdiff -s
 }
 
+function gh() {
+    if [ "$#" -eq 1 ]; then
+        echo "https://github.com/ryanpetrello/$1.git"
+    fi
+    if [ "$#" -eq 2 ]; then
+        echo "https://github.com/$1/$2.git"
+    fi
+}
+
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
 
