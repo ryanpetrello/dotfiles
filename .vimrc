@@ -261,3 +261,9 @@ let g:ctrlp_prompt_mappings = {
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\" " Block in normal mode
+endif
