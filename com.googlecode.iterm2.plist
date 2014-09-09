@@ -730,7 +730,7 @@
 			<key>Text</key>
 			<string>0x2 0x5b</string>
 		</dict>
-		<key>0xf701-0x240000</key>
+		<key>0xf700-0x320000</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
@@ -744,12 +744,33 @@
 			<key>Text</key>
 			<string>0x2 0x22</string>
 		</dict>
+		<key>0xf701-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x2 0x4a</string>
+		</dict>
+		<key>0xf702-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x2 0x48</string>
+		</dict>
 		<key>0xf703-0x300000</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
 			<key>Text</key>
 			<string>0x2 0x25</string>
+		</dict>
+		<key>0xf703-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x2 0x4c</string>
 		</dict>
 		<key>0xf729-0x100000</key>
 		<dict>
@@ -851,20 +872,18 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>198</string>
+		<string>302</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>511 254 924 485 0 0 1600 978 </string>
+	<string>270 110 924 485 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 88 1600 890 0 0 1600 978 </string>
+	<string>0 16 1276 762 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 552 970 426 0 0 1600 978 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>173 27 970 426 0 0 1280 778 </string>
+	<string>113 276 970 426 0 0 1200 1898 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2406,7 +2425,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-05-21T14:20:13Z</date>
+	<date>2014-09-08T23:18:24Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3277,6 +3296,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140518</string>
+	<string>2.0</string>
 </dict>
 </plist>
