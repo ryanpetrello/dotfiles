@@ -18,7 +18,8 @@
 !/.vim/*
 !/.zsh*
 !/.bashrc
-!/ssh.py
 !/com.googlecode.iterm2.plist
+!/mount-afp-shares.scpt
+!/ssh.py
 .viminfo
 .zsh_history
