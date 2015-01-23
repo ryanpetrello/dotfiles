@@ -12,6 +12,9 @@ $ brew install urlview
 $ brew install elinks
 $ mv .mutt/org.ryan.mail.ryan.plist ~/Library/LaunchAgents/
 $ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist
+$ mv .mutt/homebrew.mxcl.offline-imap.plist ~/Library/LaunchAgents/
+$ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.offline-imap.plist
+$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.offline-imap.plist
 
 $ cd ~/.mutt/osx-mail-handler/ && python setup.py py2app
 $ mv dist/mutt-system-handler.app /Applications
