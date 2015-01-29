@@ -1,6 +1,5 @@
 #!/bin/bash
 set -f
-rm -f ~/.mail/temporary/attached*
 
 exec < /dev/tty 3>&1 > /dev/tty
 
@@ -10,7 +9,7 @@ read -p "Attempt to attach from the clipboard? (y/n)" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-    tempfile="`dirname ~/.mail/temporary/attached`/attached"
+    tempfile="`dirname ~/.mail/temporary/attached`/attached".$(date +"%m.%d.%y.%H.%M.%S")
     clipboard=`pbpaste`
     if [[ $clipboard == http* ]]
     then
@@ -20,7 +19,9 @@ then
     else
         suffix="png"
         tempfile="$tempfile.$suffix"
-        pngpaste "$tempfile"
+        pngpaste "$tempfile" || tempfile="empty"
     fi
-    osascript -e 'tell application "Mutt"' -e 'activate' -e 'tell application "System Events"' -e "keystroke \"$tempfile"\" -e 'keystroke return' -e 'end tell' -e 'end tell'
+
+    printf %s $tempfile >&3
+    printf %s "<enter>" >&3
 fi
