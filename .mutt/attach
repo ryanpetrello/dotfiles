@@ -13,7 +13,7 @@ then
     clipboard=`pbpaste`
     if [[ $clipboard == http* ]]
     then
-        curl -L "$clipboard" -o $tempfile
+        curl -L $(printf '%q' $clipboard) -o $tempfile
         mimetype=$(file --mime-type -b $tempfile)
         suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('ksh', 'txt')")
         mv $tempfile "$tempfile$suffix"
