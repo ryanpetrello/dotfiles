@@ -13,9 +13,11 @@ then
     clipboard=`pbpaste`
     if [[ $clipboard == http* ]]
     then
-        suffix=`echo "$clipboard" | awk -F . '{print $NF}'`
-        tempfile="$tempfile.$suffix"
-        curl "$clipboard" -o $tempfile
+        curl -L "$clipboard" -o $tempfile
+        mimetype=$(file --mime-type -b $tempfile)
+        suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('ksh', 'txt')")
+        mv $tempfile "$tempfile$suffix"
+        tempfile="$tempfile$suffix"
     else
         suffix="png"
         tempfile="$tempfile.$suffix"
