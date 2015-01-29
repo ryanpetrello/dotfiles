@@ -1,0 +1,28 @@
+#!/bin/bash
+set -f
+rm -f ~/.mail/temporary/attached
+
+exec < /dev/tty 3>&1 > /dev/tty
+
+printf %s "push <attach-file>" >&3
+
+read -p "Attach from clipboard? (y/n)" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+
+    if [[ $(pbpaste) == http* ]]
+    then
+        curl "$(pbpaste)" -o ~/.mail/temporary/attached
+    else
+        pbpaste > ~/.mail/temporary/attached
+    fi
+osascript <<'END'
+tell application "Mutt"
+    activate
+    tell application "System Events"
+        keystroke "~/.mail/temporary/attached"
+        keystroke return
+    end tell
+end tell
+END
+fi
