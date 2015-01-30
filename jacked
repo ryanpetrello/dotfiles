@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Disable airport when ethernet is active (and vice-versa)
+# Adapted from http://www.heatxsink.com/entry/turn-off-airport-when-ethernet-is-plugged-in-on-osx
+ETHERNET_INTERFACE="en0"
+AIRPORT_INTERFACE="en1"
+DETECT_INET=`ifconfig $ETHERNET_INTERFACE | grep inet6`
+AIRPORT_ON=`/usr/sbin/networksetup -getairportpower $AIRPORT_INTERFACE | grep On`
+
+if [ "$DETECT_INET" ] ; then
+    if [ "$AIRPORT_ON" ] ; then
+        /usr/sbin/networksetup -setairportpower $AIRPORT_INTERFACE off
+        osascript -e 'display notification "Wired ethernet detected, turning off Airport." with title "Airport Disabled"'
+    fi
+else
+    if [ !"$AIRPORT_ON" ] ; then
+        /usr/sbin/networksetup -setairportpower $AIRPORT_INTERFACE on
+        osascript -e 'display notification "No wired ethernet, turning on Airport." with title "Airport Enabled"'
+    fi
+fi
+
+# `cat org.ryan.jacked.plist`
+#
+#<?xml version="1.0" encoding="UTF-8"?>
+#<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+#<plist version="1.0">
+#    <dict>
+#        <key>Label</key>
+#        <string>org.ryan.jacked</string>
+#        <key>ProgramArguments</key>
+#        <array>
+#        <string>/Users/ryan/jacked</string>
+#        </array>
+#        <key>StandardOutPath</key>
+#        <string>/var/log/jacked.log</string>
+#        <key>StandardErrorPath</key>
+#        <string>/var/log/jacked.log</string>
+#        <key>Debug</key>
+#        <true/>
+#        <key>WatchPaths</key>
+#        <array>
+#        <string>/Library/Preferences/SystemConfiguration</string>
+#        </array>
+#    </dict>
+#</plist>

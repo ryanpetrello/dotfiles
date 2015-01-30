@@ -19,6 +19,7 @@
 !/.zsh*
 !/.bashrc
 !/com.googlecode.iterm2.plist
+!/jacked
 !/mount-afp-shares.scpt
 !/ssh.py
 .viminfo
