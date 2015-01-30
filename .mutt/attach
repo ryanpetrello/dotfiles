@@ -5,6 +5,11 @@ exec < /dev/tty 3>&1 > /dev/tty
 
 printf %s "push <attach-file>" >&3
 
+_fill () {
+    printf $1 >&3
+    printf %s "<enter>" >&3
+}
+
 read -p "Attempt to attach from the clipboard? (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -15,17 +20,22 @@ then
     if [[ $clipboard == http* ]]
     then
         curl -L $(printf '%q' $clipboard) -o $tempfile
-        mimetype=$(file --mime-type -b $tempfile)
-        suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('.ksh', '.txt')")
-        mv $tempfile "$tempfile$suffix"
-        tempfile="$tempfile$suffix"
     else
-        suffix="png"
-        tempfile="$tempfile.$suffix"
-        pngpaste "$tempfile" || tempfile="(empty)"
+        clipboard="`osascript -e 'POSIX path of (the clipboard as «class furl»)'`"
+        if [[ $? != 0 ]]
+        then
+            tempfile="$tempfile.png"
+            (pngpaste "$tempfile" && _fill $tempfile) || _fill "(empty)"
+            exit 0
+        fi
+        cp "$clipboard" $tempfile
     fi
 
-    printf %s $tempfile >&3
-    printf %s "<enter>" >&3
+    mimetype=$(file --mime-type -b "$tempfile")
+    suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('.ksh', '.txt')")
+    mv $tempfile "$tempfile$suffix"
+    tempfile="$tempfile$suffix"
+
+    _fill $tempfile
 fi
 printf "\ec"  # don't trash the screen with download history
