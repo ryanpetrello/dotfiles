@@ -6,6 +6,7 @@ exec < /dev/tty 3>&1 > /dev/tty
 printf %s "push <attach-file>" >&3
 
 read -p "Attempt to attach from the clipboard? (y/n)" -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
@@ -15,15 +16,16 @@ then
     then
         curl -L $(printf '%q' $clipboard) -o $tempfile
         mimetype=$(file --mime-type -b $tempfile)
-        suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('ksh', 'txt')")
+        suffix=$(python -c "import mimetypes; print mimetypes.guess_extension('$mimetype').replace('.ksh', '.txt')")
         mv $tempfile "$tempfile$suffix"
         tempfile="$tempfile$suffix"
     else
         suffix="png"
         tempfile="$tempfile.$suffix"
-        pngpaste "$tempfile" || tempfile="empty"
+        pngpaste "$tempfile" || tempfile="(empty)"
     fi
 
     printf %s $tempfile >&3
     printf %s "<enter>" >&3
 fi
+printf "\ec"  # don't trash the screen with download history
