@@ -13,7 +13,7 @@ if [ "$DETECT_INET" ] ; then
         osascript -e 'display notification "Wired ethernet detected, turning off Airport." with title "Airport Disabled"'
     fi
 else
-    if [ !"$AIRPORT_ON" ] ; then
+    if ! [ "$AIRPORT_ON" ] ; then
         /usr/sbin/networksetup -setairportpower $AIRPORT_INTERFACE on
         osascript -e 'display notification "No wired ethernet, turning on Airport." with title "Airport Enabled"'
     fi
