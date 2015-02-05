@@ -21,7 +21,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias t="tmux"
-alias ssh="~/ssh"
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 alias mutt='cd ~/Desktop && mutt'
