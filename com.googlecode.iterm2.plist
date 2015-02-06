@@ -688,6 +688,13 @@
 			<key>Text</key>
 			<string>0xc</string>
 		</dict>
+		<key>0x6e-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>25</integer>
+			<key>Text</key>
+			<string>Open Autocomplete...</string>
+		</dict>
 		<key>0x74-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -879,11 +886,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>270 110 924 485 0 0 1280 778 </string>
+	<string>347 260 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 16 1276 762 0 0 1280 778 </string>
+	<string>2 89 1276 682 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>113 276 970 426 0 0 1200 1898 </string>
+	<string>152 117 970 426 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2355,8 +2362,6 @@
 			<string>/Users/ryan</string>
 		</dict>
 	</array>
-	<key>NoSyncNeverRemindPrefsChangesCopy</key>
-	<true/>
 	<key>NotFirstRun</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -2425,7 +2430,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-09-08T23:18:24Z</date>
+	<date>2015-02-06T20:07:46Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3296,6 +3301,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.0</string>
+	<string>2.0.0.20141103</string>
 </dict>
 </plist>
