@@ -12,6 +12,7 @@
 !/.itermcolors
 !/.mutt*
 !/.offlineimaprc
+!/.pip*
 !/.notmuch-config
 !/.tmux.conf
 !/tmux-mail-count
