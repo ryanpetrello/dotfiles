@@ -263,8 +263,9 @@ endfunction
 nmap <Leader>p <Esc>:CtrlP<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
 let g:ctrlp_working_path_mode = 2
+let g:ctrlp_root_markers = ['README.tmpenv']  " treat temporary virtualenvs like searchable projects
 let g:ctrlp_open_multi = '1h'
-let g:ctrlp_custom_ignore = 'env\|.tox'
+let g:ctrlp_custom_ignore = '.tox'
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':     ['<down>'],
     \ 'PrtSelectMove("k")':     ['<up>'],
