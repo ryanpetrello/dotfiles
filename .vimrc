@@ -246,6 +246,19 @@ endfun
 command! Reload :so $MYVIMRC
 nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
 
+" Map ,s to split all open buffer windows.  Can be used to toggle horizontal/vertical
+nmap <Leader>s <Esc>:call ToggleBuff()<CR>
+let g:vertical_buff = 1
+function! ToggleBuff()
+    if( g:vertical_buff == 0 )
+        exec ":sun"
+        let g:vertical_buff = 1
+    else
+        exec ":vertical sun"
+        let g:vertical_buff = 0
+    endif
+endfunction
+
 " Ctrl-p fuzzy search and preferences
 nmap <Leader>p <Esc>:CtrlP<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
