@@ -91,6 +91,10 @@ export CLICOLOR=1
 export LSCOLORS=DxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
+function jgrep() {
+    NEEDLE=`echo $@ | sed "s/ /\|/g"`
+    cat | egrep -oh "\"($NEEDLE)\":\s?\"[^\"]*\"" | egrep --color $NEEDLE
+}
 
 fg_lblue=%{$'\e[0;34m'%}
 fg_lgreen=%{$'\e[1;32m'%}
