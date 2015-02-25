@@ -75,10 +75,8 @@ def main(dest_box, is_gmail):
             print('File %s does not exist' % f)
 
     for sha in data:
-        if is_gmail and len(data[sha]) > 1:
-            messages.append(pick_all_mail(data[sha]))
-        else:
-            messages.append(data[sha][0])
+        for filename in data[sha]:
+            messages.append(filename)
 
     for m in messages:
         if not m:
