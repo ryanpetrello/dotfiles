@@ -5,6 +5,7 @@
 
 MESSAGE=`python -c "
 import email
+import hashlib
 import os
 import sys
 
@@ -13,7 +14,11 @@ if not os.path.isfile('$1'):
 with open('$1') as mail_file:
     msg = email.message_from_file(mail_file)
     name, address = email.utils.parseaddr(msg['From'])
-    print '\n'.join([name, msg['Subject']])
+    url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
+    print '\n'.join([name, msg['Subject'], url])
 "` || exit 1
 
-terminal-notifier -message "$MESSAGE" -title "Mutt - New Message"
+PHOTO=`echo "$MESSAGE" | tail -n1`
+MESSAGE=`echo "$MESSAGE" | head -n2`
+
+terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO"
