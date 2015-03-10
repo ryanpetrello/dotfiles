@@ -18,7 +18,9 @@ with open('$1') as mail_file:
     print '\n'.join([name, msg['Subject'], url])
 "` || exit 1
 
+FOLDER=$(echo $(dirname $(dirname $1)) | sed "s/.mail\//=/")
+
 PHOTO=`echo "$MESSAGE" | tail -n1`
 MESSAGE=`echo "$MESSAGE" | head -n2`
 
-terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO"
+terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO" -execute "osascript /Users/ryan/.mutt/open \"$FOLDER\" \"$1\""
