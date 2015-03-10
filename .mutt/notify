@@ -1,0 +1,19 @@
+#! /bin/sh
+
+# pip install watchdog
+# brew install terminal-notifier
+
+MESSAGE=`python -c "
+import email
+import os
+import sys
+
+if not os.path.isfile('$1'):
+    sys.exit(1)
+with open('$1') as mail_file:
+    msg = email.message_from_file(mail_file)
+    name, address = email.utils.parseaddr(msg['From'])
+    print '\n'.join([name, msg['Subject']])
+"` || exit 1
+
+terminal-notifier -message "$MESSAGE" -title "Mutt - New Message"

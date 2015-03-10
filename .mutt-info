@@ -11,6 +11,8 @@ $ brew install msmtp
 $ brew install urlview
 $ brew install elinks
 $ brew install pngpaste
+$ brew install terminal-notifier
+$ sudo pip install watchdog
 $ mv .mutt/org.ryan.mail.ryan.plist ~/Library/LaunchAgents/
 $ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist
 $ mv .mutt/homebrew.mxcl.offline-imap.plist ~/Library/LaunchAgents/

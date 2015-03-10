@@ -23,7 +23,10 @@ alias .....="cd ../../../.."
 alias t="tmux"
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
-alias mutt='cd ~/Desktop && mutt'
+function mutt() {
+    watchmedo shell-command --ignore-directories --recursive --command='~/.mutt/notify "${watch_src_path}"' $HOME/.mail/*/INBOX/new &
+    cd ~/Desktop && /usr/local/bin/mutt
+}
 
 # CLI for 1Password.  Requires the `1pass` Python package
 function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
