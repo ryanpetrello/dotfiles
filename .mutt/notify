@@ -42,15 +42,18 @@ with open('$1') as mail_file:
     uuid = msg['Message-id']
     name, address = email.utils.parseaddr(msg['From'])
     name = urllib.unquote(name)
-    if 'X-GitHub-Sender' in msg:
-        resp = urllib.urlopen('https://api.github.com/users/%s' % msg['X-GitHub-Sender'])
-        url = json.loads(resp.read())['avatar_url']
-    else:
-        url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
+    subject = msg['Subject']
+    url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
     print '\n'.join(
-        map(lambda x: shellquote(x), [title, name, msg['Subject']])
+        map(lambda x: shellquote(x), [title, '%s - %s' % (name, address), subject])
     )
-    print re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
+
+    if 'X-Gerrit-ChangeURL' in msg:
+        print 'URLOPEN:'+re.sub('[<>]', '', msg['X-Gerrit-ChangeURL'])
+    elif re.search('<[^@]+@github.com>', uuid):
+        print 'URLOPEN:http://github.com/'+re.search('<([^@]+)@github.com>', uuid).group(1)
+    else:
+        print re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
     print url
 "` || exit 1
 
@@ -62,4 +65,10 @@ UUID=`echo "$MESSAGE" | tail -n2 | head -n1`
 PHOTO=`echo "$MESSAGE" | tail -n1`
 MESSAGE=`echo "$MESSAGE" | tail -n+3 | head -n1`
 
-terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""
+if [[ $UUID == URLOPEN* ]];
+then
+    UUID=`echo "$UUID" | cut -d":" -f2-`
+    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "open -a Safari $(printf '%q' $UUID)"
+else
+    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""
+fi
