@@ -19,7 +19,7 @@ with open('$1') as mail_file:
     print '\n'.join([name, msg['Subject'], uuid, url])
 "` || exit 1
 
-FOLDER=$(echo $(dirname $(dirname $1)) | sed "s/.mail\//=/")
+FOLDER=$(echo $(dirname $(dirname $1)) | sed "s/.*.mail\//=/")
 
 UUID=`echo "$MESSAGE" | tail -n2 | head -n1`
 PHOTO=`echo "$MESSAGE" | tail -n1`
