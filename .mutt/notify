@@ -4,25 +4,62 @@
 # brew install terminal-notifier
 
 MESSAGE=`python -c "
+import base64
 import email
 import hashlib
+import json
 import os
+import re
 import sys
+import urllib
+
+def shellquote(s):
+    utf8_prefix = '=?utf-8?B?'
+    utf8_suffix = '?='
+
+    if s.startswith(utf8_prefix):
+        return base64.b64decode(s[len(utf8_prefix):len(s)-len(utf8_suffix)])
+
+    s = s.replace('[openstack-dev] ', '')
+    s = re.sub(
+        r'\[([^\]]*)\]',
+        lambda m: m.group(1).capitalize() + ' - ',
+        s
+    )
+    return re.sub(
+        r'\\\\\([:@,\-\s\.])',
+        r'\1',
+        re.escape(s)
+    )
 
 if not os.path.isfile('$1'):
     sys.exit(1)
 with open('$1') as mail_file:
     msg = email.message_from_file(mail_file)
+    title = 'Mutt'
+    if msg.get('Delivered-To'):
+        title += ' - %s' % msg['Delivered-To']
     uuid = msg['Message-id']
     name, address = email.utils.parseaddr(msg['From'])
-    url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
-    print '\n'.join([name, msg['Subject'], uuid, url])
+    name = urllib.unquote(name)
+    if 'X-GitHub-Sender' in msg:
+        resp = urllib.urlopen('https://api.github.com/users/%s' % msg['X-GitHub-Sender'])
+        url = json.loads(resp.read())['avatar_url']
+    else:
+        url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
+    print '\n'.join(
+        map(lambda x: shellquote(x), [title, name, msg['Subject']])
+    )
+    print re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
+    print url
 "` || exit 1
 
 FOLDER=$(echo $(dirname $(dirname $1)) | sed "s/.*.mail\//=/")
 
+TITLE=`echo "$MESSAGE" | head -n1`
+SUBTITLE=`echo "$MESSAGE" | tail -n+2 | head -n1`
 UUID=`echo "$MESSAGE" | tail -n2 | head -n1`
 PHOTO=`echo "$MESSAGE" | tail -n1`
-MESSAGE=`echo "$MESSAGE" | head -n2`
+MESSAGE=`echo "$MESSAGE" | tail -n+3 | head -n1`
 
-terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""
+terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""
