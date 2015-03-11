@@ -27,7 +27,7 @@ def shellquote(s):
         s
     )
     return re.sub(
-        r'\\\\\([:@,\-\'\;\s\.\)\(])',
+        r'\\\\\([:@,\-\'\;\s\.\)\(\\\`])',
         r'\1',
         re.escape(s)
     )
@@ -51,7 +51,9 @@ with open('$1') as mail_file:
     if 'X-Gerrit-ChangeURL' in msg:
         print 'URLOPEN:'+re.sub('[<>]', '', msg['X-Gerrit-ChangeURL'])
     elif re.search('<[^@]+@github.com>', uuid):
-        print 'URLOPEN:http://github.com/'+re.search('<([^@]+)@github.com>', uuid).group(1)
+        pull = re.search('<([^@]+)@github.com>', uuid).group(1)
+        pull = ''.join(re.split('(pull/[0-9]+)', pull)[:2])
+        print 'URLOPEN:http://github.com/'+pull
     else:
         print re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
     print url
