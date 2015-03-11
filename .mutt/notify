@@ -27,7 +27,7 @@ def shellquote(s):
         s
     )
     return re.sub(
-        r'\\\\\([:@,\-\'\;\s\.\)\(\\\`])',
+        r'\\\\\([:@,\-\'\!\;\s\.\)\(\\\`])',
         r'\1',
         re.escape(s)
     )
@@ -42,6 +42,10 @@ with open('$1') as mail_file:
     uuid = msg['Message-id']
     name, address = email.utils.parseaddr(msg['From'])
     name = urllib.unquote(name)
+    if name:
+        sender = '%s - %s' % (name, address)
+    else:
+        sender = address
     subject = msg['Subject']
     if 'X-GitHub-Sender' in msg:
         resp = urllib.urlopen('https://api.github.com/users/%s' % re.escape(msg['X-GitHub-Sender']))
@@ -49,7 +53,7 @@ with open('$1') as mail_file:
     else:
         url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
     print '\n'.join(
-        map(lambda x: shellquote(x), [title, '%s - %s' % (name, address), subject])
+        map(lambda x: shellquote(x), [title, sender, subject])
     )
 
     if 'X-Gerrit-ChangeURL' in msg:
