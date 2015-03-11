@@ -9,6 +9,7 @@
     ci = commit
     st = status
     info = remote show origin
+    pup = !sh -c 'git pull && git submodule init && git submodule update && git submodule status'
     undo = reset --soft HEAD~1
     save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
     pullall = !bash -c 'git pull && git submodule foreach git pull -q origin master'
