@@ -43,7 +43,11 @@ with open('$1') as mail_file:
     name, address = email.utils.parseaddr(msg['From'])
     name = urllib.unquote(name)
     subject = msg['Subject']
-    url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
+    if 'X-GitHub-Sender' in msg:
+        resp = urllib.urlopen('https://api.github.com/users/%s' % re.escape(msg['X-GitHub-Sender']))
+        url = json.loads(resp.read())['avatar_url']
+    else:
+        url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
     print '\n'.join(
         map(lambda x: shellquote(x), [title, '%s - %s' % (name, address), subject])
     )
