@@ -18,6 +18,7 @@ $ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist
 $ mv .mutt/homebrew.mxcl.offline-imap.plist ~/Library/LaunchAgents/
 $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.offline-imap.plist
 $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.offline-imap.plist
+$ cp ".mutt/New Mail.aiff" ~/Library/Sounds/
 
 $ cd ~/.mutt/osx-mail-handler/ && python setup.py py2app
 $ mv dist/mutt-system-handler.app /Applications

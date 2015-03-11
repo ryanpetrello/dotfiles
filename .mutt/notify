@@ -68,7 +68,7 @@ MESSAGE=`echo "$MESSAGE" | tail -n+3 | head -n1`
 if [[ $UUID == URLOPEN* ]];
 then
     UUID=`echo "$UUID" | cut -d":" -f2-`
-    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "open -a Safari $(printf '%q' $UUID)"
+    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "open -a Safari $(printf '%q' $UUID)" -sound "New Mail"
 else
-    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""
+    terminal-notifier -message "$MESSAGE" -title "$TITLE" -subtitle "$SUBTITLE" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\"" -sound "New Mail"
 fi
