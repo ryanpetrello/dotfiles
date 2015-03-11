@@ -11,8 +11,6 @@
     info = remote show origin
     pup = !sh -c 'git pull && git submodule init && git submodule update && git submodule status'
     undo = reset --soft HEAD~1
-    save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
-    pullall = !bash -c 'git pull && git submodule foreach git pull -q origin master'
     graph = log --graph --decorate
     churn = "!f() { git log --all -M -C --name-only --format='format:' -- \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 [color]
