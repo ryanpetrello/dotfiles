@@ -13,14 +13,16 @@ if not os.path.isfile('$1'):
     sys.exit(1)
 with open('$1') as mail_file:
     msg = email.message_from_file(mail_file)
+    uuid = msg['Message-id']
     name, address = email.utils.parseaddr(msg['From'])
     url = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
-    print '\n'.join([name, msg['Subject'], url])
+    print '\n'.join([name, msg['Subject'], uuid, url])
 "` || exit 1
 
 FOLDER=$(echo $(dirname $(dirname $1)) | sed "s/.mail\//=/")
 
+UUID=`echo "$MESSAGE" | tail -n2 | head -n1`
 PHOTO=`echo "$MESSAGE" | tail -n1`
 MESSAGE=`echo "$MESSAGE" | head -n2`
 
-terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO" -execute "osascript /Users/ryan/.mutt/open \"$FOLDER\" \"$1\""
+terminal-notifier -message "$MESSAGE" -title "Mutt - New Message" -appIcon "$PHOTO" -execute "/Users/ryan/.mutt/open \"$FOLDER\" \"$UUID\""

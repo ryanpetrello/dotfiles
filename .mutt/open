@@ -1,27 +1,8 @@
-on run argv
-    tell application "Mutt"
-        activate
-        tell application "System Events"
-            keystroke "c" using control down
-            delay 0.1
-            keystroke "n"
-            delay 0.1
-            set the clipboard to (item 1 of argv as string)
-            keystroke "c"
-            delay 0.1
-            keystroke "v" using {command down}
-            delay 0.1
-            keystroke return
-            delay 1
-            keystroke "l"
-            delay 0.1
-            keystroke "~i "
-            delay 0.1
-            set the clipboard to (item 2 of argv as string)
-            keystroke "v" using {command down}
-            keystroke return
-            delay 0.1
-            keystroke "oU"
-        end tell
-    end tell
-end run
+#!/bin/sh
+
+osascript -e 'tell application "Mutt"
+activate
+end tell'
+pgrep mutt || (/usr/local/bin/tmux send-keys -t mutt "mutt -e 'push c$1<enter>l~i$2<enter>oU'" Enter && exit 0)
+/usr/local/bin/tmux send-keys -t mutt C-c
+/usr/local/bin/tmux send-keys -t mutt "n:push c$1<enter>l~i$2<enter>oU" Enter
