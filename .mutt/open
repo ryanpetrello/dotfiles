@@ -3,6 +3,6 @@
 osascript -e 'tell application "Mutt"
 activate
 end tell'
-pgrep mutt || (/usr/local/bin/tmux send-keys -t mutt "mutt -e 'push c$1<enter>l~i$2<enter>oU'" Enter && exit 0)
+pgrep -f /usr/local/bin/mutt || (/usr/local/bin/tmux send-keys -t mutt "mutt -e 'push c$1<enter>l~i$2<enter>oU'" Enter && exit 0)
 /usr/local/bin/tmux send-keys -t mutt C-c
 /usr/local/bin/tmux send-keys -t mutt "n:push c$1<enter>l~i$2<enter>oU<refresh>" Enter
