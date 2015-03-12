@@ -68,7 +68,6 @@ with open(filename) as mail_file:
         )
 
     if 'X-Gerrit-ChangeURL' in msg:
-        uuid = 'URLOPEN:'+re.sub('[<>]', '', msg['X-Gerrit-ChangeURL'])
         event = 'open -a Safari \"%s\"' % cgi.escape(
             re.sub('[<>]', '', msg['X-Gerrit-ChangeURL'])
         )
