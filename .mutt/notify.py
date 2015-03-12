@@ -3,18 +3,17 @@
 # pip install watchdog
 # brew install terminal-notifier
 
-import base64
 import cgi
 import email
 import email.header
 import hashlib
 import json
 import os
-import pipes
 import re
 import sys
 import subprocess
 import urllib
+
 
 def decode(s):
 
@@ -57,10 +56,16 @@ with open(filename) as mail_file:
         sender = address
 
     if 'X-GitHub-Sender' in msg:
-        resp = urllib.urlopen('https://api.github.com/users/%s' % re.escape(msg['X-GitHub-Sender']))
+        resp = urllib.urlopen(
+            'https://api.github.com/users/%s' % re.escape(
+                msg['X-GitHub-Sender']
+            )
+        )
         avatar = json.loads(resp.read())['avatar_url']
     else:
-        avatar = 'http://www.gravatar.com/avatar/%s?d=mm' % hashlib.md5(address).hexdigest()
+        avatar = 'http://www.gravatar.com/avatar/%s?d=mm' % (
+            hashlib.md5(address).hexdigest()
+        )
 
     if 'X-Gerrit-ChangeURL' in msg:
         uuid = 'URLOPEN:'+re.sub('[<>]', '', msg['X-Gerrit-ChangeURL'])
