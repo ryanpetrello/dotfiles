@@ -30,10 +30,11 @@ def decode(s):
                 unicode(t[0], t[1] or 'ASCII')
                 for t in email.header.decode_header(m.group(1))
             ]),
-            s
+            s,
+            flags=re.I
         )
-    s = s.replace('[openstack-dev] ', '').replace(']', '').replace('[', '')
-    return s
+    s = s.replace('[openstack-dev] ', '')
+    return re.sub('\[', '\\\[', s, 1)
 
 filename = sys.argv[1]
 if not os.path.isfile(filename):
