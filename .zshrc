@@ -24,7 +24,7 @@ alias t="tmux"
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
-    pgrep -f 'watchmedo.*INBOX' || watchmedo shell-command --ignore-directories --recursive --command='~/.mutt/notify "${watch_src_path}"' $HOME/.mail/*/INBOX/new $HOME/.mail/*/pecan/new $HOME/.mail/*/openstack-dev/new &
+    pgrep -f 'watchmedo.*INBOX' || watchmedo shell-command --ignore-directories --recursive --command='~/.mutt/notify.py "${watch_src_path}"' $HOME/.mail/*/INBOX/new $HOME/.mail/*/pecan/new $HOME/.mail/*/openstack-dev/new &
     cd ~/Desktop && /usr/local/bin/mutt "$@"
 }
 
