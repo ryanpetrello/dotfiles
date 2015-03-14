@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Pipe a message from mutt into this and it will look for it
+# via notmuch and write out the filename
+#
+# It's a nasty hack really - mutt should have a <display-filename>
+# function which works in maildir and mh folders.  It does have one
+# in the file browser though.
+
+cat | grep -i 'Message-Id:' | ack -i "Message-Id: ?<([^>]+)>" --output 'id:$1' > /Users/ryan/.mail/temporary/cur-message

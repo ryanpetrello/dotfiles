@@ -20,7 +20,6 @@ unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
 unset mark_old           # read/new is good enough for me
 unset beep_new           # no bell on new mails
-set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 unset recall             # don't ask to recall messages on compose
 
@@ -113,6 +112,10 @@ macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to s
 
 # Open emails with o
 macro index o "<display-message>" "open emails with o"
+
+# View attachments with v
+macro index v "<tag-prefix><pipe-message>~/.mutt/cache-current-filename<enter><tag-prefix><view-attachments>" "view attachments with v"
+macro pager v "<pipe-message>~/.mutt/cache-current-filename<enter><view-attachments>" "view attachments with v"
 
 macro index a "<limit>all\n" "show all messages (undo limit)"
 

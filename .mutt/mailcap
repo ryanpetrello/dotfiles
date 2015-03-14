@@ -2,7 +2,7 @@
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
 
 # HTML mail
-text/html; ~/.mutt/view_attachment.sh %s "-" ; nametemplate=%s.html
+text/html; ~/.mutt/view_html.py %s "-"
 
 # QuickLook in OSX
 image/*                  ; /usr/bin/qlmanage -p 2>/dev/null %s
