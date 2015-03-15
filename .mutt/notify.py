@@ -78,7 +78,7 @@ with open(filename) as mail_file:
         event = 'open -a Safari \"%s\"' % cgi.escape('http://github.com/'+pull)
     else:
         uuid = re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
-        event = '/Users/ryan/.mutt/open \"%s\" \"%s\"' % (folder, uuid)
+        event = '/Users/ryan/.mutt/open-message-from-notification \"%s\" \"%s\"' % (folder, uuid)
 
     args = map(decode, [
         'terminal-notifier', '-message', subject, '-title', title,
