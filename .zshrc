@@ -51,6 +51,64 @@ function gh() {
     fi
 }
 
+function weather(){
+    ZIP=${1:-$WUNDERGROUND_LOCATION}
+    NORMAL=`echo -e '\033[0m'`
+    echo
+    CITY=`curl -s "http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml?query=${ZIP}" \
+        | perl -ne '/<city>([^<]+)/&&print $1,"\n"' \
+        | head -n1`
+    curl -s "http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml?query=${ZIP}" \
+        | perl -ne '/<temp_f>([^<]+)/&&print $1,"°F\n";/<weather>([^<]+)/&&print ucfirst $1,", "' \
+        | sed -e "s/$/ ($CITY, $ZIP)/"
+    echo '---'
+    curl -s "http://api.wunderground.com/api/${WUNDERGROUND_API_KEY}/forecast10day/q/${ZIP}.json" \
+        | jgrep fcttext title \
+        | paste -d" " - - \
+        | perl -ne '/"title":"([^"]+)/&&printf "%s: ",$1;/"fcttext":"([^"]+)/&&print $1,"\n"' \
+        | sed "s/ percent/%/" \
+        | sed "s/Today. /`date +%A`: /" \
+        | sed "s/Tonight. /   /" \
+        | perl -pe 's/\. Highs?/\. ⬆/gi' \
+        | perl -pe 's/\. Lows?/\. ⬇/gi' \
+        | perl -pe 's/sun(\s|\.)/🌕 \1 /gi' \
+        | perl -pe 's/sunny|sunshine/🌕 /gi' \
+        | perl -pe 's/snowy?/❄/gi' \
+        | perl -pe 's/cloud(y|s|iness)\.?/☁ /gi' \
+        | perl -pe 's/rain/💧 /gi' \
+        | perl -pe 's/a shower/💧 /gi' \
+        | perl -pe 's/(A )?clear( sky)?\.?/🌘 /gi' \
+        | perl -pe 's/((M)onday|(T)uesday|(W)ednesday|(Th)ursday|(F)riday|(S)aturday|(Su)nday)/\2\3\4\5\6\7\8/' \
+        | sed "s/^.* Night./   /" \
+        | perl -pe 's/^((M|T|W|F|S):)/\1 /' \
+        | perl -MHTML::Entities -pe 'decode_entities($_)' \
+        | sed "s/\&deg;/°/g" \
+        | head -n14 \
+        | cut -d'.' -f-2 \
+        | sed -e 's/[[:space:]]*$//' \
+        | sed "s/\.$//g" \
+        | sed "s/$/\./g" \
+        | while IFS= read line;
+            do echo -e "\e[1;37;100m$line";
+            IFS= read line;
+            echo -e "\e[1;37;100m$line";
+            IFS= read line;
+            if [ ! -z "$line" ]; then
+                echo "$NORMAL"
+                echo -e "\e[1;37;40m$line";
+            fi
+            IFS= read line;
+            if [ ! -z "$line" ]; then
+                echo -e "\e[1;37;40m$line";
+                echo
+            fi
+        done \
+        | while IFS= read line;
+            do printf "%-`tput cols`s\n" "$line"; done
+    ;
+    echo
+}
+
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
 
