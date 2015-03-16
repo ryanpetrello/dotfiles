@@ -82,7 +82,7 @@ with open(filename) as mail_file:
 
     args = map(decode, [
         'terminal-notifier', '-message', subject, '-title', title,
-        '-subtitle', sender, '-appIcon', avatar,
+        '-subtitle', sender, '-contentImage', avatar,
         '-sender', 'com.apple.Terminal'
     ]) + ['-execute', event]
     subprocess.check_call(args)
