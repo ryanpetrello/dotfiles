@@ -19,6 +19,7 @@ set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
 unset mark_old           # read/new is good enough for me
+unset beep
 unset beep_new           # no bell on new mails
 set thorough_search      # strip headers and eval mimes before searching
 unset recall             # don't ask to recall messages on compose
@@ -59,6 +60,7 @@ mailboxes +---ryan--------------------- \
           +---dreamhost------------------- \
           +dreamhost.com/INBOX \
           +dreamhost.com/pecan \
+          +dreamhost.com/akanda \
           +dreamhost.com/openstack-dev \
           +dreamhost.com/ndn-commit \
           +dreamhost.com/starred \
