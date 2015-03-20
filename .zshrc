@@ -1,5 +1,6 @@
 PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
+export PYTHONPATH=$PYTHONPATH:$HOME/site
 
 # zsh vim mode
 set -o vi

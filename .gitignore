@@ -1,6 +1,7 @@
 /*
 !/.inputrc
 !/.ipython*
+!/site*
 !/.vim*
 !/.gvim*
 !/.gitconfig
@@ -19,6 +20,7 @@
 !/.vim/*
 !/.zsh*
 !/.bashrc
+!/wunderground.py
 !/com.googlecode.iterm2.plist
 !/jacked
 !/mount-afp-shares.scpt
