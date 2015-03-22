@@ -1,0 +1,65 @@
+def __console__():
+    import code
+    import contextlib
+    import sys
+    from cStringIO import StringIO
+
+    from pygments import highlight
+    from pygments.lexers import PythonLexer, PythonTracebackLexer
+    from pygments.formatters import Terminal256Formatter
+
+    @contextlib.contextmanager
+    def __stdout__():
+        old = sys.stdout
+        stdout = StringIO()
+        sys.stdout = stdout
+        yield stdout
+        sys.stdout = old
+
+    class EnhancedConsole(code.InteractiveConsole, object):
+
+        def _colorize(self, str):
+            lexer = PythonLexer()
+            if str.startswith('Traceback'):
+                lexer = PythonTracebackLexer()
+            return highlight(str, lexer, Terminal256Formatter(style='friendly'))
+
+        def runcode(self, code):
+            with __stdout__() as s:
+                retval = super(EnhancedConsole, self).runcode(code)
+                buff = s.getvalue()
+                if buff:
+                    self.write(buff)
+                return retval
+
+        def write(self, str):
+            return super(EnhancedConsole, self).write(self._colorize(str))
+
+        def raw_input(self, prompt):
+            line = raw_input(prompt)
+            if line.endswith('?'):
+                line = 'dir(%s)' % line.strip('?') if line.strip('?') else 'dir()'
+            if 'import' in line:
+                line += '; %s' % line.split(' ').pop()
+            return line
+
+        def interact(self, banner):
+            super(EnhancedConsole, self).interact(banner)
+            sys.exit()
+
+    import os
+
+    try:
+      import readline
+    except ImportError:
+      print("Module readline not available.")
+    else:
+      import rlcompleter
+      if 'libedit' in readline.__doc__:
+          readline.parse_and_bind("bind ^I rl_complete")
+      else:
+          readline.parse_and_bind("tab: complete")
+
+    return EnhancedConsole
+
+__console__()(globals()).interact(banner='')

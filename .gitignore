@@ -1,6 +1,7 @@
 /*
 !/.inputrc
-!/.ipython*
+!/.pythonrc
+!/.pdbrc
 !/site*
 !/.vim*
 !/.gvim*

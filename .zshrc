@@ -1,6 +1,7 @@
 PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
 export PYTHONPATH=$PYTHONPATH:$HOME/site
+export PYTHONSTARTUP=$HOME/.pythonrc
 
 # zsh vim mode
 set -o vi
@@ -69,11 +70,6 @@ VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     source $VIRTUALENVWRAPPER
 fi
-
-# use iPython if possible
-function python () {
-    test -z "$1" && ipython || command python "$@"
-}
 
 # history
 HISTFILE=$HOME/.zsh_history
