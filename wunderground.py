@@ -35,8 +35,10 @@ def _emojify(txt):
         (r'sun(\s|\.)', '🌕 '),
         (r'sunny|sunshine', '🌕 '),
         (r'cloud(y|s|iness)\.?', '☁ '),
+        (r'(a )?rain showers?', '🚿 '),
         (r'rain(fall)?', '💧 '),
-        (r'a shower', '💧 '),
+        (r'showers?', '\1🚿 '),
+        (r'thunderstorms', '💧 ⚡ '),
         (r'snow', '❄'),
         (r'a quarter of an', '1/4'),
         (r'(the|this) morning', r'\1 AM'),
@@ -61,9 +63,9 @@ def wunderground(api_key, location):
         ['city', 'temp_f', 'weather']
     )
     print "%s, %s°F (%s, %s)" % (
-        matches['weather'].pop().capitalize(),
-        matches['temp_f'].pop(),
-        matches['city'].pop(),
+        matches['weather'].pop(0).capitalize(),
+        matches['temp_f'].pop(0),
+        matches['city'].pop(0),
         location
     )
     print '---',
