@@ -22,6 +22,7 @@ try:
     import os
     import pdb
     import pprint
+    import re
     import rlcompleter
     import subprocess
     import sys
@@ -49,10 +50,32 @@ try:
                     file_cache[filepath] = source.readlines()
             value = ''.join(file_cache[filepath][:lineno-1]) + value
 
-        value = highlight(
+        formatter = Terminal256Formatter(style='friendly')
+        value = highlight(value, lexer(), formatter)
+
+        # Properly format line numbers when they show up in multi-line strings
+        strcolor, _ = formatter.style_string['Token.Literal.String']
+        intcolor, _ = formatter.style_string['Token.Literal.Number.Integer']
+        value = re.sub(
+            r'%s([0-9]+)' % re.escape(strcolor),
+            lambda match: intcolor + match.group(1) + strcolor,
             value,
-            lexer(),
-            Terminal256Formatter(style='friendly')
+        )
+
+        # Highlight the "current" line in yellow for visibility
+        lineno = im_self.curframe.f_lineno
+
+        value = re.sub(
+            '(?<!\()%s%s[^\>]+>[^\[]+\[39m([^\x1b]+)[^m]+m([^\n]+)' % (re.escape(intcolor), lineno),
+            lambda match: ''.join([
+                str(lineno),
+                ' ->',
+                '\x1b[93m',
+                match.group(1),
+                re.sub('\x1b[^m]+m', '', match.group(2)),
+                '\x1b[0m'
+            ]),
+            value
         )
 
         if filepart:
