@@ -157,7 +157,7 @@ try:
             if line == '?':
                 line = 'dir()'
             elif line.endswith('??'):
-                line = "import inspect; print ''.join(inspect.getsourcelines(%s)[0])[:25]" % line[:-2]
+                line = "import inspect; print ''.join(inspect.getsourcelines(%s)[0][:25])" % line[:-2]
             elif line.endswith('?'):
                 line = 'dir(%s)' % line[:-1]
             return cmd.Cmd.parseline(self, line)
