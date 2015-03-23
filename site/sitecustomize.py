@@ -148,6 +148,11 @@ try:
 
         def parseline(self, line):
             line = line.strip()
+            match = re.search('^([0-9]+)([a-zA-Z]+)', line)
+            if match:
+                times, command = match.group(1), match.group(2)
+                line = command
+                self.cmdqueue.extend(list(command * (int(times)-1)))
             if line == '?':
                 line = 'dir()'
             if line.endswith('?'):
