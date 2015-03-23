@@ -37,7 +37,7 @@ def _emojify(txt):
         (r'cloud(y|s|iness)\.?', '☁ '),
         (r'(a )?rain showers?', '🚿 '),
         (r'rain(fall)?', '💧 '),
-        (r'showers?', '\1🚿 '),
+        (r'(showers?|drizzle)', '🚿 '),
         (r'thunderstorms', '💧 ⚡ '),
         (r'snow', '❄'),
         (r'a quarter of an', '1/4'),
