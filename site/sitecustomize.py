@@ -23,6 +23,7 @@ try:
 
     import cmd
     import contextlib
+    import inspect
     import os
     import pdb
     import pprint
@@ -155,7 +156,9 @@ try:
                 self.cmdqueue.extend(list(command * (int(times)-1)))
             if line == '?':
                 line = 'dir()'
-            if line.endswith('?'):
+            elif line.endswith('??'):
+                line = "import inspect; print ''.join(inspect.getsourcelines(%s)[0])[:25]" % line[:-2]
+            elif line.endswith('?'):
                 line = 'dir(%s)' % line[:-1]
             return cmd.Cmd.parseline(self, line)
 
