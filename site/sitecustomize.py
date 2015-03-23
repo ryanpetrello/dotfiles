@@ -12,10 +12,14 @@ else:
 try:
     import sys
     import imp
-    sys.modules['pygments'] = imp.load_module(
-        'pygments',
-        *imp.find_module('pygments', ['/Library/Python/2.7/site-packages/'])
-    )
+
+    try:
+        sys.modules['pygments'] = imp.load_module(
+            'pygments',
+            *imp.find_module('pygments', ['/Library/Python/2.7/site-packages/'])
+        )
+    except:
+        pass
 
     import cmd
     import contextlib
@@ -28,12 +32,18 @@ try:
     import sys
     from cStringIO import StringIO
 
-    from pygments import highlight
-    from pygments.lexers import PythonLexer, PythonTracebackLexer
-    from pygments.formatters import Terminal256Formatter
-
     @contextlib.contextmanager
-    def style(im_self, filepart=None, lexer=PythonLexer):
+    def style(im_self, filepart=None, lexer=None):
+
+        try:
+            from pygments import highlight
+            from pygments.lexers import PythonLexer, PythonTracebackLexer
+            from pygments.formatters import Terminal256Formatter
+        except ImportError:
+            yield
+            return
+
+        lexex = lexer = PythonLexer
         old_stdout = im_self.stdout
         buff = StringIO()
         im_self.stdout = buff
