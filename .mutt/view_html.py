@@ -20,7 +20,7 @@ def view_html_message():
         ['notmuch', 'search', '--output=files', '%s' % msgid]
     )
     for line in fnames.splitlines():
-        if 'INBOX' in line:
+        if '/archive/' not in line:
             with open(fnames.splitlines()[0], 'rb') as data:
                 msg = email.message_from_string(data.read())
                 break

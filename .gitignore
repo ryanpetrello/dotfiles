@@ -24,7 +24,7 @@
 !/wunderground.py
 !/com.googlecode.iterm2.plist
 !/jacked
-!/mount-afp-shares.scpt
+!/mount-nas.scpt
 !/ssh.py
 .viminfo
 .zsh_history

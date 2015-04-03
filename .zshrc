@@ -92,7 +92,7 @@ function active_virtualenv() {
 
 # vim as default + launch settings
 export EDITOR='vim'
-export TERM='screen-256color'
+export TERM='xterm-256color'
 
 # colors
 export CLICOLOR=1
