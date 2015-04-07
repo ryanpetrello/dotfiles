@@ -27,7 +27,7 @@ module Timetrap
             from_current_day << e
            e_end = e.end_or_now
             self.output <<  "%1s%10s%11s -%9s%10s  %s\n" % [
-              (Timetrap::CLI.args['-v'] ? e.id : ''),
+              (Timetrap::CLI.args['-v'] ? '%s ' % e.id : ''),
               e.start.strftime(time_format),
 			  format_time(e.start),
               format_time(e.end),

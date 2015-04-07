@@ -23,6 +23,7 @@ _timetrap() {
       echo $query | timetrap b | while read sheet; do
         compadd "$@" $sheet
       done
+      compadd "$@" all
     fi
   ;;
   esac
