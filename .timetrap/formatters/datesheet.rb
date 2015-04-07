@@ -5,7 +5,7 @@ module Timetrap
       include Timetrap::Helpers
 
 	  def time_format
-			  "%Y-%m-%d"
+			  "%a, %b %e"
 	  end	  
 
       def initialize entries
@@ -45,7 +45,7 @@ module Timetrap
           total = sheets[sheet].inject(0) do |m, e|
             m += e.duration
           end
-          self.output <<  " Total%37s %s\n" % [
+          self.output <<  " Total%38s %s\n" % [
             format_total(sheets[sheet]),
             sheets.size > 1 ? '%.1f%%' % (total / grand_total.to_f * 100.0): ''
           ]
