@@ -17,6 +17,9 @@
 !/.pip*
 !/.notmuch-config
 !/.tmux.conf
+!/.timetrap.yml
+!/.timetrap*
+.timetrap.db
 !/tmux-mail-count
 !/.vim/*
 !/.zsh*
