@@ -47,7 +47,7 @@ module Timetrap
           end
           self.output <<  " Total%37s %s\n" % [
             format_total(sheets[sheet]),
-            '%.1f%%' % (total / grand_total.to_f * 100.0)
+            sheets.size > 1 ? '%.1f%%' % (total / grand_total.to_f * 100.0): ''
           ]
           self.output <<  "\n" unless sheet == sheet_names.last
         end
