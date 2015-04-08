@@ -21,19 +21,22 @@ module Timetrap
         (sheet_names = sheets.keys.sort).each do |sheet|
           id_heading = Timetrap::CLI.args['-v'] ? 'Id' : '  '
           last_start = nil
+          last_day = nil
           from_current_day = []
           sheets[sheet].each_with_index do |e, i|
             self.output << " [%s]\n" % e.sheet if i == 0
             from_current_day << e
            e_end = e.end_or_now
-            self.output <<  "%1s%10s%11s -%9s%10s  %s\n" % [
+            formatted_date = e.start.strftime(time_format)
+            self.output <<  "%1s%11s%11s -%9s%10s  %s\n" % [
               (Timetrap::CLI.args['-v'] ? '%s ' % e.id : ''),
-              e.start.strftime(time_format),
+              formatted_date == last_day ? '' : formatted_date,
 			  format_time(e.start),
               format_time(e.end),
              format_duration(e.duration),
 			  e.note
             ]
+            last_day = e.start.strftime(time_format)
 
             nxt = sheets[sheet].to_a[i+1]
             if nxt == nil or !same_day?(e.start, nxt.start)
