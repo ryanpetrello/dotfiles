@@ -85,4 +85,9 @@ with open(filename) as mail_file:
         '-subtitle', sender, '-contentImage', avatar,
         '-sender', 'com.apple.Terminal'
     ]) + ['-execute', event]
-    subprocess.check_call(args)
+
+    with open(os.path.expanduser('~/.mutt/error.log'), 'a') as log:
+        try:
+            subprocess.check_call(args, stderr=log)
+        except Exception as e:
+            log.write(str(e)+'\n')

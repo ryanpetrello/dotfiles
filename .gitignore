@@ -13,6 +13,7 @@
 !/.ackrc
 !/.itermcolors
 !/.mutt*
+.mutt/error.log
 !/.offlineimaprc
 !/.pip*
 !/.notmuch-config
