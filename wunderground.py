@@ -7,6 +7,8 @@ import urllib2
 
 from collections import defaultdict
 
+DAYS = 7
+
 def _fetch(path, keys=[]):
     uri = 'http://api.wunderground.com%s' % path
     resp = urllib2.urlopen(uri)
@@ -56,7 +58,8 @@ def _justify(weekday):
         'Sunday:': 'Su:'
     }.get(weekday, '%s:' % weekday[0])
 
-def wunderground(api_key, location):
+def wunderground(api_key, location, days=DAYS):
+    days = int(days)
     print
     matches = _fetch(
         '/auto/wui/geo/WXCurrentObXML/index.xml?query=%s' % location,
@@ -77,7 +80,7 @@ def wunderground(api_key, location):
         ['title', 'fcttext']
     )
     forecasts = zip(matches['title'], matches['fcttext'])
-    for i, (weekday, txt) in enumerate(forecasts[:14]):
+    for i, (weekday, txt) in enumerate(forecasts[:days*2]):
         if i % 4 == 0:
             color = "\033[1;37;40m"
             print color
