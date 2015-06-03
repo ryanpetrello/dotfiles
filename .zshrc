@@ -34,27 +34,6 @@ function mutt() {
 function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
-# Simple alias to upload content to shared pastebin (haste)
-function pb() {
-    HOST=$PRIVATE_HASTE_HOST
-    echo -n "Private? [Y]n "
-    echo
-    read -k1 CHOICE
-    if [[ $CHOICE =~ ^[Nn]$ ]]
-    then
-        HOST=$PUBLIC_HASTE_HOST
-    fi
-
-    if [ -t 0 ]; then
-        a=`pbpaste`
-    else
-        a=`cat`
-    fi
-    UUID=`curl -X POST -s -d "$a" $HOST/documents | awk -F '"' '{print "/"$4}'`
-    echo $HOST$UUID | pbcopy
-    echo $HOST$UUID
-}
-
 function gh-diff() {
     git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
     if [ $? -ne 0 ]; then
