@@ -36,15 +36,14 @@ alias 1p='1pass'
 
 # Simple alias to upload content to shared pastebin (haste)
 function haste() {
-    HOST=$HASTE_HOST
+    HOST=$PRIVATE_HASTE_HOST
     echo -n "Private? [Y]n "
     echo
     read -k1 CHOICE
     if [[ $CHOICE =~ ^[Nn]$ ]]
     then
-        HOST="http://hastebin.com"
+        HOST=$PUBLIC_HASTE_HOST
     fi
-    echo $HOST
 
     a=$(cat)
     UUID=`curl -X POST -s -d "$a" $HOST/documents | awk -F '"' '{print "/"$4}'`
