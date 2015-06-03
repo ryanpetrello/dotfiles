@@ -34,6 +34,24 @@ function mutt() {
 function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
+# Simple alias to upload content to shared pastebin (haste)
+function haste() {
+    HOST=$HASTE_HOST
+    echo -n "Private? [Y]n "
+    echo
+    read -k1 CHOICE
+    if [[ $CHOICE =~ ^[Nn]$ ]]
+    then
+        HOST="http://hastebin.com"
+    fi
+    echo $HOST
+
+    a=$(cat)
+    UUID=`curl -X POST -s -d "$a" $HOST/documents | awk -F '"' '{print "/"$4}'`
+    echo $HOST$UUID | pbcopy
+    echo $HOST$UUID
+}
+
 function gh-diff() {
     git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
     if [ $? -ne 0 ]; then
@@ -55,7 +73,7 @@ function gh() {
 
 
 function weather(){
-    ~/wunderground.py $WUNDERGROUND_API_KEY ${1:-$WUNDERGROUND_LOCATION} \
+    ~/wunderground.py $WUNDERGROUND_API_KEY ${1:-$WUNDERGROUND_LOCATION} ${2}  \
     | while IFS= read line;
         do printf "%-`tput cols`s\n" "$line"; done
 
