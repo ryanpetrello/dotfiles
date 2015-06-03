@@ -35,7 +35,7 @@ function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
 # Simple alias to upload content to shared pastebin (haste)
-function haste() {
+function pb() {
     HOST=$PRIVATE_HASTE_HOST
     echo -n "Private? [Y]n "
     echo
@@ -45,7 +45,11 @@ function haste() {
         HOST=$PUBLIC_HASTE_HOST
     fi
 
-    a=$(cat)
+    if [ -t 0 ]; then
+        a=`pbpaste`
+    else
+        a=`cat`
+    fi
     UUID=`curl -X POST -s -d "$a" $HOST/documents | awk -F '"' '{print "/"$4}'`
     echo $HOST$UUID | pbcopy
     echo $HOST$UUID
