@@ -31,7 +31,7 @@ function mutt() {
 }
 
 # CLI for 1Password.  Requires the `1pass` Python package
-function 1pass() { command 1pass --fuzzy "$@" | tr -d '\012\015' | pbcopy }
+function 1pass() { sudo -u $(whoami) /usr/bin/security find-generic-password -l 1pass -w | $WORKON_HOME/1pass/bin/1pass --no-prompt --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
 function gh-diff() {
