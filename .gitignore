@@ -20,6 +20,7 @@
 !/.tmux.conf
 !/.timetrap.yml
 !/.timetrap*
+!/venvs/
 .timetrap.db
 !/tmux-mail-count
 !/.vim/*
