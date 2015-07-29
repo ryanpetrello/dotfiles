@@ -24,6 +24,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias t="tmux"
 
+export LESS=FRSXQ
+
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
     pgrep -f 'watchmedo.*INBOX' || watchmedo shell-command --ignore-directories --recursive --command='~/.mutt/notify.py "${watch_src_path}"' $HOME/.mail/*/INBOX/new $HOME/.mail/*/pecan/new $HOME/.mail/*/openstack-dev/new &
@@ -80,16 +82,6 @@ setopt APPEND_HISTORY
 bindkey '^R' history-incremental-search-backward
 h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
-# function to determine the currently active virtualenv
-function active_virtualenv() {
-    if [ -z "$VIRTUAL_ENV" ]; then
-        # not in a virtualenv
-        return
-    fi
-
-    echo "(`basename \"$VIRTUAL_ENV\"`)"
-}
-
 # vim as default + launch settings
 export EDITOR='vim'
 export TERM='xterm-256color'
@@ -102,6 +94,20 @@ alias grep='grep --color'
 function jgrep() {
     NEEDLE=`echo $@ | sed "s/ /\|/g"`
     cat | egrep -oh "\"($NEEDLE)\":\s?\"[^\"]*\"" | egrep --color $NEEDLE
+}
+function haystack() {
+  # call vim on a file (or glob) to perform a search and replace operation
+  # with confirmation. Does not save automagically. Example usage:
+  #     vsed foo bar *.py
+  # Will search for 'foo' and replace it with 'bar' in all matching *.py files.
+  # It also supports globbing for recursive files:
+  #     vsed foo bar **/*.py
+  search=$1
+  replace=$2
+  shift
+  shift
+  vim -c "bufdo! set eventignore-=Syntax| %s/$search/$replace/gce | update" $*
+
 }
 
 fg_lblue=%{$'\e[0;34m'%}
@@ -149,7 +155,7 @@ precmd () {
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="[`hostname | sed 's/\..*//'`] $(active_virtualenv)${git}${fg_lblue}%~ ${fg_white}"
+PS1="[`hostname | sed 's/\..*//'`] ${git}${fg_lblue}%~ ${fg_white}"
 
 # Show a different cursor for different vim modes
 function zle-keymap-select zle-line-init
@@ -211,8 +217,30 @@ unsetopt correctall
 # General completion technique
 zstyle ':completion:*' completer _complete _match _approximate
 
+# Cache completions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path $HOME/.zsh/cache
+
+setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word
+setopt always_to_end
+setopt  globcomplete
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# disable named-directories autocompletion
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 2 numeric
+zstyle -e ':completion:*:approximate:*'  max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+
 # Partial color matching on TAB
-autoload -U colors && colors
 highlights='${PREFIX:+=(#bi)($PREFIX:t)(?)*==$color[blue]=00}':${(s.:.)LS_COLORS}}
 zstyle -e ':completion:*' list-colors 'reply=( "'$highlights'" )'
 zstyle -e ':completion:*:-command-:*:commands' list-colors 'reply=(
