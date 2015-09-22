@@ -22,13 +22,12 @@ def view_html_message():
         ['notmuch', 'search', '--output=files', '%s' % msgid]
     )
     for line in fnames.splitlines():
-        if '/archive/' not in line:
-            try:
-                with open(fnames.splitlines()[0], 'rb') as data:
-                    msg = email.message_from_string(data.read())
-                    break
-            except IOError:
-                continue
+        try:
+            with open(fnames.splitlines()[0], 'rb') as data:
+                msg = email.message_from_string(data.read())
+                break
+        except IOError:
+            continue
 
     html_parts = []
     subfiles = []
