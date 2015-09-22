@@ -9,6 +9,8 @@
 import base64
 import email
 import subprocess
+import tempfile
+import time
 from cStringIO import StringIO
 
 
@@ -21,9 +23,12 @@ def view_html_message():
     )
     for line in fnames.splitlines():
         if '/archive/' not in line:
-            with open(fnames.splitlines()[0], 'rb') as data:
-                msg = email.message_from_string(data.read())
-                break
+            try:
+                with open(fnames.splitlines()[0], 'rb') as data:
+                    msg = email.message_from_string(data.read())
+                    break
+            except IOError:
+                continue
 
     html_parts = []
     subfiles = []
@@ -60,10 +65,11 @@ def view_html_message():
             )
         buff.write(payload)
 
-    data = 'data:text/html;base64,' + base64.b64encode(buff.getvalue())
-    subprocess.check_call(
-        ['open', '-a', '/Applications/Google Chrome.app/', '--args', data]
-    )
+    with tempfile.NamedTemporaryFile(suffix='.html') as f:
+        f.write(buff.getvalue())
+        f.flush()
+        subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
+        time.sleep(3)
 
 
 if __name__ == '__main__':
