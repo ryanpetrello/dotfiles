@@ -7,7 +7,7 @@ export GREP_COLOR=32
 # Auto-attach to mutt tmux
 if [ -z "$TMUX" ]; then
     # not in a tmux session
-    tmux attach -t mutt || tmux new -s mutt
+    tmux attach -t mutt -d || tmux new -s mutt
 fi
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
