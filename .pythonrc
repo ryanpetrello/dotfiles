@@ -2,7 +2,10 @@ def __console__():
     import code
     import contextlib
     import sys
-    from cStringIO import StringIO
+    try:
+        from cStringIO import StringIO
+    except ImportError:
+        from io import StringIO
 
     from pygments import highlight
     from pygments.lexers import PythonLexer, PythonTracebackLexer
@@ -36,7 +39,10 @@ def __console__():
             return super(EnhancedConsole, self).write(self._colorize(str))
 
         def raw_input(self, prompt):
-            line = raw_input(prompt)
+            try:
+                line = raw_input(prompt)
+            except NameError:
+                line = input(prompt)
             if line.endswith('?'):
                 line = 'dir(%s)' % line.strip('?') if line.strip('?') else 'dir()'
             if 'import' in line:
