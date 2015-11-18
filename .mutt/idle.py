@@ -43,7 +43,7 @@ class _sock():
         password = get_keychain_pass(user)
         self.name = name
         self.directory = directory
-        print "Connecting to %s [%s]" % (user, server)
+        print "Connecting to %s %s [%s]" % (name, user, server)
         self.imap = imaplib.IMAP4_SSL(server)
         self.imap.login(user, password)
         self.imap.select(self.directory)
@@ -59,14 +59,6 @@ if __name__ == '__main__':
     sockets = [_sock(*args) for args in IDLE_FOLDERS]
     readable, _, _ = select.select(sockets, [], [], 60 * 5)  # 5 min timeout
 
-    found = False
     for sock in readable:
-        print "Received mail on %s" % sock.name
-        if sock.imap.readline().startswith('* BYE '):
-            continue
-        print "-u basic -o -q -f %s -a %s"%(sock.directory, sock.name)
-        found = True
-        break
-
-    if not found:
         print "-u basic -o"
+        break

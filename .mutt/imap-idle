@@ -5,5 +5,12 @@ doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; } # define a helper functio
 while true; do
   args=`python ~/.mutt/idle.py`
   echo "call offlineimap with: $args" >&2
+
+  # redraw all tmux clients so they show a 'mail downloading' icon in the status bar
+  /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
+
   doalarm 180 /usr/local/bin/offlineimap $args
+
+  # redraw all tmux clients so the 'mail downloading' icon disappears
+  /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
 done
