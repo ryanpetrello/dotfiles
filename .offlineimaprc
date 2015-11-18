@@ -1,7 +1,7 @@
 [general]
 ui = ttyui
 accounts = Ryan,Lists,DH,DC,DC-Error
-pythonfile=~/.mutt/offlineimap.py
+pythonfile=~/.mutt/idle.py
 fsync = False
 maxsyncaccounts = 3
 keepalive = 60
@@ -57,7 +57,7 @@ maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@ryanpetrello.com
-remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com', server='imap.gmail.com')
+remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com')
 realdelete = no
 nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
                             '[Gmail]/Sent Mail'                 : 'sent',
@@ -94,7 +94,7 @@ maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = lists@ryanpetrello.com
-remotepasseval = get_keychain_pass(account='lists@ryanpetrello.com', server='imap.gmail.com')
+remotepasseval = get_keychain_pass(account='lists@ryanpetrello.com')
 realdelete = no
 nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
                             '[Gmail]/Sent Mail'                 : 'sent',
@@ -133,7 +133,7 @@ maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan.petrello@dreamhost.com
-remotepasseval = get_keychain_pass(account='ryan.petrello@dreamhost.com', server='imap.gmail.com')
+remotepasseval = get_keychain_pass(account='ryan.petrello@dreamhost.com')
 realdelete = no
 nametrans = lambda folder: {'openstack-dev'                     : 'openstack-dev',
                             'ndn-commit'                        : 'ndn-commit',
@@ -172,7 +172,7 @@ maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@draughtcraft.com
-remotepasseval = get_keychain_pass(account='ryan@draughtcraft.com', server='imap.gmail.com')
+remotepasseval = get_keychain_pass(account='ryan@draughtcraft.com')
 realdelete = no
 nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
                             '[Gmail]/Sent Mail'                 : 'sent',
@@ -209,7 +209,7 @@ maxconnections = 3
 type = Gmail
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = errors@draughtcraft.com
-remotepasseval = get_keychain_pass(account='errors@draughtcraft.com', server='imap.gmail.com')
+remotepasseval = get_keychain_pass(account='errors@draughtcraft.com')
 realdelete = no
 nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
                             '[Gmail]/Sent Mail'                 : 'sent',
@@ -224,3 +224,4 @@ folderfilter = lambda folder: (folder not in ['Drafts',
                                               '[Gmail]/Spam',
                                               '[Mailbox]'
                                             ]) and not '[Airmail]' in folder
+

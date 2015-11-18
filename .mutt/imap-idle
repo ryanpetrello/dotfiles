@@ -1,0 +1,9 @@
+#!/bin/bash
+
+doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; } # define a helper function
+
+while true; do
+  args=`python ~/.mutt/idle.py`
+  echo "call offlineimap with: $args" >&2
+  doalarm 180 /usr/local/bin/offlineimap $args
+done

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; } # define a helper function
-
-/bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
-doalarm 180 /usr/local/bin/offlineimap -q
-/bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
