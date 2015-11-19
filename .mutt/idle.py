@@ -16,7 +16,7 @@ IDLE_FOLDERS = [
     ("DH", "ryan.petrello@dreamhost.com", "ndn-commit"),
     ("DH", "ryan.petrello@dreamhost.com", "akanda"),
     ("DH", "ryan.petrello@dreamhost.com", "pecan"),
-    ("DH", "ryan.petrello@dreamhost.com", "[Gmail]/Sent"),
+    ("DH", "ryan.petrello@dreamhost.com", "[Gmail]/Sent Mail"),
 ]
 
 

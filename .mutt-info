@@ -13,6 +13,8 @@ $ brew install elinks
 $ brew install pngpaste
 $ brew install terminal-notifier
 $ sudo pip install watchdog
+$ cp .mutt/org.ryan.mail.ryan.plist ~/Library/LaunchAgents/
+$ launchctl load ~/Library/LaunchAgents/org.ryan.mail.ryan.plist
 $ cp ".mutt/New Mail.aiff" ~/Library/Sounds/
 
 $ cd ~/.mutt/osx-mail-handler/ && python setup.py py2app
