@@ -25,7 +25,8 @@ def view_html_message():
         try:
             with open(fnames.splitlines()[0], 'rb') as data:
                 msg = email.message_from_string(data.read())
-                break
+                if msg:
+                    break
         except IOError:
             continue
 
