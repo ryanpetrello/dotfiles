@@ -281,3 +281,9 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Vertical bar in insert mode
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\" " Block in normal mode
 endif
+
+" Mute colors for inactive tmux panes
+au FocusLost * :silent! set t_Co=0
+au FocusGained * :silent! set t_Co=256
+au FocusGained * :silent! ColorScheme wombat
+let g:vitality_always_assume_iterm = 1
