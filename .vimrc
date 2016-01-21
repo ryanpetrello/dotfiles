@@ -274,7 +274,7 @@ let g:ctrlp_prompt_mappings = {
     \ }
 
 " Auto-open a split pane with an applicable diff for git commits
-autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83
+autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83 | DimInactiveOff
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -287,3 +287,6 @@ au FocusLost * :silent! set t_Co=0
 au FocusGained * :silent! set t_Co=256
 au FocusGained * :silent! ColorScheme wombat
 let g:vitality_always_assume_iterm = 1
+
+" Disable syntax highlight on inactive vim windows
+let g:diminactive_use_syntax = 1

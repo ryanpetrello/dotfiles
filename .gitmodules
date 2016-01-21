@@ -28,6 +28,12 @@
 [submodule ".vim/bundle/vim-gitgutter"]
 	path = .vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule ".vim/bundle/vitality.vim"]
+	path = .vim/bundle/vitality.vim
+	url = https://github.com/sjl/vitality.vim.git
+[submodule ".vim/bundle/vim-diminactive"]
+	path = .vim/bundle/vim-diminactive
+	url = https://github.com/blueyed/vim-diminactive
 [submodule ".zsh/opp.zsh"]
 	path = .zsh/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh.git
