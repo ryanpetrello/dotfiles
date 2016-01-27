@@ -66,7 +66,11 @@ def view_html_message():
         buff.write(payload)
 
     with tempfile.NamedTemporaryFile(suffix='.html') as f:
-        f.write(buff.getvalue())
+        try:
+            from unidecode import unidecode
+            f.write(unidecode(buff.getvalue().decode('utf8')))
+        except ImportError:
+            f.write(buff.getvalue())
         f.flush()
         subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
         time.sleep(3)
