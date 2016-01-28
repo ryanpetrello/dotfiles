@@ -9,6 +9,8 @@ set -o vi
 # vim text object support
 source ~/.zsh/opp.zsh/opp.zsh
 source ~/.zsh/opp.zsh/opp/*.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # import private aliases
 if [ -f ~/.alias ]; then
@@ -306,3 +308,8 @@ function title() {
   fi
   setopt LOCAL_OPTIONS
 }
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
