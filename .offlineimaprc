@@ -11,35 +11,30 @@ localrepository = Ryan-Local
 remoterepository = Ryan-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
-quick = -1
 
 [Account Lists]
 localrepository = Lists-Local
 remoterepository = Lists-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
-quick = -1
 
 [Account DH]
 localrepository = DH-Local
 remoterepository = DH-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
-quick = -1
 
 [Account DC]
 localrepository = DC-Local
 remoterepository = DC-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
-quick = -1
 
 [Account DC-Error]
 localrepository = DC-Error-Local
 remoterepository = DC-Error-Remote
 status_backend = sqlite
 postsynchook = /usr/local/bin/notmuch new
-quick = -1
 
 [Repository Ryan-Local]
 type = Maildir
@@ -122,6 +117,7 @@ nametrans = lambda folder: {'openstack-dev' : 'openstack-dev',
                             'ndn-commit'    : 'ndn-commit',
                             'akanda'        : 'akanda',
                             'pecan'         : 'pecan',
+                            'nagios'        : 'nagios',
                             'drafts'        : '[Gmail]/Drafts',
                             'sent'          : '[Gmail]/Sent Mail',
                             'starred'       : '[Gmail]/Starred',
