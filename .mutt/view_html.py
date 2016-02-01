@@ -69,7 +69,7 @@ def view_html_message():
         try:
             from unidecode import unidecode
             f.write(unidecode(buff.getvalue().decode('utf8')))
-        except ImportError:
+        except (UnicodeDecodeError, ImportError):
             f.write(buff.getvalue())
         f.flush()
         subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
