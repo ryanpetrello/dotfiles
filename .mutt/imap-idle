@@ -10,6 +10,7 @@ while true; do
   /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
 
   doalarm 180 /usr/local/bin/offlineimap $args
+  /usr/local/bin/notmuch new
 
   # redraw all tmux clients so the 'mail downloading' icon disappears
   /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
