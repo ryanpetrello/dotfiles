@@ -23,7 +23,7 @@ def view_html_message():
     )
     for line in fnames.splitlines():
         try:
-            with open(fnames.splitlines()[0], 'rb') as data:
+            with open(line, 'rb') as data:
                 msg = email.message_from_string(data.read())
                 if msg:
                     break
