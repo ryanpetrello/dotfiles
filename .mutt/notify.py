@@ -64,7 +64,7 @@ with open(filename) as mail_file:
         )
         avatar = json.loads(resp.read())['avatar_url']
     else:
-        avatar = 'http://www.gravatar.com/avatar/%s?d=mm' % (
+        avatar = 'https://www.gravatar.com/avatar/%s?d=mm' % (
             hashlib.md5(address).hexdigest()
         )
 
@@ -75,19 +75,21 @@ with open(filename) as mail_file:
     elif re.search('<[^@]+@github.com>', uuid):
         pull = re.search('<([^@]+)@github.com>', uuid).group(1)
         pull = ''.join(re.split('(pull/[0-9]+)', pull)[:2])
-        event = 'open -a Safari \"%s\"' % cgi.escape('http://github.com/'+pull)
+        event = 'open -a Safari \"%s\"' % cgi.escape('https://github.com/'+pull)
     else:
         uuid = re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
         event = '/Users/ryan/.mutt/open-message-from-notification \"%s\" \"%s\"' % (folder, uuid)
 
     args = map(decode, [
-        'terminal-notifier', '-message', subject, '-title', title,
+        '/usr/local/bin/terminal-notifier', '-message', subject, '-title', title,
         '-subtitle', sender, '-contentImage', avatar,
         '-sender', 'com.apple.Terminal'
     ]) + ['-execute', event]
 
     with open(os.path.expanduser('~/.mutt/error.log'), 'a') as log:
         try:
-            subprocess.check_call(args, stderr=log)
+            subprocess.check_call(args, stdout=log, stderr=log)
         except Exception as e:
-            log.write(str(e)+'\n')
+            log.write(' '.join(args))
+            log.write('\n'+str(e)+'\n')
+            log.flush()

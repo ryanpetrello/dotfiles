@@ -48,7 +48,7 @@ other_email=ryan.petrello@dreamhost.com;lists@ryanpetrello.com;
 #		in the mail store.
 #
 [new]
-tags=unread;inbox;archive;
+tags=unread;inbox;archive;new;
 ignore=
 
 # Search configuration
