@@ -102,12 +102,7 @@ with open(filename) as mail_file:
         except IndexError:
             pass # invalid From:
 
-    if avatar:
-        avatar = 'https://www.gravatar.com/avatar/%s?d=%s' % (
-            hashlib.md5(address).hexdigest(),
-            avatar
-        )
-    else:
+    if avatar is None:
         avatar = 'https://www.gravatar.com/avatar/%s?d=retro' % (
             hashlib.md5(address).hexdigest()
         )
