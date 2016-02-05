@@ -87,8 +87,8 @@ with open(filename) as mail_file:
             except ImportError:
                 pass
             if sender_domain not in ('gmail.com', 'yahoo.com', 'hotmail.com'):
-                favicon = 'https://%s' % '/'.join([sender_domain, 'favicon.ico'])
-                request = urllib2.Request(favicon)
+                richicon = 'https://d2x2f6qan2kccj.cloudfront.net/images/login/114/%s.png' % sender_domain
+                request = urllib2.Request(richicon)
                 request.get_method = lambda: 'HEAD'
                 try:
                     ctx = ssl.create_default_context()
@@ -102,7 +102,12 @@ with open(filename) as mail_file:
         except IndexError:
             pass # invalid From:
 
-    if avatar is None:
+    if avatar:
+        avatar = 'https://www.gravatar.com/avatar/%s?d=%s' % (
+            hashlib.md5(address).hexdigest(),
+            avatar
+        )
+    else:
         avatar = 'https://www.gravatar.com/avatar/%s?d=retro' % (
             hashlib.md5(address).hexdigest()
         )
