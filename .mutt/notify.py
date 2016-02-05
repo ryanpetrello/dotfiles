@@ -127,7 +127,8 @@ with open(filename) as mail_file:
     args = map(decode, [
         '/usr/local/bin/terminal-notifier', '-message', subject, '-title', title,
         '-subtitle', sender, '-contentImage', avatar,
-        '-sender', 'com.apple.Terminal'
+        '-sender', 'com.apple.Terminal',
+        '-appIcon', 'https://ryanpetrello.com/mutt.png'
     ]) + ['-execute', event]
 
     with open(os.path.expanduser('~/.mutt/error.log'), 'a') as log:
