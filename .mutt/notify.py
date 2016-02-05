@@ -10,9 +10,13 @@ import hashlib
 import json
 import os
 import re
+import ssl
 import sys
 import subprocess
 import urllib
+import urllib2
+
+from email.utils import parseaddr
 
 
 def decode(s):
@@ -56,6 +60,7 @@ with open(filename) as mail_file:
     else:
         sender = address
 
+    avatar = None
     if 'X-GitHub-Sender' in msg:
         resp = urllib.urlopen(
             'https://api.github.com/users/%s' % re.escape(
@@ -64,7 +69,41 @@ with open(filename) as mail_file:
         )
         avatar = json.loads(resp.read())['avatar_url']
     else:
-        avatar = 'https://www.gravatar.com/avatar/%s?d=mm' % (
+        payloads = msg.get_payload() if msg.is_multipart() else [msg.get_payload()]
+        for payload in payloads:
+            if not isinstance(payload, str):
+                continue
+            if 'Jenkins has posted comments on this change' in payload:
+                avatar = "https://ryanpetrello.com/jenkins.png"
+
+    if avatar is None:
+        try:
+            sender_domain = address.split('@')[1]
+            try:
+                import tldextract
+                match = tldextract.extract(sender_domain)
+                if match:
+                    sender_domain = match.registered_domain
+            except ImportError:
+                pass
+            if sender_domain not in ('gmail.com', 'yahoo.com', 'hotmail.com'):
+                favicon = 'https://%s' % '/'.join([sender_domain, 'favicon.ico'])
+                request = urllib2.Request(favicon)
+                request.get_method = lambda: 'HEAD'
+                try:
+                    ctx = ssl.create_default_context()
+                    ctx.check_hostname = False
+                    ctx.verify_mode = ssl.CERT_NONE
+                    resp = urllib2.urlopen(request, context=ctx, timeout=1)
+                    if resp.getcode() == 200:
+                        avatar = resp.geturl()
+                except (urllib2.URLError, ssl.CertificateError):
+                    pass  # ignore errors and invalid certs
+        except IndexError:
+            pass # invalid From:
+
+    if avatar is None:
+        avatar = 'https://www.gravatar.com/avatar/%s?d=retro' % (
             hashlib.md5(address).hexdigest()
         )
 
