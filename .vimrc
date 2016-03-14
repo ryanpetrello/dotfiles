@@ -285,7 +285,7 @@ endif
 " Mute colors for inactive tmux panes
 au FocusLost * :silent! set t_Co=0
 au FocusGained * :silent! set t_Co=256
-au FocusGained * :silent! ColorScheme wombat
+au FocusGained * :silent! ColorScheme wombat<Cr>
 let g:vitality_always_assume_iterm = 1
 
 " Disable syntax highlight on inactive vim windows
