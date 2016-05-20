@@ -231,8 +231,6 @@ inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
-autocmd BufWritePost,FileWritePost, *.py execute 'Khuno show'
-
 " highlight trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
     highlight ExtraWhitespace ctermbg=red guibg=red

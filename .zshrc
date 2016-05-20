@@ -50,10 +50,10 @@ function gh-diff() {
 
 function gh() {
     if [ "$#" -eq 1 ]; then
-        echo "https://github.com/ryanpetrello/$1.git"
+        echo "git@github.com:ryanpetrello/$1.git"
     fi
     if [ "$#" -eq 2 ]; then
-        echo "https://github.com/$1/$2.git"
+        echo "git@github.com:$1/$2.git"
     fi
 }
 
