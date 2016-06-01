@@ -75,6 +75,8 @@ with open(filename) as mail_file:
                 continue
             if 'Jenkins has posted comments on this change' in payload:
                 avatar = "https://ryanpetrello.com/jenkins.png"
+            if 'jenkins-cloud has posted comments on this change' in payload:
+                avatar = "https://ryanpetrello.com/jenkins.png"
 
     if avatar is None:
         try:
