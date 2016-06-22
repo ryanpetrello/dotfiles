@@ -115,6 +115,13 @@ autocmd CursorMoved * if &ft ==# 'python' | silent! call s:Highlight_Python_Vari
 
 let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 
+map <Leader>d :call InsertLine()<CR>
+
+function! InsertLine()
+  let trace = expand("import pdb; pdb.set_trace()")
+  execute "normal o".trace
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""
 " Perl-specific
 """"""""""""""""""""""""""""""""""""""""""
