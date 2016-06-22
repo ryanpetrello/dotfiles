@@ -91,6 +91,15 @@ au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 autocmd BufNewFile,BufRead *.mako,*.mak setlocal ft=html
 autocmd BufNewFile,BufRead *.less setlocal ft=css
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" For sass, use tabs for indentation (it seems to be prefered method from
+" designers I know)
+autocmd BufNewFile,BufRead *.scss setlocal ft=scss
+autocmd FileType scss setlocal noexpandtab
+
+" Show tabs visually
+set list
+set listchars=tab:≫ 
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
