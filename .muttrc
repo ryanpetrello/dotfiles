@@ -25,10 +25,17 @@ set thorough_search      # strip headers and eval mimes before searching
 unset recall             # don't ask to recall messages on compose
 
 # Sidebar Patch ---------------------------------------------------------------
-set sidebar_delim   = '│'
 set sidebar_visible = yes
 set sidebar_width   = 28
+set sidebar_divider_char = '  '
+color sidebar_indicator color73 default
 color sidebar_new yellow default
+color sidebar_highlight white color238
+set sidebar_format = "%B%?N? %* %N?"
+set sidebar_short_path
+set sidebar_folder_indent 
+set sidebar_indent_string="  "
+set mail_check_stats
 
 # Status Bar ------------------------------------------------------------------
 set status_chars  = " *%A"
@@ -47,18 +54,18 @@ set spoolfile = "+lists-ryanpetrello.com/INBOX"
 alternates ryan.petrello@dreamhost.com lists@ryanpetrello.com
 
 # Mailboxes to show in the sidebar.
-mailboxes +---ryan--------------------- \
+mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
           +ryanpetrello.com/starred \
           +ryanpetrello.com/sent \
           +ryanpetrello.com/drafts \
           +ryanpetrello.com/openstack-reviews \
-          +---lists-------------------- \
+          +@lists \
           +lists-ryanpetrello.com/INBOX \
           +lists-ryanpetrello.com/starred \
           +lists-ryanpetrello.com/sent \
           +lists-ryanpetrello.com/drafts \
-          +---dreamhost------------------- \
+          +@dh \
           +dreamhost.com/INBOX \
           +dreamhost.com/pecan \
           +dreamhost.com/akanda \
@@ -69,13 +76,13 @@ mailboxes +---ryan--------------------- \
           +dreamhost.com/starred \
           +dreamhost.com/sent \
           +dreamhost.com/drafts \
-          +---draughtcraft---------------- \
+          +@draughtcraft \
           +draughtcraft.com/INBOX \
           +draughtcraft.com/starred \
           +draughtcraft.com/sent \
-          +---draughtcraft-errors--------- \
+          +@draughtcraft-error \
           +draughtcraft-errors.com/INBOX \
-          +---search---------------------- \
+          +@search \
           +temporary/search \
 
 # Set the proper account when switching folders.

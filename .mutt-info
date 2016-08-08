@@ -1,9 +1,7 @@
 Install/Configure Mutt + Extras on OSX
 ======================================
 
-$ git clone https://github.com/ryanpetrello/dotfiles.git
-$ mv .mutt/mutt.rb /usr/local/Library/Formula/mutt.rb  # includes a patched mutt-sidebar
-$ brew install mutt --with-sidebar-patch  # downloaded: 1.5.23_1.mavericks
+$ brew install neomutt/homebrew-neomutt/neomutt --with-sidebar-patch
 $ brew install offlineimap
 $ brew install curl-ca-bundle
 $ brew install notmuch
