@@ -169,6 +169,7 @@ bind pager G  bottom
 bind pager R  group-reply
 bind pager [  previous-entry
 bind pager ]  next-entry
+bind pager i  exit
 
 # View attachments properly.
 macro attach <return> "<view-mailcap><exit>"
