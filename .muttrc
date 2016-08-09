@@ -174,7 +174,7 @@ macro attach <return> "<view-mailcap><exit>"
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Editor ----------------------------------------------------------------------
-set editor = "vim +8 -c 'set spell spelllang=en fo+=aw' -c 'startinsert'" # compose in vim w/ spellcheck
+set editor = "vim -c 'set spell spelllang=en fo+=aw'" # compose in vim w/ spellcheck
 
 # Compose View Options --------------------------------------------------------
 set realname = "Ryan Petrello"       # who am i?

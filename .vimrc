@@ -103,6 +103,11 @@ set listchars=tab:≫ 
  
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
+" When editing an email, go to the first line and auto-insert
+autocmd BufRead *.mutt/temp/mutt-* execute "normal /^$/\n"
+autocmd BufRead *.mutt/temp/mutt-* execute "normal o"
+autocmd BufRead *.mutt/temp/mutt-* execute ":startinsert"
+
 " Highlight the word under the cursor so variable names are visible
 let s:python_keywords=split(system('python -c "import keyword; print \",\".join(dir(__builtins__) + keyword.kwlist)"'), ',')
 function! s:Highlight_Python_Variables()
