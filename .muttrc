@@ -31,6 +31,7 @@ set sidebar_divider_char = '  '
 color sidebar_indicator color73 default
 color sidebar_new yellow default
 color sidebar_highlight white color238
+color progress white color238
 set sidebar_format = "%B%?N? %* %N?"
 set sidebar_short_path
 set sidebar_folder_indent 
