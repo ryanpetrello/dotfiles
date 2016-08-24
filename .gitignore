@@ -3,6 +3,7 @@
 !/.inputrc
 !/.pythonrc
 !/.pdbrc
+!/bin*
 !/site*
 !/.vim*
 !/.gvim*

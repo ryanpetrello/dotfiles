@@ -1,0 +1,9 @@
+#!/usr/bin/osascript
+tell application "Viscosity"
+    set connectionName to name of the first connection
+    if the state of the first connection is "Connected" then
+        tell application "Viscosity" to disconnect connectionName
+    else
+        tell application "Viscosity" to connect connectionName
+    end if
+end tell
