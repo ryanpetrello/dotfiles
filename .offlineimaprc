@@ -1,6 +1,6 @@
 [general]
 ui = ttyui
-accounts = Ryan,Lists,DH,DC,DC-Error
+accounts = Ryan,DH,DC,DC-Error
 pythonfile=~/.mutt/idle.py
 fsync = False
 maxsyncaccounts = 3
@@ -9,11 +9,6 @@ keepalive = 60
 [Account Ryan]
 localrepository = Ryan-Local
 remoterepository = Ryan-Remote
-status_backend = sqlite
-
-[Account Lists]
-localrepository = Lists-Local
-remoterepository = Lists-Remote
 status_backend = sqlite
 
 [Account DH]
@@ -34,76 +29,29 @@ status_backend = sqlite
 [Repository Ryan-Local]
 type = Maildir
 localfolders = ~/.mail/ryanpetrello.com
-nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
-                            'sent'          : '[Gmail]/Sent Mail',
-                            'starred'       : '[Gmail]/Starred',
-                            'trash'         : '[Gmail]/Trash',
-                            'archive'       : '[Gmail]/All Mail',
+nametrans = lambda folder: {'drafts'        : 'Drafts',
+                            'sent'          : 'Sent',
+                            'spam'          : 'Spam',
+                            'archive'       : 'Archive',
+                            'trash'         : 'Trash',
                            }.get(folder, folder)
-
-folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
-                                             '[Gmail]/Important',
-                                             '[Gmail]/Spam',
-                                             '[Mailbox]'
-                                            ]) and 'Airmail' not in folder
 
 [Repository Ryan-Remote]
 maxconnections = 3
-type = Gmail
+type = IMAP
+remotehost = mail.messagingengine.com
+remoteuser = ryan@ryanpetrello.com
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@ryanpetrello.com
 remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com')
 realdelete = no
-nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
-                            '[Gmail]/Sent Mail'                 : 'sent',
-                            '[Gmail]/Starred'                   : 'starred',
-                            '[Gmail]/Trash'                     : 'trash',
-                            '[Gmail]/All Mail'                  : 'archive',
-                            'openstack-reviews'                 : 'openstack-reviews'
+nametrans = lambda folder: {'Drafts'           : 'drafts',
+                            'Sent'             : 'sent',
+                            'Spam'             : 'spam',
+                            'Archive'          : 'archive',
+                            'Trash'            : 'trash',
+                            'openstack-reviews': 'openstack-reviews'
                            }.get(folder, folder)
-folderfilter = lambda folder: (folder not in ['Drafts',
-                                              '[Gmail]/Trash',
-                                              '[Gmail]/Important',
-                                              '[Gmail]/Spam',
-                                              '[Mailbox]'
-                                            ]) and not '[Airmail]' in folder
-
-[Repository Lists-Local]
-type = Maildir
-localfolders = ~/.mail/lists-ryanpetrello.com
-nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
-                            'sent'          : '[Gmail]/Sent Mail',
-                            'starred'       : '[Gmail]/Starred',
-                            'trash'         : '[Gmail]/Trash',
-                            'archive'       : '[Gmail]/All Mail',
-                           }.get(folder, folder)
-
-folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
-                                             '[Gmail]/Important',
-                                             '[Gmail]/Spam',
-                                             '[Mailbox]'
-                                            ]) and 'Airmail' not in folder
-
-[Repository Lists-Remote]
-maxconnections = 3
-type = Gmail
-sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-remoteuser = lists@ryanpetrello.com
-remotepasseval = get_keychain_pass(account='lists@ryanpetrello.com')
-realdelete = no
-nametrans = lambda folder: {'[Gmail]/Drafts'                    : 'drafts',
-                            '[Gmail]/Sent Mail'                 : 'sent',
-                            '[Gmail]/Starred'                   : 'starred',
-                            '[Gmail]/Trash'                     : 'trash',
-                            '[Gmail]/All Mail'                  : 'archive',
-                           }.get(folder, folder)
-folderfilter = lambda folder: (folder not in ['Drafts',
-                                              'Sent',
-                                              '[Gmail]/Trash',
-                                              '[Gmail]/Important',
-                                              '[Gmail]/Spam',
-                                              '[Mailbox]'
-                                            ]) and not '[Airmail]' in folder
 
 [Repository DH-Local]
 type = Maildir

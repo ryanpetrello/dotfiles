@@ -5,12 +5,8 @@ import select
 import subprocess
 
 IDLE_FOLDERS = [
-    ("Ryan", "ryan@ryanpetrello.com", "INBOX"),
-    ("Ryan", "ryan@ryanpetrello.com", "[Gmail]/Sent Mail"),
-    ("Ryan", "ryan@ryanpetrello.com", "openstack-reviews"),
-
-    ("Lists", "lists@ryanpetrello.com", "INBOX"),
-    ("Lists", "lists@ryanpetrello.com", "[Gmail]/Sent Mail"),
+    ("Ryan", "ryan@ryanpetrello.com", "INBOX", 'imap.fastmail.com'),
+    ("Ryan", "ryan@ryanpetrello.com", "Sent", 'imap.fastmail.com'),
 
     ("DH", "ryan.petrello@dreamhost.com", "INBOX"),
     ("DH", "ryan.petrello@dreamhost.com", "ndn-commit"),

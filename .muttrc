@@ -49,23 +49,19 @@ unignore from: to: cc: date: subject: # show only these
 # Account Settings ------------------------------------------------------------
 
 # Default inbox.
-set spoolfile = "+lists-ryanpetrello.com/INBOX"
+set spoolfile = "+ryanpetrello.com/Inbox"
 
 # Alternate email addresses.
-alternates ryan.petrello@dreamhost.com lists@ryanpetrello.com
+alternates ryan.petrello@dreamhost.com
 
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
-          +ryanpetrello.com/starred \
-          +ryanpetrello.com/sent \
-          +ryanpetrello.com/drafts \
-          +ryanpetrello.com/openstack-reviews \
-          +@lists \
-          +lists-ryanpetrello.com/INBOX \
-          +lists-ryanpetrello.com/starred \
-          +lists-ryanpetrello.com/sent \
-          +lists-ryanpetrello.com/drafts \
+          +ryanpetrello.com/INBOX.sent \
+          +ryanpetrello.com/INBOX.drafts \
+          +ryanpetrello.com/INBOX.spam \
+          +ryanpetrello.com/INBOX.trash \
+          +ryanpetrello.com/INBOX.openstack-reviews \
           +@dh \
           +dreamhost.com/INBOX \
           +dreamhost.com/pecan \
@@ -88,17 +84,18 @@ mailboxes +@ryan \
 
 # Set the proper account when switching folders.
 folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
-folder-hook lists-ryanpetrello.com/* source ~/.mutt/ryan-lists.muttrc
 folder-hook dreamhost.com/*   source ~/.mutt/dreamhost.muttrc
 
 # Automatically hide read messages when switching certain folders
-folder-hook ryanpetrello.com/INBOX 'push "l~U<enter>"'
-folder-hook lists-ryanpetrello.com/INBOX 'push "l~U<enter>"'
+folder-hook ryanpetrello.com/Inbox 'push "l~U<enter>"'
 folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
 folder-hook dreamhost.com/openstack-dev 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
 folder-hook . 'set read_inc=1000'
+folder-hook . 'set time_inc=500'
+folder-hook . 'set net_inc=100'
+folder-hook . 'set write_inc=1000'
 
 # Index View Options ----------------------------------------------------------
 set date_format = "%m/%d/%y %I:%M %p"              # sane date format
