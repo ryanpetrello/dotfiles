@@ -50,8 +50,11 @@ nametrans = lambda folder: {'Drafts'           : 'drafts',
                             'Spam'             : 'spam',
                             'Archive'          : 'archive',
                             'Trash'            : 'trash',
+                            'pecan'            : 'pecan',
+                            'openstack-dev'    : 'openstack-dev',
                             'openstack-reviews': 'openstack-reviews'
                            }.get(folder, folder)
+folderfilter = lambda folder: not folder.startswith('RESTORED.')
 
 [Repository DH-Local]
 type = Maildir

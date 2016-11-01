@@ -60,8 +60,10 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.sent \
           +ryanpetrello.com/INBOX.drafts \
           +ryanpetrello.com/INBOX.spam \
-          +ryanpetrello.com/INBOX.trash \
+          +ryanpetrello.com/INBOX.pecan \
+          +ryanpetrello.com/INBOX.openstack-dev \
           +ryanpetrello.com/INBOX.openstack-reviews \
+          +ryanpetrello.com/INBOX.trash \
           +@dh \
           +dreamhost.com/INBOX \
           +dreamhost.com/pecan \
