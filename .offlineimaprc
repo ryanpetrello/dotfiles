@@ -3,7 +3,6 @@ ui = ttyui
 accounts = Ryan,DH,DC,DC-Error
 pythonfile=~/.mutt/idle.py
 fsync = False
-maxsyncaccounts = 3
 keepalive = 60
 
 [Account Ryan]
@@ -63,7 +62,6 @@ nametrans = lambda folder: {'openstack-dev' : 'openstack-dev',
                             'ndn-commit'    : 'ndn-commit',
                             'akanda'        : 'akanda',
                             'pecan'         : 'pecan',
-                            'nagios'        : 'nagios',
                             'drafts'        : '[Gmail]/Drafts',
                             'sent'          : '[Gmail]/Sent Mail',
                             'starred'       : '[Gmail]/Starred',
@@ -72,7 +70,8 @@ nametrans = lambda folder: {'openstack-dev' : 'openstack-dev',
 folderfilter = lambda folder: (folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/Spam',
-                                             '[Mailbox]'
+                                             '[Mailbox]',
+                                             'nagios'
                                             ]) and 'Airmail' not in folder
 
 [Repository DH-Remote]
@@ -82,6 +81,7 @@ sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan.petrello@dreamhost.com
 remotepasseval = get_keychain_pass(account='ryan.petrello@dreamhost.com')
 realdelete = no
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
 nametrans = lambda folder: {'openstack-dev'                     : 'openstack-dev',
                             'ndn-commit'                        : 'ndn-commit',
                             'akanda'                            : 'akanda',

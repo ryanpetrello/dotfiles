@@ -3,14 +3,25 @@
 doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; } # define a helper function
 
 while true; do
-  args=`python ~/.mutt/idle.py`
-  echo "call offlineimap with: $args" >&2
+  echo "waiting for IDLE"
+  doalarm 30 python2 ~/.mutt/idle.py
 
   # redraw all tmux clients so they show a 'mail downloading' icon in the status bar
   /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
 
   /usr/local/bin/notmuch tag -new -- tag:new
-  doalarm 180 /usr/local/bin/offlineimap $args
+
+  echo "downloading new mail"
+  /usr/local/bin/offlineimap -a Ryan & pid1=$!
+  /usr/local/bin/offlineimap -a DH & pid2=$!
+  /usr/local/bin/offlineimap -a DC & pid3=$!
+  /usr/local/bin/offlineimap -a DC-Error & pid4=$!
+  wait $pid1
+  wait $pid2
+  wait $pid3
+  wait $pid4
+
+  echo "running notmuch new"
   /usr/local/bin/notmuch new
 
   # redraw all tmux clients so the 'mail downloading' icon disappears
