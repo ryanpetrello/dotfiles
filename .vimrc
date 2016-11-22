@@ -1,13 +1,13 @@
 " .vimrc File
 " Ryan Petrello
-"  
-  
+"
+
 """"""""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""
 call pathogen#infect()
-  
-"Forget compatibility with Vi. Who cares.  
+
+"Forget compatibility with Vi. Who cares.
 set nocompatible
 set hlsearch
 
@@ -30,17 +30,17 @@ set clipboard=unnamed
 """"""""""""""""""""""""""""""""""""""""""
 " Visual Stuff
 """"""""""""""""""""""""""""""""""""""""""
-"Display current cursor position in lower right corner.  
+"Display current cursor position in lower right corner.
 set ruler
 
 "Hide intro message
 set shortmess=filnxtToOI
-  
-"Set the color scheme. Change this to your preference.  
+
+"Set the color scheme. Change this to your preference.
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
 set background=dark
 colorscheme wombat
-  
+
 "Show current command in the screen corner
 set showcmd
 set history=1000
@@ -49,8 +49,8 @@ set history=1000
 set notitle
 
 " Highlight the current line
-set cul                                           
-hi CursorLine term=none cterm=none ctermbg=3      
+set cul
+hi CursorLine term=none cterm=none ctermbg=3
 
 " No more bell!
 set noerrorbells
@@ -59,9 +59,9 @@ set visualbell
 " Disable code folding
 set nofoldenable
 
-""""""""""""""""""""""""""""""""""""""""""
-" Forcing myself not to use arrows 
-""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
+" Forcing myself not to use arrows
+""""""""""""""""""""""""""""""""""
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -75,7 +75,7 @@ nnoremap k gk
 
 " No Help, please
 nmap <F1> <Esc>
-  
+
 """"""""""""""""""""""""""""""""""""""""""
 " Python-specific
 """"""""""""""""""""""""""""""""""""""""""
@@ -99,8 +99,8 @@ autocmd FileType scss setlocal noexpandtab
 
 " Show tabs visually
 set list
-set listchars=tab:≫ 
- 
+set list lcs=trail:•,tab:≫ 
+
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
 " When editing an email, go to the first line and auto-insert
@@ -114,7 +114,7 @@ function! s:Highlight_Python_Variables()
     let g:word = expand("<cword>")
     if index(s:python_keywords, g:word) < 0
         exe printf('match IncSearch /\<%s\>/', g:word)
-    endif 
+    endif
 endfunction
 autocmd CursorMoved * if &ft ==# 'python' | silent! call s:Highlight_Python_Variables() | endif
 
@@ -136,25 +136,25 @@ autocmd FileType perl setlocal tabstop=4 shiftwidth=4 noexpandtab
 " Indents, wrapping, line numbers, completion, etc...
 """"""""""""""""""""""""""""""""""""""""""
 
-"Show lines numbers  
+"Show lines numbers
 set relativenumber
 
-"Indent stuff  
+"Indent stuff
 set smartindent
-set autoindent  
+set autoindent
 inoremap # X<BS>#
-  
-"Always show the status line  
+
+"Always show the status line
 set laststatus=2
-  
-"Prefer a slightly higher line height  
-set linespace=3  
-  
-"Better line wrapping  
-set wrap  
-set textwidth=79  
+
+"Prefer a slightly higher line height
+set linespace=3
+
+"Better line wrapping
+set wrap
+set textwidth=79
 set colorcolumn=+1
-set formatoptions=qrn1  
+set formatoptions=qrn1
 
 """"""""""""""""""""""""""""""""""""""""""
 " Other Functionality
@@ -162,30 +162,30 @@ set formatoptions=qrn1
 
 " Keep more context when scrolling off the end of a buffer
 set scrolloff=3
-  
-"Set incremental searching"  
-set incsearch  
-  
-" case insensitive search  
-set ignorecase  
+
+"Set incremental searching"
+set incsearch
+
+" case insensitive search
+set ignorecase
 set smartcase
-  
-"Hide mouse when typing  
-set mousehide  
+
+"Hide mouse when typing
+set mousehide
 set mouse=a
-  
-"Split windows below the current window.  
-set splitbelow               
-  
-" More useful command-line completion  
+
+"Split windows below the current window.
+set splitbelow
+
+" More useful command-line completion
 set wildmenu
-set wildmode=list:longest  
-  
+set wildmode=list:longest
+
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" Ack searching and highlight support 
-nmap <Leader>a <Esc>:Ack 
+" Ack searching and highlight support
+nmap <Leader>a <Esc>:Ack
 let g:ackhighlight = 1
 
 " Hard wrap for the current paragraph
@@ -252,18 +252,9 @@ inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("<up>"))
 inoremap <expr> <CR> ((pumvisible())?("\<C-y>"):("<CR>"))
 let g:acp_behaviorPythonOmniLength = 5
 
-" highlight trailing whitespace
-fun! <SID>StripTrailingWhitespaces()
-    highlight ExtraWhitespace ctermbg=red guibg=red
-    au ColorScheme * highlight ExtraWhitespace guibg=red
-    au BufEnter * match ExtraWhitespace /\s\+$/
-    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    au InsertLeave * match ExtraWhiteSpace /\s\+$/
-endfun
-
 " Map ,r to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR><Esc>:call <SID>StripTrailingWhitespaces()<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
 
 " Map ,s to split all open buffer windows.  Can be used to toggle horizontal/vertical
 nmap <Leader>s <Esc>:call ToggleBuff()<CR>
