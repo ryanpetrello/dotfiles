@@ -17,11 +17,12 @@ while true; do
   /usr/local/bin/offlineimap -a DC & pid3=$!
   /usr/local/bin/offlineimap -a DC-Error & pid4=$!
   wait $pid1
+  /usr/local/bin/notmuch new
   wait $pid2
+  /usr/local/bin/notmuch new
   wait $pid3
+  /usr/local/bin/notmuch new
   wait $pid4
-
-  echo "running notmuch new"
   /usr/local/bin/notmuch new
 
   # redraw all tmux clients so the 'mail downloading' icon disappears
