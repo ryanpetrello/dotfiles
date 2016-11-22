@@ -21,6 +21,12 @@ def view_html_message():
     fnames = subprocess.check_output(
         ['notmuch', 'search', '--output=files', '%s' % msgid]
     )
+    if not fnames:
+        subprocess.check_call(['notmuch', 'new'])
+        fnames = subprocess.check_output(
+            ['notmuch', 'search', '--output=files', '%s' % msgid]
+        )
+    msg = None
     for line in fnames.splitlines():
         try:
             with open(line, 'rb') as data:
