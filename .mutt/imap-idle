@@ -18,12 +18,16 @@ while true; do
   /usr/local/bin/offlineimap -a DC-Error & pid4=$!
   wait $pid1
   /usr/local/bin/notmuch new
+  /usr/local/bin/notmuch tag -new -- tag:new
   wait $pid2
   /usr/local/bin/notmuch new
+  /usr/local/bin/notmuch tag -new -- tag:new
   wait $pid3
   /usr/local/bin/notmuch new
+  /usr/local/bin/notmuch tag -new -- tag:new
   wait $pid4
   /usr/local/bin/notmuch new
+  /usr/local/bin/notmuch tag -new -- tag:new
 
   # redraw all tmux clients so the 'mail downloading' icon disappears
   /bin/bash -c 'sleep 2; for c in $(/usr/local/bin/tmux list-clients | cut -d" " -f1 | cut -d":" -f1); do /usr/local/bin/tmux refresh-client -S -t "$c"; done;' &
