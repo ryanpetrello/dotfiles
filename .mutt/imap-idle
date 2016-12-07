@@ -12,10 +12,10 @@ while true; do
   /usr/local/bin/notmuch tag -new -- tag:new
 
   echo "downloading new mail"
-  /usr/local/bin/offlineimap -a Ryan & pid1=$!
-  /usr/local/bin/offlineimap -a DH & pid2=$!
-  /usr/local/bin/offlineimap -a DC & pid3=$!
-  /usr/local/bin/offlineimap -a DC-Error & pid4=$!
+  doalarm 120 /usr/local/bin/offlineimap -a Ryan & pid1=$!
+  doalarm 120 /usr/local/bin/offlineimap -a DH & pid2=$!
+  doalarm 120 /usr/local/bin/offlineimap -a DC & pid3=$!
+  doalarm 120 /usr/local/bin/offlineimap -a DC-Error & pid4=$!
   wait $pid1
   /usr/local/bin/notmuch new
   /usr/local/bin/notmuch tag -new -- tag:new
