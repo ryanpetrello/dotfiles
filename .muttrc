@@ -118,6 +118,9 @@ bind index <backtab>    collapse-all        # expand/collapse all threads
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
+# f to flag a message
+macro index f "<flag-message>" "flag a message"
+
 # Sync email
 macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
 
