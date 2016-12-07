@@ -93,6 +93,9 @@ export CLICOLOR=1
 export LSCOLORS=DxDxCxDxexexexaxaxaxax
 export GREP_COLOR=32
 alias grep='grep --color'
+function speedtest() {
+    echo "`curl  --progress-bar -w "%{speed_download}" http://speedtest.wdc01.softlayer.com/downloads/test100.zip -o /dev/null` / 131072" | bc | xargs -I {} echo {} mbps
+}
 function jgrep() {
     NEEDLE=`echo $@ | sed "s/ /\|/g"`
     cat | egrep -oh "\"($NEEDLE)\":\s?\"[^\"]*\"" | egrep --color $NEEDLE
