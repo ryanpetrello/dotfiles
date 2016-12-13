@@ -58,13 +58,6 @@ function gh() {
 }
 
 
-function weather(){
-    ~/wunderground.py $WUNDERGROUND_API_KEY ${1:-$WUNDERGROUND_LOCATION} ${2}  \
-    | while IFS= read line;
-        do printf "%-`tput cols`s\n" "$line"; done
-
-}
-
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
 
