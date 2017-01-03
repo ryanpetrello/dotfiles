@@ -1,4 +1,3 @@
 #!/bin/sh
 git config user.email 'lists@ryanpetrello.com'
-git config --get remote.origin.url | grep newdream.net > /dev/null 2>&1 && git config user.email 'ryan.petrello@dreamhost.com'
 exit 0

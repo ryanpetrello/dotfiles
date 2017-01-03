@@ -51,9 +51,6 @@ unignore from: to: cc: date: subject: # show only these
 # Default inbox.
 set spoolfile = "+ryanpetrello.com/Inbox"
 
-# Alternate email addresses.
-alternates ryan.petrello@dreamhost.com
-
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
@@ -64,16 +61,6 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.openstack-dev \
           +ryanpetrello.com/INBOX.openstack-reviews \
           +ryanpetrello.com/INBOX.trash \
-          +@dh \
-          +dreamhost.com/INBOX \
-          +dreamhost.com/pecan \
-          +dreamhost.com/akanda \
-          +dreamhost.com/openstack-dev \
-          +dreamhost.com/ptl \
-          +dreamhost.com/ndn-commit \
-          +dreamhost.com/starred \
-          +dreamhost.com/sent \
-          +dreamhost.com/drafts \
           +@draughtcraft \
           +draughtcraft.com/INBOX \
           +draughtcraft.com/starred \
@@ -85,12 +72,10 @@ mailboxes +@ryan \
 
 # Set the proper account when switching folders.
 folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
-folder-hook dreamhost.com/*   source ~/.mutt/dreamhost.muttrc
 
 # Automatically hide read messages when switching certain folders
 folder-hook ryanpetrello.com/Inbox 'push "l~U<enter>"'
 folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
-folder-hook dreamhost.com/openstack-dev 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
 folder-hook . 'set read_inc=1000'
