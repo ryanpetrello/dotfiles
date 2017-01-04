@@ -37,7 +37,7 @@ remotehost = mail.messagingengine.com
 remoteuser = ryan@ryanpetrello.com
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = ryan@ryanpetrello.com
-remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com')
+remotepasseval = get_keychain_pass(account='ryan@ryanpetrello.com', server='imap.fastmail.com')
 realdelete = no
 nametrans = lambda folder: {'Drafts'           : 'drafts',
                             'Sent'             : 'sent',

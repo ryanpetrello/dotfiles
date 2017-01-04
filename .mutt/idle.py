@@ -30,7 +30,7 @@ def get_keychain_pass(account=None, server='imap.gmail.com'):
 class _sock():
 
     def __init__(self, name, user, directory, server='imap.gmail.com'):
-        password = get_keychain_pass(user)
+        password = get_keychain_pass(user, server)
         self.name = name
         self.directory = directory
         print "Connecting to %s %s [%s]" % (name, user, server)
