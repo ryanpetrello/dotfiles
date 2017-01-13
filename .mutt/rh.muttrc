@@ -1,0 +1,7 @@
+set from = "rpetrell@redhat.com"
+set sendmail = "/usr/local/bin/msmtp -a redhat"
+set sendmail_wait = 0
+set mbox = "+redhat.com/archive"
+set postponed = "+redhat.com/drafts"
+set signature = ~/.mutt/sig-redhat
+unset record

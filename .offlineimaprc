@@ -1,6 +1,6 @@
 [general]
 ui = ttyui
-accounts = Ryan,DC,DC-Error
+accounts = Ryan,RH
 pythonfile=~/.mutt/idle.py
 fsync = False
 keepalive = 60
@@ -18,6 +18,11 @@ status_backend = sqlite
 [Account DC-Error]
 localrepository = DC-Error-Local
 remoterepository = DC-Error-Remote
+status_backend = sqlite
+
+[Account RH]
+localrepository = RH-Local
+remoterepository = RH-Remote
 status_backend = sqlite
 
 [Repository Ryan-Local]
@@ -86,6 +91,39 @@ folderfilter = lambda folder: (folder not in ['Drafts',
                                               '[Gmail]/Spam',
                                               '[Mailbox]'
                                             ]) and not '[Airmail]' in folder
+
+[Repository RH-Local]
+type = Maildir
+localfolders = ~/.mail/redhat.com
+nametrans = lambda folder: {'drafts'        : 'Drafts',
+                            'sent'          : 'Sent Mail',
+                            'starred'       : 'Starred',
+                            'trash'         : 'Trash',
+                           }.get(folder, folder)
+
+folderfilter = lambda folder: (folder not in ['Trash',
+                                             'Spam',
+                                            ])
+
+[Repository RH-Remote]
+maxconnections = 3
+type = Gmail
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+remoteuser = rpetrell@redhat.com
+remotepasseval = get_keychain_pass(account='rpetrell@redhat.com')
+realdelete = no
+nametrans = lambda folder: {'Drafts'                    : 'drafts',
+                            'Sent Mail'                 : 'sent',
+                            'Starred'                   : 'starred',
+                            'Trash'                     : 'trash',
+                            'announce'                  : 'announce',
+                            'memo'                      : 'memo',
+                           }.get(folder, folder)
+folderfilter = lambda folder: (folder not in ['Drafts',
+                                              'Sent',
+                                              'Trash',
+                                              'Spam',
+                                            ])
 
 [Repository DC-Error-Local]
 type = Maildir

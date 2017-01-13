@@ -51,6 +51,9 @@ unignore from: to: cc: date: subject: # show only these
 # Default inbox.
 set spoolfile = "+ryanpetrello.com/Inbox"
 
+# Alternate email addresses.
+alternates rpetrell@redhat.com
+
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
@@ -61,17 +64,19 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.openstack-dev \
           +ryanpetrello.com/INBOX.openstack-reviews \
           +ryanpetrello.com/INBOX.trash \
-          +@draughtcraft \
-          +draughtcraft.com/INBOX \
-          +draughtcraft.com/starred \
-          +draughtcraft.com/sent \
-          +@draughtcraft-error \
-          +draughtcraft-errors.com/INBOX \
+          +@rh \
+          +redhat.com/INBOX \
+          +redhat.com/INBOX.sent \
+          +redhat.com/INBOX.drafts \
+          +redhat.com/INBOX.trash \
+          +redhat.com/announce \
+          +redhat.com/memo \
           +@search \
           +temporary/search \
 
 # Set the proper account when switching folders.
 folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
+folder-hook redhat.com/* source ~/.mutt/rh.muttrc
 
 # Automatically hide read messages when switching certain folders
 folder-hook ryanpetrello.com/Inbox 'push "l~U<enter>"'

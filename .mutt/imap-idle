@@ -13,15 +13,11 @@ while true; do
 
   echo "downloading new mail"
   doalarm 120 /usr/local/bin/offlineimap -a Ryan & pid1=$!
-  doalarm 120 /usr/local/bin/offlineimap -a DC & pid2=$!
-  doalarm 120 /usr/local/bin/offlineimap -a DC-Error & pid3=$!
+  doalarm 120 /usr/local/bin/offlineimap -a RH & pid2=$!
   wait $pid1
   /usr/local/bin/notmuch new
   /usr/local/bin/notmuch tag -new -- tag:new
   wait $pid2
-  /usr/local/bin/notmuch new
-  /usr/local/bin/notmuch tag -new -- tag:new
-  wait $pid3
   /usr/local/bin/notmuch new
   /usr/local/bin/notmuch tag -new -- tag:new
 
