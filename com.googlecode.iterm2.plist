@@ -668,9 +668,9 @@
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
-	<false/>
+	<true/>
 	<key>DimOnlyText</key>
-	<false/>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>EnableRendezvous</key>
@@ -702,26 +702,19 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x77-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x2 0x78</string>
-		</dict>
 		<key>0x7b-0x120000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>31</integer>
 			<key>Text</key>
-			<string>0x2 0x6c</string>
+			<string></string>
 		</dict>
 		<key>0x7d-0x120000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>30</integer>
 			<key>Text</key>
-			<string>0x2 0x6f</string>
+			<string></string>
 		</dict>
 		<key>0xd-0x100000</key>
 		<dict>
@@ -730,54 +723,47 @@
 			<key>Text</key>
 			<string>Open Autocomplete...</string>
 		</dict>
-		<key>0xf700-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x2 0x5b</string>
-		</dict>
 		<key>0xf700-0x320000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>25</integer>
 			<key>Text</key>
-			<string>0x2 0x4b</string>
+			<string>Move Divider Up</string>
 		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>28</integer>
 			<key>Text</key>
-			<string>0x2 0x22</string>
+			<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
 		</dict>
 		<key>0xf701-0x320000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>25</integer>
 			<key>Text</key>
-			<string>0x2 0x4a</string>
+			<string>Move Divider Down</string>
 		</dict>
 		<key>0xf702-0x320000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>25</integer>
 			<key>Text</key>
-			<string>0x2 0x48</string>
+			<string>Move Divider Left</string>
 		</dict>
 		<key>0xf703-0x300000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>29</integer>
 			<key>Text</key>
-			<string>0x2 0x25</string>
+			<string>379EC82D-ED2F-4272-9A75-ECE815609F70</string>
 		</dict>
 		<key>0xf703-0x320000</key>
 		<dict>
 			<key>Action</key>
-			<integer>11</integer>
+			<integer>25</integer>
 			<key>Text</key>
-			<string>0x2 0x4c</string>
+			<string>Move Divider Right</string>
 		</dict>
 		<key>0xf729-0x100000</key>
 		<dict>
@@ -883,32 +869,21 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>307</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
-	<key>NSToolbar Configuration Terminal Toolbar</key>
-	<dict>
-		<key>TB Display Mode</key>
-		<integer>1</integer>
-		<key>TB Icon Size Mode</key>
-		<integer>1</integer>
-		<key>TB Is Shown</key>
-		<integer>0</integer>
-		<key>TB Size Mode</key>
-		<integer>1</integer>
-	</dict>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame Preferences</key>
-	<string>192 138 924 485 0 0 1280 777 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>269 254 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2 10 1276 762 0 0 1280 777 </string>
+	<string>1 4 1438 873 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2380,14 +2355,18 @@
 			<string>/Users/ryan</string>
 		</dict>
 	</array>
-	<key>NoSyncHaveShownPromoWithId_4</key>
+	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>33B6FF8D-5D11-43F1-A4B4-ADE163D3915A</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>1</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>477583971.63604802</real>
-	<key>NoSyncTimeOfLastPromo</key>
-	<real>477584251.85545802</real>
-	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>477584244.77351499</real>
+	<real>505948422.899589</real>
 	<key>NotFirstRun</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -2454,11 +2433,13 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=44</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-19T14:20:45Z</date>
+	<date>2017-01-16T01:50:04Z</date>
+	<key>SUSendProfileInfo</key>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2472,7 +2453,7 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.60000002384185791</real>
+	<real>0.59999999999999998</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
@@ -3331,6 +3312,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.4</string>
+	<string>3.0.13</string>
 </dict>
 </plist>

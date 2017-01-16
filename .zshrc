@@ -250,12 +250,6 @@ zstyle -e ':completion:*:-command-:*:commands' list-colors 'reply=(
 "'$highlights'" )'
 unset highlights
 
-# Auto-attach to tmux
-if [ -z "$TMUX" ]; then
-    # not in a tmux session
-    tmux attach -t term || tmux new -s term
-fi
-
 source ~/.zsh/completions/pytest.plugin.zsh
 
 function preexec() {
