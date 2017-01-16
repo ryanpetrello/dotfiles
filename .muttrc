@@ -69,6 +69,7 @@ mailboxes +@ryan \
           +redhat.com/INBOX.sent \
           +redhat.com/INBOX.drafts \
           +redhat.com/INBOX.trash \
+          +redhat.com/tower \
           +redhat.com/announce \
           +redhat.com/memo \
           +@search \
