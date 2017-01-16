@@ -314,3 +314,13 @@ function title() {
 # # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then
+  source ~/google-cloud-sdk/path.zsh.inc
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then
+  source ~/google-cloud-sdk/completion.zsh.inc
+fi
