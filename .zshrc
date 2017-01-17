@@ -9,7 +9,7 @@ set -o vi
 # vim text object support
 source ~/.zsh/opp.zsh/opp.zsh
 source ~/.zsh/opp.zsh/opp/*.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # import private aliases
@@ -24,7 +24,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias t="tmux"
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo '¯\_(ツ)_/¯'"
 
 export LESS=FRSXQ
@@ -130,9 +129,9 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 precmd () { 
     psvar[5]=''
-    ifconfig | grep -q tap && ifconfig | grep -q pid
+    ifconfig | grep -q utun
     if [ $? -eq 0 ]; then
-        psvar[5]=$(ps -ef | grep `ifconfig | sed -En "s/.*open \(pid ([0-9]+)\).*$/\1/p"` | grep -q openvpn && echo " 🔒 ")
+        psvar[5]=$(ps -ef | grep -q openvpn && echo " 🔒 ")
     fi
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats $'[%{\e[1;33m%}%b%F{foreground}:%c%u%F{foreground}] '
@@ -140,20 +139,6 @@ precmd () {
         zstyle ':vcs_info:*' formats $'(%{\e[1;33m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
     }
     vcs_info
-    # tmux title magic
-    title "zsh - $PWD"
-    duration=$(( $(date +%s) - cmd_start_time ))
-
-    # Notify if the previous command took more than 5 seconds.
-    if [ $duration -gt 5 ] ; then
-      case "$lastcmd" in
-        vi*) ;; # vi, don't notify
-        "") ;; # no previous command, don't notify
-        *)
-          [ ! -z "$TMUX" ] && tmux display-message "($duration secs): $lastcmd"
-      esac
-    fi
-    lastcmd=""
 }
 local git='$vcs_info_msg_0_'
 
@@ -163,19 +148,10 @@ PS1="[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ 
 # Show a different cursor for different vim modes
 function zle-keymap-select zle-line-init
 {
-    # change cursor shape in iTerm2
-    if [[ $TMUX != "" ]]
-    then
-        case $KEYMAP in
-            vicmd)      print -n -- "\033Ptmux;\033\E]50;CursorShape=0\C-G\033\\";;  # block cursor
-            viins|main) print -n -- "\033Ptmux;\033\E]50;CursorShape=1\C-G\033\\";;  # line cursor
-        esac
-    else
-        case $KEYMAP in
-            vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-            viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-        esac
-    fi
+    case $KEYMAP in
+        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
 
     zle reset-prompt
     zle -R
@@ -183,12 +159,7 @@ function zle-keymap-select zle-line-init
 
 function zle-line-finish
 {
-    if [[ $TMUX != "" ]]
-    then
-        print -n -- "\033Ptmux;\033\E]50;CursorShape=0\C-G\033\\"
-    else
-        print -n -- "\E]50;CursorShape=0\C-G"
-    fi
+    print -n -- "\E]50;CursorShape=0\C-G"
 }
 
 zle -N zle-line-init
@@ -197,14 +168,6 @@ zle -N zle-keymap-select
 
 # # 10ms for key sequences
 KEYTIMEOUT=1
-
-# init cursor, apparently only needed for tmux, but left the conditional for consistency
-if [[ $TMUX != "" ]]
-then
-    print -n -- "\033Ptmux;\033\E]50;CursorShape=0\C-G\033\\"
-else
-    print -n -- "\E]50;CursorShape=0\C-G"
-fi
 
 # -----------------------------------------------
 # Set up zsh-specifics
@@ -275,33 +238,6 @@ function preexec() {
     fi
     cmd="${jobtexts[${jobnum#%}]}"
   fi
-
-  # These are used in precmd
-  cmd_start_time=$(date +%s)
-  lastcmd="$cmd"
-
-  title "$cmd"
-}
-
-function title() {
-  # This is madness.
-  # We replace literal '%' with '%%'
-  # Also use ${(V) ...} to make nonvisible chars printable (think cat -v)
-  # Replace newlines with '; '
-  local value="${${${(V)1//\%/\%\%}//'\n'/; }//'\t'/ }"
-  local location
-
-  location="$HOST"
-  [ "$USERNAME" != "$LOGNAME" ] && location="${USERNAME}@${location}"
-
-  # Special format for use with print -Pn
-  value="%70>...>$value%<<"
-  unset PROMPT_SUBST
-  if [ ! -z "$TMUX" ]; then
-      print -Pn "\ek${value}\e\\"     # screen title (in windowlist)
-      print -Pn "\e_${location}\e\\"  # screen location
-  fi
-  setopt LOCAL_OPTIONS
 }
 
 # bind UP and DOWN arrow keys (compatibility fallback
