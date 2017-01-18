@@ -50,8 +50,6 @@ nametrans = lambda folder: {'Drafts'           : 'drafts',
                             'Archive'          : 'archive',
                             'Trash'            : 'trash',
                             'pecan'            : 'pecan',
-                            'openstack-dev'    : 'openstack-dev',
-                            'openstack-reviews': 'openstack-reviews'
                            }.get(folder, folder)
 folderfilter = lambda folder: not folder.startswith('RESTORED.')
 
