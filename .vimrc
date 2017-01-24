@@ -272,6 +272,8 @@ endfunction
 " Ctrl-p fuzzy search and preferences
 nmap <Leader>p <Esc>:CtrlP<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_root_markers = ['README.tmpenv']  " treat temporary virtualenvs like searchable projects
 let g:ctrlp_open_multi = '1h'
