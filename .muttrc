@@ -26,7 +26,7 @@ unset recall             # don't ask to recall messages on compose
 
 # Sidebar Patch ---------------------------------------------------------------
 set sidebar_visible = yes
-set sidebar_width   = 28
+set sidebar_width   = 20
 set sidebar_divider_char = '  '
 color sidebar_indicator color73 default
 color sidebar_new yellow default
@@ -88,8 +88,8 @@ folder-hook . 'set net_inc=100'
 folder-hook . 'set write_inc=1000'
 
 # Index View Options ----------------------------------------------------------
-set date_format = "%m/%d/%y %I:%M %p"              # sane date format
-set index_format = "[%Z]  %M %D  %-12.12F  %s"     # sane index format
+set date_format = "%m/%d %I:%M%p"              # sane date format
+set index_format = "[%Z]%M %D %-10.10F %s"     # sane index format
 set sort = threads                              # like gmail
 set sort_aux = reverse-last-date-received       # like gmail
 set uncollapse_jump                             # don't collapse on an unread message
