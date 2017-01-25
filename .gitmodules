@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/colorsupport.vim"]
 	path = .vim/bundle/colorsupport.vim
 	url = https://github.com/vim-scripts/colorsupport.vim.git
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
-	url = https://github.com/ryanpetrello/ctrlp.vim.git
 [submodule ".vim/bundle/khuno.vim"]
 	path = .vim/bundle/khuno.vim
 	url = https://github.com/alfredodeza/khuno.vim.git

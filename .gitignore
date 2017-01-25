@@ -25,6 +25,8 @@
 !/tmux-mail-count
 !/.vim/*
 !/.zsh*
+!/.zsh*
+!/.fzf.zsh
 !/.bashrc
 !/wunderground.py
 !/com.googlecode.iterm2.plist

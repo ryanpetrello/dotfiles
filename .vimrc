@@ -269,21 +269,11 @@ function! ToggleBuff()
     endif
 endfunction
 
-" Ctrl-p fuzzy search and preferences
-nmap <Leader>p <Esc>:CtrlP<CR>
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 40
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['README.tmpenv']  " treat temporary virtualenvs like searchable projects
-let g:ctrlp_open_multi = '1h'
-let g:ctrlp_custom_ignore = '.tox'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':     ['<down>'],
-    \ 'PrtSelectMove("k")':     ['<up>'],
-    \ 'AcceptSelection("e")':   [],
-    \ 'AcceptSelection("h")':   ['<cr>']
-    \ }
+" enable fzf completion
+set rtp+=/usr/local/opt/fzf
+nmap <Leader>p <Esc>:FZF<CR>
+let g:fzf_action = {
+  \ 'enter': 'split' }
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83 | DimInactiveOff
