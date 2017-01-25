@@ -274,6 +274,7 @@ set rtp+=/usr/local/opt/fzf
 nmap <Leader>p <Esc>:FZF<CR>
 let g:fzf_action = {
   \ 'enter': 'split' }
+let g:fzf_layout = { 'down': '20%' }
 
 " Auto-open a split pane with an applicable diff for git commits
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83 | DimInactiveOff
