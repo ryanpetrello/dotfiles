@@ -31,7 +31,7 @@ path=/Users/ryan/.mail
 [user]
 name=Ryan Petrello
 primary_email=ryan@ryanpetrello.com
-other_email=rpetrell@redhat.com,lists@ryanpetrello.com;
+other_email=rpetrell@redhat.com,rpetrell@ansible.com,lists@ryanpetrello.com;
 
 # Configuration for "notmuch new"
 #
