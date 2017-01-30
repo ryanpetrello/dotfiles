@@ -172,7 +172,7 @@ set smartcase
 
 "Hide mouse when typing
 set mousehide
-set mouse=a
+set mouse=
 
 "Split windows below the current window.
 set splitbelow
@@ -293,3 +293,5 @@ let g:vitality_always_assume_iterm = 1
 
 " Disable syntax highlight on inactive vim windows
 let g:diminactive_use_syntax = 1
+
+let g:khuno_max_line_length=100
