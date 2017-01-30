@@ -256,3 +256,5 @@ if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
