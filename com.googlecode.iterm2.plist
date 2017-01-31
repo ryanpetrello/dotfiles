@@ -874,7 +874,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>169 1185 796 473 0 0 1200 1897 </string>
+	<string>169 1146 796 473 0 0 1200 1897 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>3 9 1194 1888 0 0 1200 1897 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -1610,15 +1610,13 @@
 			<array>
 				<dict>
 					<key>action</key>
-					<string>CaptureTrigger</string>
-					<key>regex</key>
-					<string>Please telnet into</string>
-				</dict>
-				<dict>
-					<key>action</key>
 					<string>GrowlTrigger</string>
+					<key>parameter</key>
+					<string>\0</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
-					<string>Please telnet into</string>
+					<string>Please telnet into 0.0.0.0 [0-9]+</string>
 				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
@@ -2478,7 +2476,7 @@
 	<integer>10</integer>
 	<key>ToolbeltTools</key>
 	<array>
-		<string>Captured Output</string>
+		<string>Paste History</string>
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
