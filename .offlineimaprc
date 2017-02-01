@@ -117,6 +117,7 @@ nametrans = lambda folder: {'Drafts'                    : 'drafts',
                             'announce'                  : 'announce',
                             'memo'                      : 'memo',
                             'tower'                     : 'tower',
+                            'tower-archive'             : 'tower-archive',
                            }.get(folder, folder)
 folderfilter = lambda folder: (folder not in ['Drafts',
                                               'Sent',

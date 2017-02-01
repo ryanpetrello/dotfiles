@@ -68,6 +68,7 @@ mailboxes +@ryan \
           +redhat.com/INBOX.drafts \
           +redhat.com/INBOX.trash \
           +redhat.com/tower \
+          +redhat.com/tower-archive \
           +redhat.com/announce \
           +redhat.com/memo \
           +@search \
@@ -89,7 +90,7 @@ folder-hook . 'set write_inc=1000'
 
 # Index View Options ----------------------------------------------------------
 set date_format = "%m/%d %I:%M%p"              # sane date format
-set index_format = "[%Z]%M %D %-10.10F %s"     # sane index format
+set index_format = "[%Z]%M %D %-15.15F %s"     # sane index format
 set sort = threads                              # like gmail
 set sort_aux = reverse-last-date-received       # like gmail
 set uncollapse_jump                             # don't collapse on an unread message
