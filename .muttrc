@@ -26,7 +26,7 @@ unset recall             # don't ask to recall messages on compose
 
 # Sidebar Patch ---------------------------------------------------------------
 set sidebar_visible = yes
-set sidebar_width   = 20
+set sidebar_width   = 24
 set sidebar_divider_char = '  '
 color sidebar_indicator color73 default
 color sidebar_new yellow default
