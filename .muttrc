@@ -64,9 +64,9 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.trash \
           +@rh \
           +redhat.com/INBOX \
-          +redhat.com/INBOX.sent \
-          +redhat.com/INBOX.drafts \
-          +redhat.com/INBOX.trash \
+          +redhat.com/sent \
+          +redhat.com/drafts \
+          +redhat.com/trash \
           +redhat.com/tower \
           +redhat.com/tower-archive \
           +redhat.com/announce \
