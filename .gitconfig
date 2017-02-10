@@ -28,6 +28,6 @@
     ignoreSubmodules = untracked
     renames = copies
 [push]
-	default = matching
+    default = matching
 [commit]
     gpgsign = true
