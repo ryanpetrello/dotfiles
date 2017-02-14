@@ -57,6 +57,7 @@ alternates rpetrell@redhat.com
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
+          +ryanpetrello.com/INBOX.archive \
           +ryanpetrello.com/INBOX.sent \
           +ryanpetrello.com/INBOX.drafts \
           +ryanpetrello.com/INBOX.spam \
@@ -89,7 +90,7 @@ folder-hook . 'set net_inc=100'
 folder-hook . 'set write_inc=1000'
 
 # Index View Options ----------------------------------------------------------
-set date_format = "%m/%d %I:%M%p"              # sane date format
+set date_format = "%m/%d/%y %I:%M%p"              # sane date format
 set index_format = "[%Z]%M %D %-15.15F %s"     # sane index format
 set sort = threads                              # like gmail
 set sort_aux = reverse-last-date-received       # like gmail
