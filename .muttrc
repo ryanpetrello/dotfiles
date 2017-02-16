@@ -80,7 +80,7 @@ folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
 folder-hook redhat.com/* source ~/.mutt/rh.muttrc
 
 # Automatically hide read messages when switching certain folders
-folder-hook ryanpetrello.com/Inbox 'push "l~U<enter>"'
+folder-hook redhat.com/memo 'push "l~U<enter>"'
 folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
