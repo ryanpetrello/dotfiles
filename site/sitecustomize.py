@@ -38,7 +38,7 @@ try:
 
         try:
             from pygments import highlight
-            from pygments.lexers import PythonLexer, PythonTracebackLexer
+            from pygments.lexers import PythonLexer
             from pygments.formatters import Terminal256Formatter
         except ImportError:
             yield
@@ -138,10 +138,6 @@ try:
         def set_step(self):
             os.system('clear')
             pdb.Pdb.set_step(self)
-
-        def print_stack_trace(self):
-            with style(self, lexer=PythonTracebackLexer):
-                return pdb.Pdb.print_stack_trace(self)
 
         def default(self, line):
             with style(self):
