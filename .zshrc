@@ -39,6 +39,10 @@ function mutt() {
 function 1pass() { sudo -u $(whoami) /usr/bin/security find-generic-password -l 1pass -w | $WORKON_HOME/1pass/bin/1pass --no-prompt --fuzzy "$@" | tr -d '\012\015' | pbcopy }
 alias 1p='1pass'
 
+function branch() {
+    git symbolic-ref --short HEAD
+}
+
 function gh-diff() {
     git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
     if [ $? -ne 0 ]; then
@@ -71,10 +75,11 @@ fi
 
 # history
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=999999999
+SAVEHIST=999999999
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
+setopt hist_ignore_all_dups
 bindkey '^R' history-incremental-search-backward
 h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
