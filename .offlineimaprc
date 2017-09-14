@@ -102,6 +102,7 @@ nametrans = lambda folder: {'drafts'        : '[Gmail]/Drafts',
 [Repository RH-Remote]
 maxconnections = 3
 type = Gmail
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
 sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 remoteuser = rpetrell@redhat.com
 remotepasseval = get_keychain_pass(account='rpetrell@redhat.com')

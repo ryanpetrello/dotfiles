@@ -10,7 +10,7 @@ while true; do
 
   echo "downloading new mail"
   doalarm 120 /usr/local/bin/offlineimap -a Ryan & pid1=$!
-  doalarm 120 /usr/local/bin/offlineimap -a RH & pid2=$!
+  doalarm 300 /usr/local/bin/offlineimap -a RH & pid2=$!
   wait $pid1
   /usr/local/bin/notmuch new
   /usr/local/bin/notmuch tag -new -- tag:new
