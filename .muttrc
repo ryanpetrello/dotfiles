@@ -8,6 +8,8 @@ set message_cachedir = ~/.mutt/cache/bodies     # where to store bodies
 set certificate_file = ~/.mutt/certificates     # where to store certs
 set mailcap_path     = ~/.mutt/mailcap          # entries for filetypes
 set tmpdir           = ~/.mutt/temp             # where to keep temp files
+unset header_cache_compress
+unset maildir_header_cache_verify
 
 # Basic Options ---------------------------------------------------------------
 set wait_key = no        # shut up, mutt
