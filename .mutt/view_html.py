@@ -7,11 +7,12 @@
 # on a single message file.
 
 import base64
+import codecs
 import email
 import subprocess
 import tempfile
 import time
-from cStringIO import StringIO
+from StringIO import StringIO
 
 
 def view_html_message():
@@ -72,11 +73,12 @@ def view_html_message():
         buff.write(payload)
 
     with tempfile.NamedTemporaryFile(suffix='.html') as f:
-        try:
-            from unidecode import unidecode
-            f.write(unidecode(buff.getvalue().decode('utf8')))
-        except (UnicodeDecodeError, ImportError):
-            f.write(buff.getvalue())
+        filename = f.name
+
+    with codecs.open(filename, 'w', encoding='utf-8') as f:
+        f.write('<html><head><meta charset="utf-8"/></head><body>')
+        f.write(buff.getvalue().decode('utf8'))
+        f.write('</body></html>')
         f.flush()
         subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
         time.sleep(3)
