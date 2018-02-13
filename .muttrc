@@ -70,10 +70,9 @@ mailboxes +@ryan \
           +redhat.com/sent \
           +redhat.com/drafts \
           +redhat.com/trash \
-          +redhat.com/tower \
-          +redhat.com/tower-archive \
-          +redhat.com/announce \
           +redhat.com/awx \
+          +redhat.com/tower \
+          +redhat.com/announce \
           +redhat.com/memo \
           +@search \
           +temporary/search \

@@ -115,7 +115,6 @@ nametrans = lambda folder: {'[Gmail]/Drafts'            : 'drafts',
                             'awx'                       : 'awx',
                             'memo'                      : 'memo',
                             'tower'                     : 'tower',
-                            'tower-archive'             : 'tower-archive',
                            }.get(folder, folder)
 
 [Repository DC-Error-Local]
