@@ -113,6 +113,7 @@ nametrans = lambda folder: {'[Gmail]/Drafts'            : 'drafts',
                             '[Gmail]/Trash'             : 'trash',
                             'announce'                  : 'announce',
                             'awx'                       : 'awx',
+                            'ansible'                   : 'ansible',
                             'memo'                      : 'memo',
                             'tower'                     : 'tower',
                            }.get(folder, folder)
