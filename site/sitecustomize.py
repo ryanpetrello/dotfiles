@@ -1,7 +1,7 @@
 try:
     import readline
 except ImportError:
-    print("Module readline not available.")
+    pass
 else:
     import rlcompleter
     if 'libedit' in readline.__doc__:
