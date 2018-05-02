@@ -19,14 +19,10 @@ def view_html_message():
     with open('/Users/ryan/.mail/temporary/cur-message', 'rb') as data:
         msgid = data.read()
 
+    subprocess.check_call(['notmuch', 'new'])
     fnames = subprocess.check_output(
         ['notmuch', 'search', '--output=files', '%s' % msgid]
     )
-    if not fnames:
-        subprocess.check_call(['notmuch', 'new'])
-        fnames = subprocess.check_output(
-            ['notmuch', 'search', '--output=files', '%s' % msgid]
-        )
     msg = None
     for line in fnames.splitlines():
         try:
