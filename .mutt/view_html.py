@@ -73,7 +73,7 @@ def view_html_message():
 
     with codecs.open(filename, 'w', encoding='utf-8') as f:
         f.write('<html><head><meta charset="utf-8"/></head><body>')
-        f.write(buff.getvalue().decode('utf8'))
+        f.write(buff.getvalue().decode('utf8', 'ignore'))
         f.write('</body></html>')
         f.flush()
         subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
