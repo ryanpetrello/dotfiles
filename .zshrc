@@ -70,7 +70,21 @@ export ACK_COLOR_MATCH='red'
 export WORKON_HOME=~/venvs
 VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 if [[ -f $VIRTUALENVWRAPPER ]]; then
-    source $VIRTUALENVWRAPPER
+    function workon() {
+        unfunction "$0"
+        source $VIRTUALENVWRAPPER
+        $0 "$@"
+    }
+    function mkvirtualenv () {
+        unfunction "$0"
+        source $VIRTUALENVWRAPPER
+        $0 "$@"
+    }
+    function mktmpenv () {
+        unfunction "$0"
+        source $VIRTUALENVWRAPPER
+        $0 "$@"
+    }
 fi
 
 # history
@@ -84,7 +98,7 @@ bindkey '^R' history-incremental-search-backward
 h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
 # vim as default + launch settings
-export EDITOR='vim'
+export EDITOR='nvim'
 export TERM='xterm-256color'
 
 # colors
@@ -222,31 +236,6 @@ unset highlights
 
 source ~/.zsh/completions/pytest.plugin.zsh
 
-function preexec() {
-  # The full command line comes in as "$1"
-  local cmd="$1"
-  local -a args
-
-  # add '--' in case $1 is only one word to work around a bug in ${(z)foo}
-  # in zsh 4.3.9.
-  tmpcmd="$1 --"
-  args=${(z)tmpcmd}
-
-  # remove the '--' we added as a bug workaround..
-  # per zsh manpages, removing an element means assigning ()
-  args[${#args}]=()
-  if [ "${args[1]}" = "fg" ] ; then
-    local jobnum="${args[2]}"
-    if [ -z "$jobnum" ] ; then
-      # If no jobnum specified, find the current job.
-      for i in ${(k)jobtexts}; do
-        [ -z "${jobstates[$i]%%*:+:*}" ] && jobnum=$i
-      done
-    fi
-    cmd="${jobtexts[${jobnum#%}]}"
-  fi
-}
-
 # bind UP and DOWN arrow keys (compatibility fallback
 # # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
 bindkey '^[[A' history-substring-search-up
@@ -265,4 +254,10 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export NVM_DIR="$HOME/.nvm"
+function nvm() {
+    unfunction "$0"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion<Paste>
+    $0 "$@"
+}
