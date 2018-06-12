@@ -25,8 +25,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo '¯\_(ツ)_/¯'"
-alias vi="nvim"
-alias vim="nvim"
+alias vi="vim"
 
 export LESS=FRSXQ
 
@@ -68,7 +67,7 @@ export ACK_COLOR_MATCH='red'
 
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
-VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER=/usr/bin/virtualenvwrapper.sh
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     function workon() {
         unfunction "$0"
@@ -98,7 +97,7 @@ bindkey '^R' history-incremental-search-backward
 h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
 # vim as default + launch settings
-export EDITOR='nvim'
+export EDITOR='vim'
 export TERM='xterm-256color'
 
 # colors
