@@ -26,6 +26,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo '¯\_(ツ)_/¯'"
 alias vi="vim"
+alias ack="rg"
 
 export LESS=FRSXQ
 
