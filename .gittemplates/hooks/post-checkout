@@ -1,4 +1,4 @@
 #!/bin/sh
 git config user.email 'lists@ryanpetrello.com'
-git config --get remote.origin.url | egrep '(ansible|tower|awx)' > /dev/null 2>&1 && git config user.email 'rpetrell@redhat.com'
+git config --get remote.origin.url | egrep '(ansible|tower|awx|receptor)' > /dev/null 2>&1 && git config user.email 'rpetrell@redhat.com'
 exit 0
