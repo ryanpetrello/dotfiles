@@ -68,7 +68,7 @@ export ACK_COLOR_MATCH='red'
 
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
-VIRTUALENVWRAPPER=/usr/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     function workon() {
         unfunction "$0"
@@ -261,3 +261,4 @@ function nvm() {
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion<Paste>
     $0 "$@"
 }
+export GPG_TTY=$(tty)
