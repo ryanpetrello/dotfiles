@@ -63,16 +63,6 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.ansible \
           +ryanpetrello.com/INBOX.pecan \
           +ryanpetrello.com/INBOX.trash \
-          +@rh \
-          +redhat.com/INBOX \
-          +redhat.com/sent \
-          +redhat.com/drafts \
-          +redhat.com/trash \
-          +redhat.com/awx \
-          +redhat.com/tower \
-          +redhat.com/ansible \
-          +redhat.com/announce \
-          +redhat.com/memo \
           +@search \
           +temporary/search \
 
@@ -100,7 +90,7 @@ set sort_re                                     # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # Index Key Bindings ----------------------------------------------------------
-bind index gg           first-entry         # more vimmy
+#bind index gg           first-entry         # more vimmy
 bind index G            last-entry          # even more vimmy
 bind index R            group-reply         # reply-all
 bind index <tab>        sync-mailbox        # synchronize with mail store
@@ -157,7 +147,7 @@ bind index,pager <right>  sidebar-open
 # Pager Key Bindings ----------------------------------------------------------
 bind pager k  previous-line
 bind pager j  next-line
-bind pager gg top
+#bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply
 bind pager [  previous-entry
