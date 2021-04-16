@@ -1,0 +1,58 @@
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount ryan
+Host mail.messagingengine.com
+User ryan@ryanpetrello.com
+PassCmd "/usr/bin/security -v find-internet-password -wg -a ryan@ryanpetrello.com -s imap.fastmail.com /Users/ryanpetrello/Library/Keychains/login.keychain"
+SSLType IMAPS
+CertificateFile /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+AuthMechs LOGIN
+
+IMAPStore ryan-remote
+Account ryan
+
+MaildirStore ryan-local
+Path ~/.mail/ryanpetrello.com/
+Inbox ~/.mail/ryanpetrello.com/INBOX
+
+Channel ryan-inbox
+Master :ryan-remote:
+Slave :ryan-local:
+Patterns "INBOX"
+
+Channel ryan-sent
+Master :ryan-remote:"Sent"
+Slave :ryan-local:"sent"
+Create Both
+Expunge Both
+SyncState *
+
+Channel ryan-drafts
+Master :ryan-remote:"Drafts"
+Slave :ryan-local:"drafts"
+Create Both
+Expunge Both
+SyncState *
+
+Channel ryan-spam
+Master :ryan-remote:"Spam"
+Slave :ryan-local:"spam"
+Create Both
+Expunge Both
+SyncState *
+
+Channel ryan-pecan
+Master :ryan-remote:"pecan"
+Slave :ryan-local:"pecan"
+Create Both
+Expunge Both
+SyncState *
+
+Channel ryan-trash
+Master :ryan-remote:"Trash"
+Slave :ryan-local:"trash"
+Create Both
+Expunge Both
+SyncState *

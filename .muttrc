@@ -53,9 +53,6 @@ unignore from: to: cc: date: subject: # show only these
 # Default inbox.
 set spoolfile = "+ryanpetrello.com/Inbox"
 
-# Alternate email addresses.
-alternates rpetrell@redhat.com
-
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
