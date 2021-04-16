@@ -50,6 +50,13 @@ Create Both
 Expunge Both
 SyncState *
 
+Channel ryan-ansible
+Master :ryan-remote:"ansible
+Slave :ryan-local:"ansible
+Create Both
+Expunge Both
+SyncState *
+
 Channel ryan-trash
 Master :ryan-remote:"Trash"
 Slave :ryan-local:"trash"

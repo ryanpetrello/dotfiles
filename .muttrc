@@ -60,6 +60,7 @@ mailboxes +@ryan \
           +ryanpetrello.com/INBOX.sent \
           +ryanpetrello.com/INBOX.drafts \
           +ryanpetrello.com/INBOX.spam \
+          +ryanpetrello.com/INBOX.ansible \
           +ryanpetrello.com/INBOX.pecan \
           +ryanpetrello.com/INBOX.trash \
           +@rh \
