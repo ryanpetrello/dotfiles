@@ -56,13 +56,12 @@ set spoolfile = "+ryanpetrello.com/Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +@ryan \
           +ryanpetrello.com/INBOX \
-          +ryanpetrello.com/INBOX.archive \
-          +ryanpetrello.com/INBOX.sent \
-          +ryanpetrello.com/INBOX.drafts \
-          +ryanpetrello.com/INBOX.spam \
-          +ryanpetrello.com/INBOX.ansible \
-          +ryanpetrello.com/INBOX.pecan \
-          +ryanpetrello.com/INBOX.trash \
+          +ryanpetrello.com/sent \
+          +ryanpetrello.com/drafts \
+          +ryanpetrello.com/spam \
+          +ryanpetrello.com/ansible \
+          +ryanpetrello.com/pecan \
+          +ryanpetrello.com/trash \
           +@search \
           +temporary/search \
 
