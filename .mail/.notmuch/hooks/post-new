@@ -1,6 +1,6 @@
 #!/bin/bash
-for f in `/usr/local/bin/notmuch search --output=files tag:new | egrep "(INBOX/new)|(pecan/new)|(tower/new)|(announce/new)"`; do
-    msg=`cat "$f" | grep -i 'Message-Id:' | ack -i "Message-Id: ?<([^>]+)>" --output '$1'`
-    /Users/ryan/.mutt/notify.py $f
+for f in `/usr/local/bin/notmuch search --output=files tag:new | egrep "(INBOX/new)|(pecan/new)"`; do
+    msg=`cat "$f" | rg -i "Message-Id: ?<([^>]+)>" | sed -r "s/.*<([^>]+)>/id:\1/"`
     notmuch tag -new -- id:$msg
+    /Users/ryanpetrello/.mutt/notify.py $f
 done

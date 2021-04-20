@@ -81,13 +81,6 @@ with open(filename) as mail_file:
     if avatar is None:
         try:
             sender_domain = address.split('@')[1]
-            try:
-                import tldextract
-                match = tldextract.extract(sender_domain)
-                if match:
-                    sender_domain = match.registered_domain
-            except ImportError:
-                pass
             if sender_domain not in ('gmail.com', 'yahoo.com', 'hotmail.com'):
                 richicon = 'https://d2x2f6qan2kccj.cloudfront.net/images/login/114/%s.png' % sender_domain
                 request = urllib2.Request(richicon)
@@ -133,10 +126,4 @@ with open(filename) as mail_file:
         '-appIcon', 'https://ryanpetrello.com/mutt.png'
     ]) + ['-execute', event]
 
-    with open(os.path.expanduser('~/.mutt/error.log'), 'a') as log:
-        try:
-            subprocess.check_call(args, stdout=log, stderr=log)
-        except Exception as e:
-            log.write(' '.join(args))
-            log.write('\n'+str(e)+'\n')
-            log.flush()
+    subprocess.check_call(args)
