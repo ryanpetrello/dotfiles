@@ -1,9 +1,8 @@
 Install/Configure Mutt + Extras on OSX
 ======================================
 
-$ brew install neomutt/homebrew-neomutt/neomutt 
+$ brew install mutt
 $ brew install isync
-$ brew install curl-ca-bundle
 $ brew install notmuch
 $ brew install msmtp
 $ brew install urlview
