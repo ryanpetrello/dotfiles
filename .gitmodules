@@ -10,6 +10,7 @@
 [submodule ".vim/bundle/colorsupport.vim"]
 	path = .vim/bundle/colorsupport.vim
 	url = https://github.com/vim-scripts/colorsupport.vim.git
+    ignore = dirty
 [submodule ".vim/bundle/khuno.vim"]
 	path = .vim/bundle/khuno.vim
 	url = https://github.com/alfredodeza/khuno.vim.git
