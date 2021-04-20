@@ -7,8 +7,6 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 set -o vi
 
 # vim text object support
-source ~/.zsh/opp.zsh/opp.zsh
-source ~/.zsh/opp.zsh/opp/*.zsh
 #source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
