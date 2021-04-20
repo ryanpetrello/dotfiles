@@ -30,7 +30,7 @@ export LESS=FRSXQ
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
-    cd ~/Desktop && /usr/local/bin/mutt "$@"
+    cd ~/Desktop && /usr/local/bin/mutt "$@" && cd -
 }
 
 # CLI for 1Password.  Requires the `1pass` Python package
