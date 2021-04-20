@@ -24,8 +24,6 @@
 !/venvs/
 !/tmux-mail-count
 !/.vim/*
-!/.zsh*
-!/.zsh*
 !/.fzf.zsh
 !/.bashrc
 !/wunderground.py
@@ -35,3 +33,5 @@
 !/ssh.py
 .viminfo
 .zsh_history
+*.pyc
+*__pycache__*
