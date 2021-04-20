@@ -7,7 +7,7 @@ Host mail.messagingengine.com
 User ryan@ryanpetrello.com
 PassCmd "/usr/bin/security -v find-internet-password -wg -a ryan@ryanpetrello.com -s imap.fastmail.com /Users/ryanpetrello/Library/Keychains/login.keychain"
 SSLType IMAPS
-CertificateFile /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+CertificateFile /Users/ryanpetrello/cacert.pem
 AuthMechs LOGIN
 
 IMAPStore ryan-remote
