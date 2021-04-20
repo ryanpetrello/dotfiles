@@ -2,7 +2,7 @@
     templatedir = ~/.gittemplates
 [user]
     name = Ryan Petrello
-    email = lists@ryanpetrello.com
+    email = ryan@ryanpetrello.com
 [core]
     excludesfile = /Users/ryanpetrello/.gitexcludes
 [alias]
