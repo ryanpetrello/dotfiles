@@ -11,6 +11,4 @@ while true; do
   /usr/local/bin/notmuch new
   #wait $pid2
   #/usr/local/bin/notmuch new
-  /usr/local/bin/notmuch tag -new -- tag:new
-
 done
