@@ -6,9 +6,7 @@ while true; do
   echo "waiting for IDLE"
   doalarm 30 python ~/.mutt/idle.py
   echo "downloading new mail"
-  doalarm 120 /usr/local/bin/mbsync -a Ryan & pid1=$!
+  doalarm 120 /usr/local/bin/mbsync --all & pid1=$!
   wait $pid1
   /usr/local/bin/notmuch new
-  #wait $pid2
-  #/usr/local/bin/notmuch new
 done

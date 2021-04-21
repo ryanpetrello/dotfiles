@@ -7,13 +7,15 @@ import subprocess
 IDLE_FOLDERS = [
     ("Ryan", "ryan@ryanpetrello.com", "INBOX", 'imap.fastmail.com'),
     ("Ryan", "ryan@ryanpetrello.com", "Sent", 'imap.fastmail.com'),
+    ("GH", "ryanpetrello@github.com", "INBOX", 'imap.gmail.com'),
 ]
 
 
 def get_keychain_pass(account=None, server='imap.gmail.com'):
+    command = 'find-generic-password' if server == 'imap.gmail.com' else 'find-internet-password'
     params = {
         'security': '/usr/bin/security',
-        'command': 'find-internet-password',
+        'command': command,
         'account': account,
         'server': server,
         'keychain': '/Users/ryanpetrello/Library/Keychains/login.keychain',

@@ -63,3 +63,29 @@ Slave :ryan-local:"trash"
 Create Both
 Expunge Both
 SyncState *
+
+IMAPAccount gh
+Host imap.gmail.com
+User ryanpetrello@github.com
+PassCmd "/usr/bin/security -v find-generic-password -wg -a ryanpetrello@github.com -s imap.gmail.com /Users/ryanpetrello/Library/Keychains/login.keychain"
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore gh-remote
+Account gh
+
+MaildirStore gh-local
+Path ~/.mail/github.com/
+Inbox ~/.mail/github.com/Inbox
+
+Channel gh-inbox
+Master :gh-remote:
+Slave :gh-local:
+Patterns "INBOX"
+
+Channel gh-sent
+Master :gh-remote:"Sent"
+Slave :gh-local:"sent"
+Create Both
+Expunge Both
+SyncState *
