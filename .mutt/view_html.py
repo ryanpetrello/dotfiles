@@ -76,7 +76,7 @@ def view_html_message():
         f.write(buff.getvalue().decode('utf8', 'ignore'))
         f.write('</body></html>')
         f.flush()
-        subprocess.check_call(['open', '-a', '/Applications/Safari.app/', f.name])
+        subprocess.check_call(['open', '-a', '/Applications/Google Chrome.app/', f.name])
         time.sleep(3)
 
 
