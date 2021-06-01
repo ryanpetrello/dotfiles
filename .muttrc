@@ -61,9 +61,10 @@ mailboxes +@ryan \
           +ryanpetrello.com/ansible \
           +ryanpetrello.com/pecan \
           +ryanpetrello.com/trash \
-          +@github \
-          +github.com/INBOX \
-          +github.com/sent \
+          +@mission \
+          +missioncloud.com/INBOX \
+          +missioncloud.com/sent \
+          +missioncloud.com/mission-ops \
           +@search \
           +temporary/search \
 

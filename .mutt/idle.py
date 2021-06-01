@@ -7,20 +7,20 @@ import subprocess
 IDLE_FOLDERS = [
     ("Ryan", "ryan@ryanpetrello.com", "INBOX", 'imap.fastmail.com'),
     ("Ryan", "ryan@ryanpetrello.com", "Sent", 'imap.fastmail.com'),
-    ("GH", "ryanpetrello@github.com", "INBOX", 'imap.gmail.com'),
+    ("Mission", "rpetrello@missioncloud.com", "INBOX", 'imap.gmail.com'),
 ]
 
 
 def get_keychain_pass(account=None, server='imap.gmail.com'):
-    command = 'find-generic-password' if server == 'imap.gmail.com' else 'find-internet-password'
+    command = 'find-internet-password'
     params = {
         'security': '/usr/bin/security',
         'command': command,
         'account': account,
         'server': server,
-        'keychain': '/Users/ryanpetrello/Library/Keychains/login.keychain',
+        'keychain': '/Users/rpetrello/Library/Keychains/login.keychain',
     }
-    command = "sudo -u ryanpetrello %(security)s -v %(command)s -g -a %(account)s -s %(server)s %(keychain)s" % params
+    command = "sudo -u rpetrello %(security)s -v %(command)s -g -a %(account)s -s %(server)s %(keychain)s" % params
     output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
     outtext = [l for l in output.splitlines()
                if l.startswith('password: ')][0]

@@ -8,7 +8,7 @@
         <string>org.ryan.mail.ryan</string>
         <key>ProgramArguments</key>
         <array>
-            <string>/Users/ryanpetrello/.mutt/imap-idle</string>
+            <string>/Users/rpetrello/.mutt/imap-idle</string>
         </array>
         <key>RunAtLoad</key>
         <true/>

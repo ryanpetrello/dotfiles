@@ -1,5 +1,5 @@
 #!/bin/bash
 for f in `/usr/local/bin/notmuch search --output=files tag:new | egrep "(INBOX/new)|(pecan/new)"`; do
-    /Users/ryanpetrello/.mutt/notify.py $f
+    /Users/rpetrello/.mutt/notify.py $f
 done
 /usr/local/bin/notmuch tag -new -- tag:new

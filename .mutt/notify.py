@@ -117,7 +117,7 @@ with open(filename) as mail_file:
         event = 'open -a Safari \"%s\"' % cgi.escape('https://github.com/'+pull)
     else:
         uuid = re.sub(r'([^a-zA-Z0-9\s])', r'[\\\\\\\\\1]', uuid)
-        event = '/Users/ryanpetrello/.mutt/open-message-from-notification \"%s\" \"%s\"' % (folder, uuid)
+        event = '/Users/rpetrello/.mutt/open-message-from-notification \"%s\" \"%s\"' % (folder, uuid)
 
     args = map(decode, [
         '/usr/local/bin/terminal-notifier', '-message', subject, '-title', title,

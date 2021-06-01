@@ -16,7 +16,7 @@ from StringIO import StringIO
 
 
 def view_html_message():
-    with open('/Users/ryanpetrello/.mail/temporary/cur-message', 'rb') as data:
+    with open('/Users/rpetrello/.mail/temporary/cur-message', 'rb') as data:
         msgid = data.read()
 
     subprocess.check_call(['notmuch', 'new'])
@@ -76,7 +76,7 @@ def view_html_message():
         f.write(buff.getvalue().decode('utf8', 'ignore'))
         f.write('</body></html>')
         f.flush()
-        subprocess.check_call(['open', '-a', '/Applications/Google Chrome.app/', f.name])
+        subprocess.check_call(['open', '-a', '/Applications/Firefox.app/', f.name])
         time.sleep(3)
 
 

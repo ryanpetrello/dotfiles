@@ -7,4 +7,4 @@
 # function which works in maildir and mh folders.  It does have one
 # in the file browser though.
 
-cat | grep -i 'Message-Id:' | rg -i "Message-Id: ?<([^>]+)>" | sed -r "s/.*<([^>]+)>/id:\1/" > /Users/ryanpetrello/.mail/temporary/cur-message
+cat | grep -i 'Message-Id:' | rg -i "Message-Id: ?<([^>]+)>" | sed -r "s/.*<([^>]+)>/id:\1/" > /Users/rpetrello/.mail/temporary/cur-message
