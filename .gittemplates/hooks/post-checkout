@@ -1,4 +1,4 @@
 #!/bin/sh
 git config user.email 'ryan@ryanpetrello.com'
-git config --get remote.origin.url | egrep 'missioncloud' > /dev/null 2>&1 && git config user.email 'rpetrell@missioncloud.com'
+git config --get remote.origin.url | egrep 'missioncloud' > /dev/null 2>&1 && git config user.email 'rpetrello@missioncloud.com'
 exit 0
