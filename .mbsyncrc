@@ -89,10 +89,3 @@ Slave :mission-local:"sent"
 Create Both
 Expunge Both
 SyncState *
-
-Channel mission-ops
-Master :mission-remote:"mission-ops"
-Slave :mission-local:"mission-ops"
-Create Both
-Expunge Both
-SyncState *
