@@ -17,7 +17,6 @@
 !/.mutt*
 .mutt/error.log
 !/.offlineimaprc
-!/.pip*
 !/.mail/*
 !/.notmuch-config
 !/.tmux.conf
