@@ -197,8 +197,11 @@ let g:chapa_default_mappings = 1
 " Map <Leader>h to a Mac color picker (hex)
 nmap <Leader>h <Esc>:ColorHEX<CR>
 
+" JS linting
+nmap <silent><Leader>f <Esc>:Prettier<CR>
+autocmd BufWritePost *.js,*.jsx execute ":Prettier"
+
 " Pytest leader mappings
-nmap <silent><Leader>f <Esc>:Pytest file<CR>
 nmap <silent><Leader>m <Esc>:Pytest method<CR>
 nmap <silent><Leader>c <Esc>:Pytest class<CR>
 map <F3> :Pytest session<CR>
