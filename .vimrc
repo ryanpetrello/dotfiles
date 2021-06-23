@@ -198,10 +198,10 @@ let g:chapa_default_mappings = 1
 nmap <Leader>h <Esc>:ColorHEX<CR>
 
 " JS linting
-nmap <silent><Leader>f <Esc>:Prettier<CR>
 autocmd BufWritePost *.js,*.jsx execute ":Prettier"
 
 " Pytest leader mappings
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
 nmap <silent><Leader>m <Esc>:Pytest method<CR>
 nmap <silent><Leader>c <Esc>:Pytest class<CR>
 map <F3> :Pytest session<CR>
@@ -280,7 +280,7 @@ let g:fzf_action = {
 let g:fzf_layout = { 'down': '20%' }
 
 " Auto-open a split pane with an applicable diff for git commits
-autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83 | DimInactiveOff
+autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p | vertical resize 83
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -288,13 +288,6 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\" " Block in normal mode
 endif
 
-" Mute colors for inactive tmux panes
-au FocusLost * :silent! set t_Co=0
-au FocusGained * :silent! set t_Co=256
-au FocusGained * :silent! ColorScheme wombat<Cr>
 let g:vitality_always_assume_iterm = 1
 
-" Disable syntax highlight on inactive vim windows
-let g:diminactive_use_syntax = 1
-
-let g:khuno_max_line_length=100
+let g:khuno_max_line_length=120

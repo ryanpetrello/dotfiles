@@ -67,7 +67,7 @@ export ACK_COLOR_MATCH='red'
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
 VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     function workon() {
         unfunction "$0"
