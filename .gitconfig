@@ -1,5 +1,6 @@
 [init]
     templatedir = ~/.gittemplates
+    defaultBranch = main
 [user]
     name = Ryan Petrello
     email = ryan@ryanpetrello.com
