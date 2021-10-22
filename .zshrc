@@ -160,10 +160,16 @@ precmd () {
     }
     vcs_info
 }
+function get_cluster_short() {
+  echo "$1" | cut -d':' -f6-
+}
+
+KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
+local kube='$(kube_ps1)'
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
+PS1="${kube}[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
 
 # Show a different cursor for different vim modes
 function zle-keymap-select zle-line-init
@@ -251,6 +257,7 @@ if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh/kube-ps1/kube-ps1.sh ] && source ~/.zsh/kube-ps1/kube-ps1.sh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 export NVM_DIR="$HOME/.nvm"
