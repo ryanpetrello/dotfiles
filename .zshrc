@@ -1,4 +1,4 @@
-PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+PATH=/opt/homebrew/bin/$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
 export PYTHONPATH=$PYTHONPATH:$HOME/site
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -66,7 +66,7 @@ export ACK_COLOR_MATCH='red'
 
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
-VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER=/opt/homebrew/bin/virtualenvwrapper.sh
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     function workon() {
@@ -257,7 +257,7 @@ if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zsh/kube-ps1/kube-ps1.sh ] && source ~/.zsh/kube-ps1/kube-ps1.sh
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 export NVM_DIR="$HOME/.nvm"

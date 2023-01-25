@@ -112,10 +112,10 @@ macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to s
 macro index o "<display-message>" "open emails with o"
 
 # View attachments with v
-macro index v "<tag-prefix><pipe-message>~/.mutt/cache-current-filename<enter><tag-prefix><view-attachments>" "view attachments with v"
-macro pager v "<pipe-message>~/.mutt/cache-current-filename<enter><view-attachments>" "view attachments with v"
-macro index O "<pipe-message>~/.mutt/cache-current-filename<enter><view-attachments><search>html<enter><view-mailcap><exit>" "view HTML alternative with H"
-macro pager O "<pipe-message>~/.mutt/cache-current-filename<enter><view-attachments><search>html<enter><view-mailcap><exit>" "view HTML alternative with H"
+macro index v "<view-attachments>" "view attachments with v"
+macro pager v "<view-attachments>" "view attachments with v"
+macro index O "<view-attachments><search>html<enter><view-mailcap><exit>" "view HTML alternative with H"
+macro pager O "<view-attachments><search>html<enter><view-mailcap><exit>" "view HTML alternative with H"
 
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
