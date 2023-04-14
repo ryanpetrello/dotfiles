@@ -63,29 +63,3 @@ Slave :ryan-local:"trash"
 Create Both
 Expunge Both
 SyncState *
-
-IMAPAccount mission
-Host imap.gmail.com
-User rpetrello@missioncloud.com
-PassCmd "/usr/bin/security -v find-internet-password -wg -a rpetrello@missioncloud.com -s imap.gmail.com /Users/rpetrello/Library/Keychains/login.keychain"
-SSLType IMAPS
-AuthMechs LOGIN
-
-IMAPStore mission-remote
-Account mission
-
-MaildirStore mission-local
-Path ~/.mail/missioncloud.com/
-Inbox ~/.mail/missioncloud.com/Inbox
-
-Channel mission-inbox
-Master :mission-remote:
-Slave :mission-local:
-Patterns "INBOX"
-
-Channel mission-sent
-Master :mission-remote:"[Gmail]/Sent Mail"
-Slave :mission-local:"sent"
-Create Both
-Expunge Both
-SyncState *

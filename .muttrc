@@ -61,20 +61,13 @@ mailboxes +@ryan \
           +ryanpetrello.com/ansible \
           +ryanpetrello.com/pecan \
           +ryanpetrello.com/trash \
-          +@mission \
-          +missioncloud.com/INBOX \
-          +missioncloud.com/sent \
-          +missioncloud.com/mission-ops \
+          +@missioncloud/ \
+          +missioncloud/INBOX \
           +@search \
           +temporary/search \
 
 # Set the proper account when switching folders.
 folder-hook ryanpetrello.com/* source ~/.mutt/ryan.muttrc
-folder-hook redhat.com/* source ~/.mutt/rh.muttrc
-
-# Automatically hide read messages when switching certain folders
-folder-hook redhat.com/memo 'push "l~U<enter>"'
-folder-hook draughtcraft.com/INBOX 'push "l~U<enter>"'
 
 # Update the `reading from disk` progress bar increment (for faster reads)
 folder-hook . 'set read_inc=1000'

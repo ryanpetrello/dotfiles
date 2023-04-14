@@ -4,9 +4,9 @@ doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; } # define a helper functio
 
 while true; do
   echo "waiting for IDLE"
-  doalarm 30 python ~/.mutt/idle.py
+  doalarm 15 python ~/.mutt/idle.py
   echo "downloading new mail"
-  doalarm 120 /usr/local/bin/mbsync --all & pid1=$!
+  doalarm 120 /opt/homebrew/bin/mbsync --all & pid1=$!
   wait $pid1
-  /usr/local/bin/notmuch new
+  /opt/homebrew/bin/notmuch new
 done
