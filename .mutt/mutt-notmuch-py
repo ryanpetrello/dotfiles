@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 mutt-notmuch-py
 
@@ -25,7 +25,7 @@ Licensed under BSD
 import os
 import hashlib
 
-from commands import getoutput
+from subprocess import getoutput
 from mailbox import Maildir
 from optparse import OptionParser
 from collections import defaultdict
@@ -33,7 +33,7 @@ from collections import defaultdict
 
 def digest(filename):
     with open(filename) as f:
-        return hashlib.sha1(f.read()).hexdigest()
+        return hashlib.sha1(f.read().encode('utf-8')).hexdigest()
 
 
 def pick_all_mail(messages):
@@ -52,7 +52,7 @@ def command(cmd):
 
 
 def main(dest_box, is_gmail):
-    query = raw_input('Query: ')
+    query = input('Query: ')
 
     command('mkdir -p %s/cur' % dest_box)
     command('mkdir -p %s/new' % dest_box)
