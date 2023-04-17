@@ -148,11 +148,6 @@ zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 precmd () { 
-    psvar[5]=''
-    ifconfig | grep -q utun
-    if [ $? -eq 0 ]; then
-        psvar[5]=$(ps -ef | grep -q openvpn && echo " 🔒 ")
-    fi
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats $'[%{\e[1;33m%}%b%F{foreground}:%c%u%F{foreground}] '
     } else {
