@@ -257,7 +257,7 @@ let g:acp_behaviorPythonOmniLength = 5
 
 " Map ,r to reload
 command! Reload :so $MYVIMRC
-nmap <Leader>r <Esc>:Reload<CR><Esc>:ColorScheme wombat<CR>
+nmap <Leader>r <Esc>:Reload<CR><Esc>:colorscheme wombat<CR>
 
 " Map ,s to split all open buffer windows.  Can be used to toggle horizontal/vertical
 nmap <Leader>s <Esc>:call ToggleBuff()<CR>
@@ -273,7 +273,7 @@ function! ToggleBuff()
 endfunction
 
 " enable fzf completion
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/bin/fzf
 nmap <Leader>p <Esc>:FZF<CR>
 let g:fzf_action = {
   \ 'enter': 'split' }

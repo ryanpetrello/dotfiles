@@ -1,6 +1,6 @@
 #!/bin/zsh
 # This hook is sourced after every virtualenv is activated.
 
-BLUE=%{$'\e[0;46m'%}
-WHITE=%{$'\e[0;0m'%}
-PS1="${BLUE} `basename \"$VIRTUAL_ENV\"` ${WHITE} $_OLD_VIRTUAL_PS1"
+#BLUE=%{$'\e[0;46m'%}
+#WHITE=%{$'\e[0;0m'%}
+#PS1="${BLUE} `basename \"$VIRTUAL_ENV\"` ${WHITE} $_OLD_VIRTUAL_PS1"

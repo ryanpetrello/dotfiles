@@ -1,4 +1,4 @@
-PATH=/opt/homebrew/bin/$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+PATH=$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
 export PYTHONPATH=$PYTHONPATH:$HOME/site
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -30,7 +30,7 @@ export LESS=FRSXQ
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
-    cd ~/Desktop && /usr/local/bin/mutt "$@" && cd -
+    cd ~/Desktop && /opt/homebrew/bin/mutt "$@" && cd -
 }
 
 # CLI for 1Password.  Requires the `1pass` Python package
@@ -66,7 +66,8 @@ export ACK_COLOR_MATCH='red'
 
 # virtualenvwrapper settings
 export WORKON_HOME=~/venvs
-VIRTUALENVWRAPPER=/opt/homebrew/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER=/Users/rpetrello/Library/Python/3.9/bin/virtualenvwrapper.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 if [[ -f $VIRTUALENVWRAPPER ]]; then
     function workon() {
@@ -147,44 +148,7 @@ zstyle ':vcs_info:*' stagedstr $'%F{green}●'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
-precmd () { 
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats $'[%{\e[1;33m%}%b%F{foreground}:%c%u%F{foreground}] '
-    } else {
-        zstyle ':vcs_info:*' formats $'(%{\e[1;33m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
-    }
-    vcs_info
-}
-function get_cluster_short() {
-  echo "$1" | cut -d':' -f6-
-}
 
-KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
-local kube='$(kube_ps1)'
-local git='$vcs_info_msg_0_'
-
-# Custom status line
-PS1="${kube}[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
-
-# Show a different cursor for different vim modes
-function zle-keymap-select zle-line-init
-{
-    case $KEYMAP in
-        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    esac
-
-    zle reset-prompt
-    zle -R
-}
-
-function zle-line-finish
-{
-    print -n -- "\E]50;CursorShape=0\C-G"
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
 zle -N zle-keymap-select
 
 # # 10ms for key sequences
@@ -241,25 +205,16 @@ source ~/.zsh/completions/pytest.plugin.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then
-  source ~/google-cloud-sdk/path.zsh.inc
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then
-  source ~/google-cloud-sdk/completion.zsh.inc
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-export NVM_DIR="$HOME/.nvm"
 function nvm() {
-    unfunction "$0"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion<Paste>
-    $0 "$@"
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  nvm $@
 }
 export GPG_TTY=$(tty)
+
+# curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init zsh)"
