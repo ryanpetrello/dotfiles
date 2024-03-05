@@ -13,7 +13,8 @@ $python\
 [](fg:color_blue bg:color_bg1)\
 $kubernetes\
 [ ](fg:color_bg1)\
-$line_break$character"""
+$cmd_duration\
+$character """
 
 palette = 'gruvbox_dark'
 
@@ -28,6 +29,11 @@ color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#b77901'
+
+[cmd_duration]
+min_time = 1
+style = 'bold white'
+format = '[$duration]($style) '
 
 [os]
 disabled = false
@@ -64,7 +70,8 @@ format = '[ $user ]($style)'
 style = "fg:color_fg0 bg:color_yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
-truncation_symbol = "…/"
+truncation_symbol = "../"
+truncate_to_repo = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -150,9 +157,6 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[\$](bold white)'
+error_symbol = '[\$](bold red)'
+vimcmd_symbol = '[\$](bold green)'
