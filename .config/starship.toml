@@ -20,6 +20,7 @@ palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1f7'
+color_fg1 = '#aaaaaa'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
 color_blue = '#256568'
@@ -32,7 +33,7 @@ color_yellow = '#b77901'
 
 [cmd_duration]
 min_time = 1
-style = 'bold white'
+style = 'bold color_fg1'
 format = '[$duration]($style) '
 
 [os]
@@ -159,4 +160,4 @@ disabled = false
 disabled = false
 success_symbol = '[\$](bold white)'
 error_symbol = '[\$](bold red)'
-vimcmd_symbol = '[\$](bold green)'
+vimcmd_symbol = '[\$](bold yellow)'
