@@ -149,8 +149,6 @@ zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
 
-zle -N zle-keymap-select
-
 # # 10ms for key sequences
 KEYTIMEOUT=1
 
