@@ -5,8 +5,9 @@ import select
 import subprocess
 
 IDLE_FOLDERS = [
-    ("Ryan", "ryan@ryanpetrello.com", "INBOX", 'imap.fastmail.com'),
-    ("Ryan", "ryan@ryanpetrello.com", "Sent", 'imap.fastmail.com'),
+    #("Ryan", "ryan@ryanpetrello.com", "INBOX", 'imap.fastmail.com'),
+    #("Ryan", "ryan@ryanpetrello.com", "Sent", 'imap.fastmail.com'),
+    ("Mailchimp", "ryan_petrello@intuit.com", "INBOX", 'imap.gmail.com'),
 ]
 
 
