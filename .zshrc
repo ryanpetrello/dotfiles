@@ -30,7 +30,7 @@ export LESS=FRSXQ
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
-    cd ~/Desktop && /opt/homebrew/bin/mutt "$@" && cd -
+    cd ~/Desktop && /usr/local/bin/mutt "$@" && cd -
 }
 
 # CLI for 1Password.  Requires the `1pass` Python package
@@ -215,4 +215,4 @@ function nvm() {
 export GPG_TTY=$(tty)
 
 # curl -sS https://starship.rs/install.sh | sh
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"

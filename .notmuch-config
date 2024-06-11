@@ -32,8 +32,8 @@ path=/Users/rpetrello/.mail
 
 [user]
 name=Ryan Petrello
-primary_email=ryan@ryanpetrello.com
-other_email=lists@ryanpetrello.com;rpetrello@missioncloud.com;
+primary_email=ryan_petrello@intuit.com
+other_email=lists@ryanpetrello.com;
 
 # Configuration for "notmuch new"
 #

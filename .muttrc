@@ -50,19 +50,11 @@ unignore from: to: cc: date: subject: # show only these
 # Account Settings ------------------------------------------------------------
 
 # Default inbox.
-set spoolfile = "+ryanpetrello.com/Inbox"
+set spoolfile = "+mailchimp.com/Inbox"
 
 # Mailboxes to show in the sidebar.
-mailboxes +@ryan \
-          +ryanpetrello.com/INBOX \
-          +ryanpetrello.com/sent \
-          +ryanpetrello.com/drafts \
-          +ryanpetrello.com/spam \
-          +ryanpetrello.com/ansible \
-          +ryanpetrello.com/pecan \
-          +ryanpetrello.com/trash \
-          +@missioncloud/ \
-          +missioncloud/INBOX \
+mailboxes +@mailchimp.com/ \
+          +mailchimp.com/INBOX \
           +@search \
           +temporary/search \
 
