@@ -13,7 +13,7 @@ IMAPStore mailchimp-remote
 Account mailchimp
 
 MaildirStore mailchimp-local
-Path ~/.mail/mailchimp.com
+Path ~/.mail/mailchimp.com/
 Inbox ~/.mail/mailchimp.com/Inbox
 
 Channel mailchimp-inbox

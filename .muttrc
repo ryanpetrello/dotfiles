@@ -55,6 +55,7 @@ set spoolfile = "+mailchimp.com/Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +@mailchimp.com/ \
           +mailchimp.com/INBOX \
+          +mailchimp.com/sent \
           +@search \
           +temporary/search \
 
