@@ -30,7 +30,7 @@ export LESS=FRSXQ
 
 # Always open mutt in ~/Desktop so that downloaded mail attachments save there
 function mutt() {
-    cd ~/Desktop && /usr/local/bin/mutt "$@" && cd -
+    cd ~/Desktop && /opt/homebrew/bin/mutt "$@" && cd -
 }
 
 # CLI for 1Password.  Requires the `1pass` Python package
@@ -148,6 +148,44 @@ zstyle ':vcs_info:*' stagedstr $'%F{green}●'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn
+
+precmd () {
+    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+        zstyle ':vcs_info:*' formats $'[%{\e[1;33m%}%b%F{foreground}:%c%u%F{foreground}] '
+    } else {
+        zstyle ':vcs_info:*' formats $'(%{\e[1;33m%}%b%F{foreground}:%c%u%F{white}●%F{foreground}) '
+    }
+    vcs_info
+}
+function get_cluster_short() {
+  echo "$1" | cut -d':' -f6-
+}
+
+local git='$vcs_info_msg_0_'
+
+# Custom status line
+PS1="[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
+
+# Show a different cursor for different vim modes
+function zle-keymap-select zle-line-init
+{
+    case $KEYMAP in
+        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
+
+    zle reset-prompt
+    zle -R
+}
+
+
+function zle-line-finish
+{
+    print -n -- "\E]50;CursorShape=0\C-G"
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
 
 # # 10ms for key sequences
 KEYTIMEOUT=1

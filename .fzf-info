@@ -1,0 +1,3 @@
+brew install fzf
+git clone https://github.com/junegunn/fzf.git  (in .vim/bundle)
+git clone https://github.com/junegunn/fzf.vim.git  (in .vim/bundle)

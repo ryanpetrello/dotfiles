@@ -53,7 +53,7 @@ unignore from: to: cc: date: subject: # show only these
 set spoolfile = "+mailchimp.com/Inbox"
 
 # Mailboxes to show in the sidebar.
-mailboxes +@mailchimp.com/ \
+mailboxes +@mailchimp/ \
           +mailchimp.com/INBOX \
           +mailchimp.com/sent \
           +@search \
