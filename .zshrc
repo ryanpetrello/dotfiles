@@ -1,4 +1,4 @@
-PATH=$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+PATH=$HOME/.rd/bin:$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/brew/bin:/brew/sbin:/brew/share/npm/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export NODE_PATH=/brew/lib/node
 export PYTHONPATH=$PYTHONPATH:$HOME/site
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -33,33 +33,9 @@ function mutt() {
     cd ~/Desktop && /opt/homebrew/bin/mutt "$@" && cd -
 }
 
-# CLI for 1Password.  Requires the `1pass` Python package
-function 1pass() { sudo -u $(whoami) /usr/bin/security find-generic-password -l 1pass -w | $WORKON_HOME/1pass/bin/1pass --no-prompt --fuzzy "$@" | tr -d '\012\015' | pbcopy }
-alias 1p='1pass'
-
 function branch() {
     git symbolic-ref --short HEAD
 }
-
-function gh-diff() {
-    git config --get remote.origin.url | grep $1/$2.git > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        mktmpenv
-        git clone https://github.com/$1/$2.git
-        cd $2
-    fi
-    curl https://github.com/$1/$2/pull/$3.diff | cdiff -s
-}
-
-function gh() {
-    if [ "$#" -eq 1 ]; then
-        echo "git@github.com:ryanpetrello/$1.git"
-    fi
-    if [ "$#" -eq 2 ]; then
-        echo "git@github.com:$1/$2.git"
-    fi
-}
-
 
 # ack-specific settings
 export ACK_COLOR_MATCH='red'
@@ -157,35 +133,15 @@ precmd () {
     }
     vcs_info
 }
-function get_cluster_short() {
-  echo "$1" | cut -d':' -f6-
-}
 
+function kube_ps1() {
+    echo "[${fg_lblue}`cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //" | cut -d":" -f6-`${fg_white}]"
+}
+local kube='$([[ $VIRTUAL_ENV == *aws* ]] && kube_ps1)'
 local git='$vcs_info_msg_0_'
 
 # Custom status line
-PS1="[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
-
-# Show a different cursor for different vim modes
-function zle-keymap-select zle-line-init
-{
-    case $KEYMAP in
-        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    esac
-
-    zle reset-prompt
-    zle -R
-}
-
-
-function zle-line-finish
-{
-    print -n -- "\E]50;CursorShape=0\C-G"
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
+PS1="${kube}[`hostname | sed 's/\..*//'`]${fg_lblue}%5v${fg_white} ${git}${fg_lblue}%~ ${fg_white}"
 
 # # 10ms for key sequences
 KEYTIMEOUT=1
@@ -251,6 +207,3 @@ function nvm() {
   nvm $@
 }
 export GPG_TTY=$(tty)
-
-# curl -sS https://starship.rs/install.sh | sh
-# eval "$(starship init zsh)"

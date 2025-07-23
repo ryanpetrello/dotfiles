@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>org.ryan.mail.gapi</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/rpetrello/.mutt/gmi.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/rpetrello</string>
+
+    <key>StartInterval</key>
+    <integer>10</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/org.ryan.mail.gapi.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/org.ryan.mail.gapi.err</string>
+</dict>
+</plist>

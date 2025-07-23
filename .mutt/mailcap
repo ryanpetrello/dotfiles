@@ -2,7 +2,7 @@
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
 
 # HTML mail
-text/html; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; open -a /Applications/Firefox.app/ /tmp/mutt/$(basename %s) &
+text/html; mkdir -p /tmp/mutt \; cp %s /tmp/mutt/$(basename %s).html \; open -a "/Applications/Google Chrome.app/" /tmp/mutt/$(basename %s).html &
 
 # QuickLook in OSX
 image/*                  ; /usr/bin/qlmanage -p 2>/dev/null %s
