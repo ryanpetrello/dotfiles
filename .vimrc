@@ -15,6 +15,7 @@ set hlsearch
 filetype on
 filetype plugin on
 filetype indent on
+set regexpengine=0
 syntax on
 
 " Make sure we use a better leader key
