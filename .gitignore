@@ -3,6 +3,7 @@
 !/.inputrc
 !/.pythonrc
 !/.pdbrc
+!/.config/aerc*
 !/site*
 !/.vim*
 !/.gvim*
