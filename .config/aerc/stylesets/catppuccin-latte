@@ -23,7 +23,8 @@ msglist_flagged.bold=true
 msglist_result.fg=#89b4fa
 msglist_result.bold=true
 msglist_*.selected.bold=true
-msglist_*.selected.bg=#313244
+msglist_*.selected.bg=#cdd6f4
+msglist_*.selected.fg=#181825
 
 dirlist_*.selected.bold=true
 dirlist_*.selected.bg=#313244
