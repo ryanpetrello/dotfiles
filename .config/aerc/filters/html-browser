@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Filter for text/html emails in aerc
+# Opens HTML emails in Chrome instead of displaying inline
+
+# Create temp directory
+mkdir -p /tmp/aerc
+
+# Generate unique filename
+TMPFILE="/tmp/aerc/aerc-$(date +%Y%m%d-%H%M%S)-$$.html"
+
+# Save HTML content from stdin to temp file
+cat > "$TMPFILE"
+
+# Open in Chrome (in background)
+open -a "/Applications/Google Chrome.app/" "$TMPFILE" &
+
+# Output a message to aerc viewer (optional)
+echo "HTML email opened in Chrome"
+echo ""
+echo "Temporary file: $TMPFILE"
